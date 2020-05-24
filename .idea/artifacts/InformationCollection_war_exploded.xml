@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="InformationCollection:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/InformationCollection_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="InformationCollection/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Hibernate 5.4.11-5.4.11" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.15" />
+          <element id="library" level="project" name="Struts 2" />
+          <element id="library" level="project" name="Spring-5.2.3.RELEASE" />
+          <element id="library" level="project" name="mail-1.4" />
+          <element id="library" level="project" name="aliyun-java-sdk-core-2.4.2" />
+          <element id="library" level="project" name="aliyun-java-sdk-sms-3.0.0-rc1" />
+          <element id="library" level="project" name="fastjson-1.1.24" />
+          <element id="library" level="project" name="spring-web-5.2.3.RELEASE" />
+        </element>
+        <element id="directory" name="classes" />
+      </element>
+    </root>
+  </artifact>
+</component>
