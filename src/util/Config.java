@@ -9,7 +9,7 @@ import java.util.Properties;
  * @author CoderXshuai
  */
 public class Config {
-    private static String fileNamePath = "config.properties";
+    private static final String fileNamePath = "./conf/config.properties";
 
     public static String getValues(String key) {
         Properties props = new Properties();
@@ -18,8 +18,7 @@ public class Config {
             /*in = new FileInputStream(fileNamePath);*/
             in = Config.class.getClassLoader().getResourceAsStream(fileNamePath);
             props.load(in);
-            String value = props.getProperty(key);
-            return value;
+            return props.getProperty(key);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

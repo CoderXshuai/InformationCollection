@@ -6,10 +6,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="lib">
           <element id="library" level="project" name="Hibernate 5.4.11-5.4.11" />
-          <element id="library" level="project" name="mysql-connector-java-8.0.15" />
-          <element id="library" level="project" name="Struts 2" />
           <element id="library" level="project" name="Spring-5.2.3.RELEASE" />
-          <element id="library" level="project" name="mail-1.4" />
           <element id="library" level="project" name="aliyun-java-sdk-core-2.4.2" />
           <element id="library" level="project" name="aliyun-java-sdk-sms-3.0.0-rc1" />
           <element id="library" level="project" name="fastjson-1.1.24" />

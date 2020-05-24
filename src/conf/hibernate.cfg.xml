@@ -8,7 +8,6 @@
 
         <!-- 方言 -->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
-        <!-- org.hibernate.dialect.OracleDialect -->
         <!-- 是否显示及格式化 SQL -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>

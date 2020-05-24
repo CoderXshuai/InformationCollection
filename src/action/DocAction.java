@@ -6,8 +6,11 @@ import model.Doc;
 import service.DocService;
 import util.MyUtils;
 
+/**
+ * @author CoderXshuai
+ */
 public class DocAction implements ModelDriven<Doc> {
-    private Doc doc = new Doc();
+    private final Doc doc = new Doc();
 
     @Override
     public Doc getModel() {

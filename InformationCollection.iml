@@ -23,8 +23,8 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="conf:hibernate.cfg.xml" />
-          <unit-entry name="sessionFactory" />
+          <unit-entry name="conf:hibernate.cfg.xml" value="69a905d7-4bcb-423b-9988-b4dfe96c5681" />
+          <unit-entry name="sessionFactory" value="69a905d7-4bcb-423b-9988-b4dfe96c5681" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/conf/hibernate.cfg.xml" />
@@ -48,15 +48,15 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.27" level="application_server_libraries" />
     <orderEntry type="library" name="Hibernate 5.4.11-5.4.11" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-8.0.15" level="project" />
-    <orderEntry type="library" name="Struts 2" level="project" />
     <orderEntry type="library" name="Spring-5.2.3.RELEASE" level="project" />
-    <orderEntry type="library" name="mail-1.4" level="project" />
     <orderEntry type="library" name="aliyun-java-sdk-core-2.4.2" level="project" />
     <orderEntry type="library" name="aliyun-java-sdk-sms-3.0.0-rc1" level="project" />
     <orderEntry type="library" name="spring-web-5.2.3.RELEASE" level="project" />
     <orderEntry type="library" name="fastjson-1.1.24" level="project" />
     <orderEntry type="library" name="commons-dbcp2-2.1" level="project" />
     <orderEntry type="library" name="commons-pool2-2.3" level="project" />
+    <orderEntry type="library" name="Struts2" level="project" />
+    <orderEntry type="library" name="javax.mail.glassfish-1.4.1.v201005082020" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.15" level="project" />
   </component>
 </module>
