@@ -6,7 +6,6 @@
     <!-- 开启动态方法 -->
     <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
     <constant name="struts.action.excludePattern" value="/ws/.*,ws://.*"/>
-
     <!-- 文件上传最大值 -->
     <constant name="struts.multipart.maxSize" value="1048576000"/>
     <!-- 文件上传临时目录 -->

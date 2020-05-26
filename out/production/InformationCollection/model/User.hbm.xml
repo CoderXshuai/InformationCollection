@@ -6,7 +6,7 @@
     <class name="model.User" table="user">
         <!-- 基本属性 -->
         <id name="id" column="id">
-            <generator class="native"></generator>
+            <generator class="native"/>
         </id>
         <property name="name" column="name" type="string" not-null="true"/>
         <property name="password" column="password" type="string" not-null="true"/>
@@ -18,7 +18,7 @@
         <property name="createTime" column="createTime" type="timestamp" not-null="true"/>
         <!-- 多个收件夹对应一个用户 -->
         <set name="inboxs" inverse="true" lazy="false" fetch="join" cascade="all">
-            <key column="userId"></key>
+            <key column="userId"/>
             <one-to-many class="model.Inbox"/>
         </set>
     </class>

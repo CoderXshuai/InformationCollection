@@ -30,6 +30,7 @@
 				class="form-control btn btn-success" value="获取手机验证码">
 		</div>
 	</div>
+
 	<div class="form-group" style="margin-top: 15px;">
 		<label class="col-sm-3 control-label">密码</label>
 		<div class="col-sm-8">

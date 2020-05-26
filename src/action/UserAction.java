@@ -1,10 +1,5 @@
 package action;
 
-import java.io.File;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpSession;
-
 import com.alibaba.fastjson.JSONObject;
 import com.opensymphony.xwork2.ModelDriven;
 import model.User;
@@ -13,12 +8,15 @@ import util.MyUtils;
 import util.SmsUtils;
 import util.Static;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
+import java.io.File;
 
 
-public class UserAction implements ModelDriven<User>{
-	private User user = new User();
+public class UserAction implements ModelDriven<User> {
+	private final User user = new User();
 	private String word;
-	
+
 	public String getWord() {
 		return word;
 	}
@@ -58,20 +56,22 @@ public class UserAction implements ModelDriven<User>{
 	/**
 	 * 注册
 	 */
-	public void register(){
-		String smsCode = MyUtils.getSessionObject(user.getEmail());//获取短信验证码
-		if(null!=smsCode&&smsCode.equals(word)){
+	public void register() {
+		//获取短信验证码
+		String smsCode = MyUtils.getSessionObject(user.getEmail());
+		if (null != smsCode && smsCode.equals(word)) {
 			//正确
 			Object[] obj = userService.register(user);
-			if(obj[0]!=null){ //返回用户不为空 代表注册成功
+			//返回用户不为空 代表注册成功
+			if (obj[0] != null) {
 				MyUtils.getSession().setAttribute(Static.onlineUser, obj[0]);
 				//清空验证码
 				MyUtils.getSession().removeAttribute(user.getEmail());
 				//返回数据
-				MyUtils.outMsg((String)obj[1], true);
-			}else{
+				MyUtils.outMsg((String) obj[1], true);
+			} else {
 				//注册失败 返回数据
-				MyUtils.outMsg((String)obj[1], false);
+				MyUtils.outMsg((String) obj[1], false);
 			}
 		}else{ 
 			//返回数据
@@ -84,13 +84,9 @@ public class UserAction implements ModelDriven<User>{
 	 */
 	public void changePwd(){
 		User onlineUser = MyUtils.getSessionObject(Static.onlineUser);
-		if(null!=onlineUser){
+		if(null!=onlineUser) {
 			Object[] obj = userService.changePwd(user, onlineUser.getId());
-			if((boolean)obj[0]){
-				MyUtils.outMsg((String)obj[1], true);
-			}else{
-				MyUtils.outMsg((String)obj[1], false);
-			}
+			MyUtils.outMsg((String) obj[1], (boolean) obj[0]);
 		}else{
 			MyUtils.outMsg("你已经断网或离线,请刷新页面重新登录", false);
 		}

@@ -13,8 +13,8 @@
       <facet type="Struts2" name="Struts 2">
         <configuration>
           <fileset id="s2fileset" name="My Fileset" removed="false">
-            <file>jar://$USER_HOME$/Desktop/lib/struts2-core-2.5.22.jar!/struts-default.xml</file>
             <file>file://$MODULE_DIR$/src/conf/struts.xml</file>
+            <file>jar://$MODULE_DIR$/lib/Struts2/struts2-core-2.5.22.jar!/struts-default.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
