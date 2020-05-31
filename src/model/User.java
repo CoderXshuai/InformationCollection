@@ -20,11 +20,15 @@ public class User implements Serializable {
     /**
      * ID
      */
-    private int id; // 唯一标识符
+    private int id;
     /**
      * 用户名
      */
     private String name;
+    /**
+     * 学号
+     */
+    private String no;
     /**
      * 密码(口令)
      */
@@ -40,25 +44,27 @@ public class User implements Serializable {
     /**
      * 邮箱号
      */
-    private String email; //手机号
+    private String email;
     /**
      * 用户创建时间
      */
-    private Date createTime; // 创建时间
-    private String salt; // 盐 用来加密密码的 防止被彩笔表破解
-    private String headImg; //头像
+    private Date createTime;
+    /**
+     * 头像
+     */
+    private String headImg;
 
     /**
      * many-to-one
      */
-    private Set inboxs = new HashSet(0);
+    private Set<Inbox> inboxs = new HashSet(0);
 
 
     //非持久化属性
     /**
      * 前端密码
      */
-    private String newPassword; //前台新密码
+    private String newPassword;
     /**
      * 密码确认
      */
@@ -68,6 +74,26 @@ public class User implements Serializable {
      */
     private File uploadFile;
     private String uploadFileContentType;
+
+    public User(int id, String name, String no, String password, int role, int status,
+                String email, Date createTime, String headImg,
+                Set inboxs) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.no = no;
+        this.password = password;
+        this.role = role;
+        this.status = status;
+        this.email = email;
+        this.createTime = createTime;
+        this.headImg = headImg;
+        this.inboxs = inboxs;
+    }
+
+    public User() {
+        super();
+    }
 
     public File getUploadFile() {
         return uploadFile;
@@ -157,34 +183,6 @@ public class User implements Serializable {
         this.createTime = createTime;
     }
 
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    public User(int id, String name, String password, int role, int status,
-                String email, Date createTime, String salt, String headImg,
-                Set inboxs) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.role = role;
-        this.status = status;
-        this.email = email;
-        this.createTime = createTime;
-        this.salt = salt;
-        this.headImg = headImg;
-        this.inboxs = inboxs;
-    }
-
-    public User() {
-        super();
-    }
-
     public Set getInboxs() {
         return inboxs;
     }
@@ -201,5 +199,11 @@ public class User implements Serializable {
         this.headImg = headImg;
     }
 
+    public String getNo() {
+        return no;
+    }
 
+    public void setNo(String no) {
+        this.no = no;
+    }
 }
