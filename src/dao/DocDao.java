@@ -5,6 +5,6 @@ import model.Doc;
 /**
  * @author CoderXshuai
  */
-public interface DocDao extends BaseDao<Doc>{
+public interface DocDao extends BaseDao<Doc> {
 
 }

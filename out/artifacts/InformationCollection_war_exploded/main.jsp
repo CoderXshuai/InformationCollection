@@ -30,20 +30,20 @@
             </button>
             <ul class="dropdown-menu" role="menu"
                 style="min-width: 100%; text-align: center;">
-                <li><a href="javascript:;" id="sort_1"
+                <li><a href="javascript:" id="sort_1"
                        onclick="sortInbox(this.id,this.title)" title="创建时间">创建时间</a></li>
-                <li><a href="javascript:;" id="sort_2"
+                <li><a href="javascript:" id="sort_2"
                        onclick="sortInbox(this.id,this.title)" title="截止时间">截止时间</a></li>
-                <li><a href="javascript:;" id="sort_3"
+                <li><a href="javascript:" id="sort_3"
                        onclick="sortInbox(this.id,this.title)" title="收件数量">收件数量</a></li>
-                <li><a href="javascript:;" id="sort_4" style="color: #f0ad4e;"
+                <li><a href="javascript:" id="sort_4" style="color: #f0ad4e;"
                        onclick="sortInbox(this.id,this.title)" title="只显标星">只显标星</a></li>
 
-                <li><a href="javascript:;" id="sort_5"
+                <li><a href="javascript:" id="sort_5"
                        onclick="sortInbox(this.id,this.title)" title="只显截止">只显截止</a></li>
-                <li><a href="javascript:;" id="sort_6" style="color: #5cb85c;"
+                <li><a href="javascript:" id="sort_6" style="color: #5cb85c;"
                        onclick="sortInbox(this.id,this.title)" title="只显开启">只显开启</a></li>
-                <li><a href="javascript:;" id="sort_7" style="color: #d9534f;"
+                <li><a href="javascript:" id="sort_7" style="color: #d9534f;"
                        onclick="sortInbox(this.id,this.title)" title="只显关闭">只显关闭</a></li>
             </ul>
 

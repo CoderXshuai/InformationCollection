@@ -6,6 +6,6 @@ import model.Inbox;
 /**
  * @author CoderXshuai
  */
-public class InboxDaoImpl extends BaseDaoImpl<Inbox> implements InboxDao{
+public class InboxDaoImpl extends BaseDaoImpl<Inbox> implements InboxDao {
 
 }

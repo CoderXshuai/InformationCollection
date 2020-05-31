@@ -3,6 +3,7 @@ package action;
 
 import com.opensymphony.xwork2.ModelDriven;
 import model.Doc;
+import org.junit.Test;
 import service.DocService;
 import util.MyUtils;
 
@@ -11,17 +12,15 @@ import util.MyUtils;
  */
 public class DocAction implements ModelDriven<Doc> {
     private final Doc doc = new Doc();
+    //配置service
+    private DocService docService;
+    private String linkId; //inboxId
 
     @Override
     public Doc getModel() {
         // TODO Auto-generated method stub
         return doc;
     }
-
-    //配置service
-    private DocService docService;
-
-    private String linkId; //inboxId
 
     public String getLinkId() {
         return linkId;
@@ -35,6 +34,7 @@ public class DocAction implements ModelDriven<Doc> {
         this.docService = docService;
     }
 
+    @Test
     public void upload() {
         docService.upload(doc, linkId);
         MyUtils.outMsg("上传成功!", true);

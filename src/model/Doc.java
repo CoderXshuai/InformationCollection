@@ -49,6 +49,22 @@ public class Doc implements Serializable {
 
     private String downLoadFileName;
 
+    public Doc(String id, String name, String url, String size,
+               Date createTime, int download, Inbox inbox) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.url = url;
+        this.size = size;
+        this.createTime = createTime;
+        this.download = download;
+        this.inbox = inbox;
+    }
+
+    public Doc() {
+        super();
+    }
+
     public String getDownLoadFileName() {
         return downLoadFileName;
     }
@@ -135,22 +151,6 @@ public class Doc implements Serializable {
 
     public void setInbox(Inbox inbox) {
         this.inbox = inbox;
-    }
-
-    public Doc(String id, String name, String url, String size,
-               Date createTime, int download, Inbox inbox) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.url = url;
-        this.size = size;
-        this.createTime = createTime;
-        this.download = download;
-        this.inbox = inbox;
-    }
-
-    public Doc() {
-        super();
     }
 
 }

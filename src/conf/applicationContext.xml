@@ -1,33 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
   		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
   		http://www.springframework.org/schema/aop 
   		http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
   		http://www.springframework.org/schema/tx 
   		http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
-
-
   		http://www.springframework.org/schema/context
   		http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
     <!-- 导入资源文件 -->
-    <context:property-placeholder location="classpath:conf/db.properties"/>
-
+    <context:property-placeholder location="classpath:conf/db.properties" ignore-unresolvable="true"/>
     <!--    配置数据源-->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
           destroy-method="close">
         <!-- 指定连接数据库的驱动 -->
-        <property name="driverClassName" value="${driverClassName}"/>
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <!-- 指定连接数据库的URL -->
-        <property name="url" value="${url}"/>
+        <property name="url" value="${jdbc.url}"/>
         <!-- 指定连接数据库的用户名 -->
-        <property name="username" value="${username}"/>
+        <property name="username" value="${jdbc.username}"/>
         <!-- 指定连接数据库的密码 -->
-        <property name="password" value="${password}"/>
+        <property name="password" value="${jdbc.password}"/>
 
+    </bean>
+    <!--    邮箱验证-->
+    <context:property-placeholder location="classpath:conf/mail.properties" ignore-unresolvable="true"/>
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <!--        邮箱协议-->
+        <property name="host" value="${mail.host}"/>
+        <!--        用户名-->
+        <property name="username" value="${mail.username}"/>
+        <!--        邮箱授权码-->
+        <property name="password" value="${mail.password}"/>
+        <!--        其余配置-->
+        <property name="javaMailProperties">
+            <props>
+                <!-- 必须进行授权认证，它的目的就是阻止他人任意乱发邮件 -->
+                <prop key="mail.smtp.auth">true</prop>
+                <!-- SMTP加密方式:连接到一个TLS保护连接 -->
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
     </bean>
 
     <!-- 配置SessionFactory -->

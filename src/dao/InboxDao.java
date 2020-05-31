@@ -5,6 +5,6 @@ import model.Inbox;
 /**
  * @author CoderXshuai
  */
-public interface InboxDao extends BaseDao<Inbox>{
+public interface InboxDao extends BaseDao<Inbox> {
 
 }

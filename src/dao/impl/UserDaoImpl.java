@@ -6,6 +6,6 @@ import model.User;
 /**
  * @author CoderXshuai
  */
-public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
+public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 
 }

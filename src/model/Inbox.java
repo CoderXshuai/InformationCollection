@@ -72,6 +72,28 @@ public class Inbox implements Serializable {
     private String uploadFileContentType;
 
 
+    public Inbox() {
+        super();
+    }
+
+    public Inbox(String id, String title, String logo, String remark,
+                 Date endTime, Date createTime, int star, String password,
+                 int status, String closeReason, User user, Set docs) {
+        super();
+        this.id = id;
+        this.title = title;
+        this.logo = logo;
+        this.remark = remark;
+        this.endTime = endTime;
+        this.createTime = createTime;
+        this.star = star;
+        this.password = password;
+        this.status = status;
+        this.closeReason = closeReason;
+        this.user = user;
+        this.docs = docs;
+    }
+
     public File getUploadFile() {
         return uploadFile;
     }
@@ -181,28 +203,6 @@ public class Inbox implements Serializable {
     }
 
     public void setDocs(Set docs) {
-        this.docs = docs;
-    }
-
-    public Inbox() {
-        super();
-    }
-
-    public Inbox(String id, String title, String logo, String remark,
-                 Date endTime, Date createTime, int star, String password,
-                 int status, String closeReason, User user, Set docs) {
-        super();
-        this.id = id;
-        this.title = title;
-        this.logo = logo;
-        this.remark = remark;
-        this.endTime = endTime;
-        this.createTime = createTime;
-        this.star = star;
-        this.password = password;
-        this.status = status;
-        this.closeReason = closeReason;
-        this.user = user;
         this.docs = docs;
     }
 

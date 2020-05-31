@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author CoderXshuai
+ */
 public interface BaseDao<T> {
     /**
      * 添加新纪录
      *
      * @param obj
-     * @return
-     * @author Jhon
+     * @return json格式的字符串
      */
     Serializable save(T obj);
 

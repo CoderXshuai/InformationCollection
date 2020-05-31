@@ -1,44 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
 		http://www.springframework.org/schema/beans 
   		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
-	<!-- action->(user,service->dao) -->
-	<bean id="userDao" class="dao.impl.UserDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="userService" class="service.impl.UserServiceImpl">
-		<property name="userDao" ref="userDao"/>
-	</bean>
-	<bean id="userAction" class="action.UserAction">
-		<property name="userService" ref="userService"/>
-	</bean>
-	<!-- action->(inbox,service->dao) -->
-	<bean id="inboxDao" class="dao.impl.InboxDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="inboxService" class="service.impl.InboxServiceImpl">
-		<property name="inboxDao" ref="inboxDao"/>
-		<property name="userDao" ref="userDao"/>
-	</bean>
-	<bean id="inboxAction" class="action.InboxAction">
-		<property name="inboxService" ref="inboxService"/>
-	</bean>
-	
-	<!-- action->(doc,service->dao) -->
-	<bean id="docDao" class="dao.impl.DocDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="docService" class="service.impl.DocServiceImpl">
-		<property name="docDao" ref="docDao"/>
-		<property name="fileHashDao" ref="fileHashDao"/>
-	</bean>
-	<bean id="docAction" class="action.DocAction">
-		<property name="docService" ref="docService"/>
-	</bean>
-	<!-- action->(FileHash,service->dao) -->
-	<bean id="fileHashDao" class="dao.impl.FileHashDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
+<!--    &lt;!&ndash; action->(user,service->dao) &ndash;&gt;-->
+<!--    <bean id="userDao" class="dao.impl.UserDaoImpl">-->
+<!--        <property name="sessionFactory" ref="sessionFactory"/>-->
+<!--    </bean>-->
+<!--    <bean id="userService" class="service.impl.UserServiceImpl">-->
+<!--        <property name="userDao" ref="userDao"/>-->
+<!--    </bean>-->
+<!--    <bean id="userAction" class="action.UserAction">-->
+<!--        <property name="userService" ref="userService"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; action->(inbox,service->dao) &ndash;&gt;-->
+<!--    <bean id="inboxDao" class="dao.impl.InboxDaoImpl">-->
+<!--        <property name="sessionFactory" ref="sessionFactory"/>-->
+<!--    </bean>-->
+<!--    <bean id="inboxService" class="service.impl.InboxServiceImpl">-->
+<!--        <property name="inboxDao" ref="inboxDao"/>-->
+<!--        <property name="userDao" ref="userDao"/>-->
+<!--    </bean>-->
+<!--    <bean id="inboxAction" class="action.InboxAction">-->
+<!--        <property name="inboxService" ref="inboxService"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; action->(doc,service->dao) &ndash;&gt;-->
+<!--    <bean id="docDao" class="dao.impl.DocDaoImpl">-->
+<!--        <property name="sessionFactory" ref="sessionFactory"/>-->
+<!--    </bean>-->
+<!--    <bean id="docService" class="service.impl.DocServiceImpl">-->
+<!--        <property name="docDao" ref="docDao"/>-->
+<!--        <property name="fileHashDao" ref="fileHashDao"/>-->
+<!--    </bean>-->
+<!--    <bean id="docAction" class="action.DocAction">-->
+<!--        <property name="docService" ref="docService"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; action->(FileHash,service->dao) &ndash;&gt;-->
+<!--    <bean id="fileHashDao" class="dao.impl.FileHashDaoImpl">-->
+<!--        <property name="sessionFactory" ref="sessionFactory"/>-->
+<!--    </bean>-->
+    <bean id="mailUtil" class="util.MailUtil">
+        <property name="mailSender" ref="mailSender"/>
+    </bean>
 </beans>

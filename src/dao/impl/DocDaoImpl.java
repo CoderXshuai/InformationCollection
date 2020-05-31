@@ -9,3 +9,4 @@ import model.Doc;
 public class DocDaoImpl extends BaseDaoImpl<Doc> implements DocDao{
 
 }
+

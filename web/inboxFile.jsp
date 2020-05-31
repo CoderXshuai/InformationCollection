@@ -8,10 +8,9 @@
     <title>快速创建收件夹</title>
     <link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.min.css"/>
 
-
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
     <link rel="stylesheet" type="text/css" href="css/common.css"/>
     <link rel="stylesheet" type="text/css" href="css/header.css"/>
-
     <link rel="stylesheet" type="text/css" href="js/layer/skin/default/layer.css"/>
 </head>
 

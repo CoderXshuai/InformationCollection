@@ -18,12 +18,12 @@ public class EmailUtil {
             Security.addProvider(new Provider());
             final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
             Properties props = System.getProperties();
-            props.setProperty("mail.smtp.host", "smtp.qq.com");
-            props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
-            props.setProperty("mail.smtp.socketFactory.fallback", "false");
-            props.setProperty("mail.smtp.port", "465");
-            props.setProperty("mail.smtp.socketFactory.port", "465");
-            props.setProperty("mail.smtp.auth", "true");
+            props.setProperty("mail.properties.smtp.host", "smtp.qq.com");
+            props.setProperty("mail.properties.smtp.socketFactory.class", SSL_FACTORY);
+            props.setProperty("mail.properties.smtp.socketFactory.fallback", "false");
+            props.setProperty("mail.properties.smtp.port", "465");
+            props.setProperty("mail.properties.smtp.socketFactory.port", "465");
+            props.setProperty("mail.properties.smtp.auth", "true");
 
             // 建立邮件会话
             Session session = Session.getDefaultInstance(props, new Authenticator() {

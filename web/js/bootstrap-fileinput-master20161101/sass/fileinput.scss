@@ -68,10 +68,12 @@ $preview-size: 160px !default;
   border: 1px solid #ebccd1;
   border-radius: 4px;
   padding: 15px;
+
   pre, ul {
     margin: 0;
     text-align: left;
   }
+
   pre {
     margin: 5px 0;
   }
@@ -102,6 +104,7 @@ $preview-size: 160px !default;
   float: left;
   text-align: center;
   vertical-align: middle;
+
   &:not(.file-preview-error):hover {
     box-shadow: 3px 3px 5px 0 #333;
   }
@@ -140,6 +143,7 @@ $preview-size: 160px !default;
   text-align: center;
   vertical-align: middle;
   padding: 10px;
+
   &:hover {
     opacity: 0.8;
   }
@@ -188,6 +192,7 @@ $preview-size: 160px !default;
   cursor: default;
   opacity: 0.8;
   width: 60%;
+
   &:hover {
     font-weight: bold;
     opacity: 1;
@@ -244,6 +249,7 @@ $preview-size: 160px !default;
 
 .file-thumb-progress {
   height: 10px;
+
   .progress, .progress-bar {
     height: 10px;
     font-size: 9px;
@@ -270,6 +276,7 @@ $preview-size: 160px !default;
     bottom: 0;
     left: 0;
   }
+
   .modal-dialog {
     position: fixed;
     margin: 0;
@@ -277,10 +284,12 @@ $preview-size: 160px !default;
     height: 100%;
     padding: 0;
   }
+
   .modal-content {
     border-radius: 0;
     box-shadow: none;
   }
+
   .modal-body {
     overflow-y: auto;
   }
@@ -290,6 +299,7 @@ $preview-size: 160px !default;
   .modal-body {
     position: relative !important;
   }
+
   .btn-navigate {
     position: absolute;
     padding: 0;
@@ -302,6 +312,7 @@ $preview-size: 160px !default;
     font-size: 4em;
     color: #1c94c4;
   }
+
   .floating-buttons {
     position: absolute;
     top: 5px;
@@ -311,6 +322,7 @@ $preview-size: 160px !default;
 
 .floating-buttons {
   z-index: 3000;
+
   .btn {
     z-index: 3000;
   }
@@ -329,13 +341,16 @@ $preview-size: 160px !default;
         opacity: 0.5;
       }
     }
+
     &[disabled] {
       opacity: 0.3;
     }
   }
+
   .btn-prev {
     left: 1px;
   }
+
   .btn-next {
     right: 1px;
   }
@@ -347,6 +362,7 @@ $preview-size: 160px !default;
   font-size: 16px;
   cursor: move;
   cursor: -webkit-grabbing;
+
   &:hover {
     opacity: 0.7;
   }

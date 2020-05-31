@@ -1,14 +1,13 @@
 package filter;
 
 import model.User;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.web.context.support.XmlWebApplicationContext;
 import service.UserService;
 import util.MyUtils;
 import util.Static;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-import org.springframework.web.context.support.XmlWebApplicationContext;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -134,7 +133,7 @@ public class LoginFilter implements Filter {
         String[] msg = value.split(":");
         //获取用户信息
         User user = userService.getUserById(Integer.parseInt(msg[0]));
-        String newHash = user.getId() + ":" + user.getPassword() + ":" + msg[1] + ":" + user.getSalt();
+        String newHash = user.getId() + ":" + user.getPassword() + ":" + msg[1];
         String newMD5 = MyUtils.getMD5(newHash);
         if (newMD5.equals(msg[2])) {
             //计算后相等

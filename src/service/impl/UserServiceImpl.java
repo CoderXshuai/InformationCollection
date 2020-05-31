@@ -26,10 +26,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Object[] register(User user) {
         // TODO Auto-generated method stub
-        User uPhone = userDao.find("from User u where u.phone ='" + user.getEmail() + "'");
+        User uEmail = userDao.find("from User u where u.email ='" + user.getEmail() + "'");
         User uName = userDao.find("from User u where u.name ='" + user.getName() + "'");
-        if (uPhone == null) {
-            //手机号未注册
+        if (uEmail == null) {
+            //邮箱号未注册
             if (uName == null) {
                 //用户名未注册
                 uName = new User();
@@ -37,12 +37,9 @@ public class UserServiceImpl implements UserService {
                 uName.setEmail(user.getEmail());
                 uName.setStatus(0);
                 uName.setRole(0);
-                uName.setHeadImg("default.png"); //默认头像
-                // 给密码加密 添加盐 7位数
-                String salt = MyUtils.getRandomString(7);
-                String md5Pwd = MyUtils.getMD5(user.getPassword() + salt); // 加密后的密码
-                uName.setPassword(md5Pwd);
-                uName.setSalt(salt);
+                //默认头像
+                uName.setHeadImg("default.png");
+                uName.setPassword(user.getPassword());
                 uName.setCreateTime(new Timestamp().getDate());
                 //保存
                 userDao.save(uName);
@@ -58,13 +55,10 @@ public class UserServiceImpl implements UserService {
     public Object[] login(User user) {
         // TODO Auto-generated method stub
         //按照手机号和用户名查找用户
-        User u = userDao.find("from User u where u.phone ='" + user.getName() + "'" +
-                " or u.name ='" + user.getName() + "'");
+        User u = userDao.find("from User u where u.name ='" + user.getName());
         if (u != null) {
-            String salt = u.getSalt();
-            String password = u.getPassword(); // 数据库中的密文密码
-            String md5Pwd = MyUtils.getMD5(user.getPassword() + salt); // 根据表单密码和盐计算的密文密码
-            if (md5Pwd.equals(password)) {
+            String password = u.getPassword();
+            if (user.getPassword().equals(password)) {
                 return new Object[]{u, "登录成功!欢迎你" + u.getName()};
             }
             return new Object[]{null, "密码错误"};
@@ -77,18 +71,13 @@ public class UserServiceImpl implements UserService {
     public Object[] changePwd(User user, int id) {
         // TODO Auto-generated method stub
         User u = userDao.find("from User u where u.id =" + id);
-        //MD5加密该密码
-        //获取用户盐
-        String salt = u.getSalt();
         //传来的原始密码
         String password = user.getPassword();
-        //计算后的密文密码
-        String md5Pwd = MyUtils.getMD5(password + salt);
         //密码正确
-        if (md5Pwd.equals(u.getPassword())) {
+        if (password.equals(u.getPassword())) {
             //更新密码
-            String newMD5Pwd = MyUtils.getMD5(user.getNewPassword() + salt);
-            u.setPassword(newMD5Pwd);
+            String newPwd = user.getNewPassword();
+            u.setPassword(newPwd);
             userDao.update(u);
             return new Object[]{true, "密码修改成功!"};
         }

@@ -1,9 +1,9 @@
 package dao.impl;
 
 import dao.BaseDao;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,6 +11,9 @@ import java.util.Map;
 import java.util.Set;
 
 
+/**
+ * @author CoderXshuai
+ */
 public class BaseDaoImpl<T> implements BaseDao<T> {
     private SessionFactory sessionFactory;
 
@@ -28,19 +31,19 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
      *
      * @return
      */
-    private Session getCurrtSession() {
+    private Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
 
     @Override
     public Serializable save(T obj) {
-        return this.getCurrtSession().save(obj);
+        return this.getCurrentSession().save(obj);
     }
 
 
     @Override
     public T find(String hql) {
-        Query q = this.getCurrtSession().createQuery(hql);
+        Query q = this.getCurrentSession().createQuery(hql);
         List<T> list = q.list();
         if (list != null && list.size() >= 1) {
             return list.get(0);
@@ -51,7 +54,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public T find(String hql, Object[] params) {
-        Query q = this.getCurrtSession().createQuery(hql);
+        Query q = this.getCurrentSession().createQuery(hql);
         if (params != null && params.length > 0) {
             Integer index = 0;
             while (index < params.length) {
@@ -70,7 +73,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public T find(String hql, Map<String, Object> params) {
-        Query q = this.getCurrtSession().createQuery(hql);
+        Query q = this.getCurrentSession().createQuery(hql);
         if (params != null && params.size() > 0) {
             Set<String> set = params.keySet();
             for (String key : set) {
@@ -87,19 +90,19 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public T findById(Class<T> clazz, Serializable id) {
-        getCurrtSession().clear();
-        return this.getCurrtSession().get(clazz, id);
+        getCurrentSession().clear();
+        return this.getCurrentSession().get(clazz, id);
     }
 
     @Override
     public List<T> get(String hql) {
-        Query q = this.getCurrtSession().createQuery(hql);
+        Query q = this.getCurrentSession().createQuery(hql);
         return q.list();
     }
 
     @Override
     public List<T> get(String hql, Map<String, Object> params) {
-        Query q = this.getCurrtSession().createQuery(hql);
+        Query q = this.getCurrentSession().createQuery(hql);
         if (params != null && params.size() > 0) {
             Set<String> set = params.keySet();
             for (String key : set) {
@@ -113,7 +116,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
     @Override
     public List<T> get(String hql, Map<String, Object> params, Integer page,
                        Integer rows) {
-        Query q = this.getCurrtSession().createQuery(hql);
+        Query q = this.getCurrentSession().createQuery(hql);
         if (params != null && params.size() > 0) {
             Set<String> set = params.keySet();
             for (String key : set) {
@@ -127,20 +130,20 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public List<T> get(String hql, Integer page, Integer rows) {
-        Query q = this.getCurrtSession().createQuery(hql);
+        Query q = this.getCurrentSession().createQuery(hql);
         return q.setFirstResult((page - 1) * rows).setMaxResults(rows).list();
     }
 
     @Override
     public Integer length(String hql) {
-        Query q = this.getCurrtSession().createQuery(hql);
+        Query q = this.getCurrentSession().createQuery(hql);
         return Integer.valueOf(q.uniqueResult().toString());
     }
 
 
     @Override
     public Integer length(String hql, Map<String, Object> params) {
-        Query q = this.getCurrtSession().createQuery(hql);
+        Query q = this.getCurrentSession().createQuery(hql);
         if (params != null && params.size() > 0) {
             Set<String> set = params.keySet();
             for (String key : set) {
@@ -153,30 +156,30 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public void update(T obj) {
-        obj = (T) this.getCurrtSession().merge(obj);
-        this.getCurrtSession().update(obj);
+        obj = (T) this.getCurrentSession().merge(obj);
+        this.getCurrentSession().update(obj);
     }
 
     @Override
     public void delete(T obj) {
-        this.getCurrtSession().delete(obj);
+        this.getCurrentSession().delete(obj);
     }
 
     @Override
     public void saveOrUpdate(T obj) {
-        obj = (T) this.getCurrtSession().merge(obj);
-        this.getCurrtSession().saveOrUpdate(obj);
+        obj = (T) this.getCurrentSession().merge(obj);
+        this.getCurrentSession().saveOrUpdate(obj);
     }
 
     @Override
     public Integer executeHql(String hql) {
-        Query q = this.getCurrtSession().createQuery(hql);
+        Query q = this.getCurrentSession().createQuery(hql);
         return q.executeUpdate();
     }
 
     @Override
     public Integer executeHql(String hql, Map<String, Object> params) {
-        Query q = this.getCurrtSession().createQuery(hql);
+        Query q = this.getCurrentSession().createQuery(hql);
         if (params != null && params.size() > 0) {
             Set<String> set = params.keySet();
             for (String key : set) {

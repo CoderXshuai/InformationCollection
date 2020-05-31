@@ -460,7 +460,7 @@
         other: {width: "160px", height: "160px"}
     };
     defaultPreviewZoomSettings = {
-        image: {width: "auto", height: "auto", 'max-width': "100%",'max-height': "100%"},
+        image: {width: "auto", height: "auto", 'max-width': "100%", 'max-height': "100%"},
         html: {width: "100%", height: "100%", 'min-height': "480px"},
         text: {width: "100%", height: "100%", 'min-height': "480px"},
         video: {width: "auto", height: "100%", 'max-width': "100%"},
@@ -773,7 +773,7 @@
         },
         _showUploadError: function (msg, params, event) {
             var self = this, $error = self.$errorContainer, ev = event || 'fileuploaderror', e = params && params.id ?
-            '<li data-file-id="' + params.id + '">' + msg + '</li>' : '<li>' + msg + '</li>';
+                '<li data-file-id="' + params.id + '">' + msg + '</li>' : '<li>' + msg + '</li>';
             if ($error.find('ul').length === 0) {
                 self._addError('<ul>' + e + '</ul>');
             } else {
@@ -963,7 +963,7 @@
             handler($zone, 'click', function (e) {
                 var $target = $(e.target);
                 if (!$target.parents('.file-preview-thumbnails').length || $target.parents(
-                        '.file-default-preview').length) {
+                    '.file-default-preview').length) {
                     self.$element.trigger('click');
                     $zone.blur();
                 }
@@ -1065,13 +1065,13 @@
                     self.initialPreview = moveArray(self.initialPreview, oldIndex, newIndex);
                     self.initialPreviewConfig = moveArray(self.initialPreviewConfig, oldIndex, newIndex);
                     previewCache.init(self);
-                    for(var i = 0; i < self.initialPreviewConfig.length; i++) {
-                        if(self.initialPreviewConfig[i] !== null) {
+                    for (var i = 0; i < self.initialPreviewConfig.length; i++) {
+                        if (self.initialPreviewConfig[i] !== null) {
                             var key = self.initialPreviewConfig[i].key;
                             var $frame = $(".kv-file-remove[data-key='" + key + "']");
                             $frame = $frame.closest('.file-preview-frame');
-                            $frame.attr('data-fileindex', 'init_'+i);
-                            $frame.data('fileindex', 'init_'+i);
+                            $frame.attr('data-fileindex', 'init_' + i);
+                            $frame.data('fileindex', 'init_' + i);
                         }
                     }
                     self._raise('filesorted', {
@@ -1893,7 +1893,8 @@
             };
             fnSuccess = function (data, textStatus, jqXHR) {
                 /** @namespace data.errorkeys */
-                var outData = self._getOutData(jqXHR, data), $thumbs = self._getThumbs(':not(.file-preview-error)'), key = 0,
+                var outData = self._getOutData(jqXHR, data), $thumbs = self._getThumbs(':not(.file-preview-error)'),
+                    key = 0,
                     keys = isEmpty(data) || isEmpty(data.errorkeys) ? [] : data.errorkeys;
                 if (isEmpty(data) || isEmpty(data.error)) {
                     self._raise('filebatchuploadsuccess', [outData]);
@@ -2076,7 +2077,7 @@
             if (!bytes || !size || isNaN(bytes) || isNaN(size)) {
                 return self._getLayoutTemplate('size').replace('{sizeText}', '0.00 KB');
             }
-            var  i, func = self.fileSizeGetter, sizes, out;
+            var i, func = self.fileSizeGetter, sizes, out;
             if (typeof func === 'function') {
                 out = func(bytes);
             } else {
@@ -2376,7 +2377,7 @@
         },
         _setProgress: function (p, $el, error) {
             var self = this, pct = Math.min(p, 100), template = pct < 100 ? self.progressTemplate :
-                    (error ? self.progressErrorTemplate : (p <= 100 ? self.progressTemplate : self.progressCompleteTemplate)),
+                (error ? self.progressErrorTemplate : (p <= 100 ? self.progressTemplate : self.progressCompleteTemplate)),
                 pctLimit = self.progressUploadThreshold;
             $el = $el || self.$progress;
             if (!isEmpty(template)) {
@@ -2564,8 +2565,7 @@
                     }
                 }, type, self.resizeQuality);
                 return true;
-            }
-            catch (err) {
+            } catch (err) {
                 counter.val++;
                 if (counter.val === num_imgs) {
                     self._raise('fileimagesresized', [undefined, undefined]);
@@ -2635,7 +2635,8 @@
             self._initBrowse($container);
         },
         _renderMain: function () {
-            var self = this, dropCss = (self.isUploadable && self.dropZoneEnabled) ? ' file-drop-zone' : 'file-drop-disabled',
+            var self = this,
+                dropCss = (self.isUploadable && self.dropZoneEnabled) ? ' file-drop-zone' : 'file-drop-disabled',
                 close = !self.showClose ? '' : self._getLayoutTemplate('close'),
                 preview = !self.showPreview ? '' : self._getLayoutTemplate('preview')
                     .replace(/\{class}/g, self.previewClass)
@@ -2697,7 +2698,7 @@
         },
         _renderThumbProgress: function () {
             return '<div class="file-thumb-progress hide">' + this.progressTemplate.replace(/\{percent}/g,
-                    '0') + '</div>';
+                '0') + '</div>';
         },
         _renderFileFooter: function (caption, size, width, isError) {
             var self = this, config = self.fileActionSettings, rem = config.showRemove, drg = config.showDrag,
@@ -2781,7 +2782,8 @@
                 return;
             }
             self.fileInputCleared = false;
-            var tfiles, msg, total, isDragDrop = arguments.length > 1, isAjaxUpload = self.isUploadable, i = 0, f, n, len,
+            var tfiles, msg, total, isDragDrop = arguments.length > 1, isAjaxUpload = self.isUploadable, i = 0, f, n,
+                len,
                 files = isDragDrop ? e.originalEvent.dataTransfer.files : $el.get(0).files, ctr = self.filestack.length,
                 isSingleUpload = isEmpty($el.attr('multiple')), flagSingle = (isSingleUpload && ctr > 0), folders = 0,
                 throwError = function (mesg, file, previewId, index) {

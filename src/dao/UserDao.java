@@ -5,6 +5,6 @@ import model.User;
 /**
  * @author CoderXshuai
  */
-public interface UserDao extends BaseDao<User>{
+public interface UserDao extends BaseDao<User> {
 
 }
