@@ -47,7 +47,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         List<T> list = q.list();
         if (list != null && list.size() >= 1) {
             return list.get(0);
-
         }
         return null;
     }
@@ -58,7 +57,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         if (params != null && params.length > 0) {
             Integer index = 0;
             while (index < params.length) {
-
                 q.setParameter(index, params[index]);
                 index++;
             }
