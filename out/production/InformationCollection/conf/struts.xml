@@ -13,7 +13,7 @@
     <!-- 文件上传paeser -->
     <constant name="struts.multipart.paeser" value="cos"/>
     <constant name="struts.i18n.encoding" value="UTF-8"/>
-    <package name="userPackage" namespace="/" extends="struts-default">
+    <package name="userPackage" namespace="/" extends="struts-default" >
         <action name="user" class="action.UserAction">
             <!-- 上传 -->
             <interceptor-ref name="fileUpload">

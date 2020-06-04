@@ -1,9 +1,9 @@
 
 # InformationCollectionSystem
 - [InformationCollectionSystem](#informationcollectionsystem)
-  - [1.项目描述](#1%e9%a1%b9%e7%9b%ae%e6%8f%8f%e8%bf%b0)
-  - [2.环境配置(所有相关的jar包都在Information/lib文件夹中)](#2%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae%e6%89%80%e6%9c%89%e7%9b%b8%e5%85%b3%e7%9a%84jar%e5%8c%85%e9%83%bd%e5%9c%a8informationlib%e6%96%87%e4%bb%b6%e5%a4%b9%e4%b8%ad)
-  - [3.文件夹介绍](#3%e6%96%87%e4%bb%b6%e5%a4%b9%e4%bb%8b%e7%bb%8d)
+  - [1.项目描述](#1项目描述)
+  - [2.环境配置(所有相关的jar包都在Information/lib文件夹中)](#2环境配置所有相关的jar包都在informationlib文件夹中)
+  - [3.文件夹介绍](#3文件夹介绍)
     - [3.1 lib](#31-lib)
     - [3.2 out](#32-out)
     - [3.3 src](#33-src)
@@ -18,6 +18,7 @@
         - [3.3.2.3 db.properties](#3323-dbproperties)
         - [3.3.2.4 hibernate.cfg.xml](#3324-hibernatecfgxml)
         - [3.3.2.4 struts2.xml](#3324-struts2xml)
+        - [3.3.2.5 mail.properties](#3325-mailproperties)
       - [3.3.3 dao](#333-dao)
         - [3.3.3.1 imp](#3331-imp)
         - [3.3.3.2 BaseDao](#3332-basedao)
@@ -33,7 +34,7 @@
         - [3.3.7.1 imp](#3371-imp)
       - [3.3.8 util](#338-util)
         - [3.3.8.1 Config](#3381-config)
-        - [3.3.8.2 EmailUtil](#3382-emailutil)
+        - [3.3.8.2 MailUtil](#3382-mailutil)
         - [3.3.8.3 MyUtils](#3383-myutils)
         - [3.3.8.4 SmsUtils](#3384-smsutils)
         - [3.3.8.4 Static](#3384-static)
@@ -42,7 +43,8 @@
       - [3.4.2 img](#342-img)
       - [3.4.3 js](#343-js)
       - [3.4.4 upFile](#344-upfile)
-      - [3.4.4.1 src](#3441-src)
+        - [3.4.4.1 src](#3441-src)
+      - [3.4.5 layui](#345-layui)
       - [3.4.5 WEB-INF](#345-web-inf)
     - [3.5 README.md](#35-readmemd)
 ## 1.项目描述
@@ -85,10 +87,12 @@ spring管理的各种bean
 hibernate属性配置(hibernate连接已经在applicationContext.xml配置完成)
 ##### 3.3.2.4 struts2.xml
 struts2的配置文件
+##### 3.3.2.5 mail.properties
+邮箱配置,主要是默认的发件邮箱等信息
 #### 3.3.3 dao
 数据访问控制层(还未完善)
 ##### 3.3.3.1 imp
-各个dao层文件的实现类,里面很多方法过时了,到时候可以优化一下
+各个dao层文件的实现类
 ##### 3.3.3.2 BaseDao
 基本的数据访问接口(增删改查等)
 ##### 3.3.3.3 DocDao
@@ -116,7 +120,7 @@ struts2的配置文件
 常用工具的封装,其中有一些测试项的文件,最后会删除
 ##### 3.3.8.1 Config
 获取用户上传文件之后的存储位置(暂定web/upFile文件夹)
-##### 3.3.8.2 EmailUtil
+##### 3.3.8.2 MailUtil
 发送提醒邮件的工具类
 ##### 3.3.8.3 MyUtils
 常用工具的封装,底层实现都简单,注释写的比较清楚
@@ -136,6 +140,8 @@ JavaScript脚本
 #### 3.4.4 upFile
 暂定的用户上传文件的存储位置
 ##### 3.4.4.1 src
+#### 3.4.5 layui
+laiUI的包
 为了提高扩展性,目前先把文件上传到src中
 #### 3.4.5 WEB-INF
 web.xml的配置文件(其中拦截器没有配置好,总是报错,先注释掉了)

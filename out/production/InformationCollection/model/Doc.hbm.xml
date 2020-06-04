@@ -6,17 +6,17 @@
     <class name="model.Doc" table="doc">
         <!-- 基本属性 -->
         <id name="id" column="id">
-            <generator class="uuid"></generator>
+            <generator class="uuid"/>
         </id>
-        <property name="name" column="name" type="string" not-null="true"></property>
-        <property name="url" column="url" type="string" not-null="true"></property>
-        <property name="size" column="size" type="string" not-null="true"></property>
-        <property name="createTime" column="createTime" type="timestamp" not-null="true"></property>
-        <property name="download" column="download" type="int" not-null="true"></property>
+        <property name="name" column="name" type="string" not-null="true"/>
+        <property name="url" column="url" type="string" not-null="true"/>
+        <property name="size" column="size" type="string" not-null="true"/>
+        <property name="createTime" column="createTime" type="timestamp" not-null="true"/>
+        <property name="download" column="download" type="int" not-null="true"/>
         <!-- 关联映射 多对一 -->
         <many-to-one name="inbox" class="model.Inbox"
                      lazy="false" fetch="join">
-            <column name="inboxId"></column>
+            <column name="inboxId"/>
         </many-to-one>
     </class>
 </hibernate-mapping>

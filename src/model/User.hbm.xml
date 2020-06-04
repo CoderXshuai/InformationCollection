@@ -12,8 +12,7 @@
         <property name="password" column="password" type="string" not-null="true"/>
         <property name="status" column="status" type="int" not-null="true"/>
         <property name="role" column="role" type="int" not-null="true"/>
-        <property name="getEmail" column="phone" type="string" not-null="true"/>
-        <property name="salt" column="salt" type="string" not-null="true"/>
+        <property name="email" column="email" type="string" not-null="true"/>
         <property name="headImg" column="headImg" type="string" not-null="true"/>
         <property name="createTime" column="createTime" type="timestamp" not-null="true"/>
         <!-- 多个收件夹对应一个用户 -->

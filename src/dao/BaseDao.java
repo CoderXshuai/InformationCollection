@@ -20,7 +20,6 @@ public interface BaseDao<T> {
      * 按id删除记录
      *
      * @param obj
-     * @author Jhon
      */
     void delete(T obj);
 

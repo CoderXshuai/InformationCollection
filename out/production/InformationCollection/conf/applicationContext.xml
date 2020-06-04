@@ -46,19 +46,19 @@
         </property>
     </bean>
 
-<!--    &lt;!&ndash; 配置SessionFactory &ndash;&gt;-->
-<!--    <bean id="sessionFactory"-->
-<!--          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
-<!--        <property name="dataSource" ref="dataSource"/>-->
-<!--        <property name="configLocation" value="classpath:conf/hibernate.cfg.xml"/>-->
-<!--        <property name="mappingLocations" value="classpath:model/*.hbm.xml"/>-->
-<!--    </bean>-->
+    <!-- 配置SessionFactory -->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:conf/hibernate.cfg.xml"/>
+        <property name="mappingLocations" value="classpath:model/*.hbm.xml"/>
+    </bean>
 
-<!--    &lt;!&ndash; Hibernate的事务管理器 &ndash;&gt;-->
-<!--    <bean id="txManager"-->
-<!--          class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
-<!--        <property name="sessionFactory" ref="sessionFactory"/>-->
-<!--    </bean>-->
+    <!-- Hibernate的事务管理器 -->
+    <bean id="txManager"
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
 <!--    &lt;!&ndash; 配置以下信息后，则可以不用Transaction在Dao层进行开启、提交事务等 &ndash;&gt;-->
 <!--    &lt;!&ndash; 2. 配置事务属性 &ndash;&gt;-->

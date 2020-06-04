@@ -6,7 +6,7 @@ import model.Doc;
 /**
  * @author CoderXshuai
  */
-public class DocDaoImpl extends BaseDaoImpl<Doc> implements DocDao{
+public class DocDaoImpl extends BaseDaoImpl<Doc> implements DocDao {
 
 }
 

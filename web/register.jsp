@@ -17,12 +17,6 @@
                    class="form-control" placeholder="请输入邮箱号" required="required"
                    autocomplete="off">
         </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">验证邮箱</label>
-            <div class="layui-input-inline">
-                <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
-            </div>
-        </div>
     </div>
     <div class="form-group" style="margin-top: 15px;">
         <label class="col-sm-3 control-label">验证码</label>
@@ -60,30 +54,23 @@
 <script>
     var countdown = 60; //邮箱验证倒计时
     $("#getWord").bind('click', function () {
-        var tel = $("input[name='phone']").val();
-        var reg = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
-        var data = {
-            "phone": tel,
-        }
-        if (tel == '') {
+        if (email === '') {
             showErrorMsg("请输入邮箱号");
             return false;
         }
-        if (tel.match(reg)) {
-            settime(this);
-            $.ajax({
-                type: 'post',
-                data: data,
-                dataType: 'json',
-                url: getWebProjectName() + '/user!SMS.action',
-                success: function (data) {
-                    showSuccessMsg(data.msg);
-                }
-            });
-        } else {
-            showErrorMsg("手机号码格式不正确");
-            return false;
-        }
+        settime(this);
+        $.ajax(getWebProjectName() + '/user!email.action', data, function (data) {
+
+        })
+        // $.ajax({
+        //     type: 'post',
+        //     data: data,
+        //     dataType: 'json',
+        //     url: getWebProjectName() + '/user!SMS.action',
+        //     success: function (data) {
+        //         showSuccessMsg(data.msg);
+        //     }
+        // });
     })
 
 

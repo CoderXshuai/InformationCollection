@@ -11,10 +11,10 @@
         </div>
     </div>
     <div class="form-group" style="margin-top: 15px;">
-        <label class="col-sm-3 control-label">手机号</label>
+        <label class="col-sm-3 control-label">邮箱</label>
         <div class="col-sm-8">
-            <input type="text" style="height: 35px;" name="phone"
-                   class="form-control" placeholder="请输入手机号" required="required"
+            <input type="text" style="height: 35px;" name="email"
+                   class="form-control" placeholder="请输入邮箱号" required="required"
                    autocomplete="off">
         </div>
     </div>
@@ -22,12 +22,12 @@
         <label class="col-sm-3 control-label">验证码</label>
         <div class="col-sm-4">
             <input type="text" style="height: 35px;" name="word"
-                   class="form-control" placeholder="请输入手机验证码" required="required"
+                   class="form-control" placeholder="请输入邮箱验证码" required="required"
                    autocomplete="off">
         </div>
         <div class="col-sm-4">
             <input type="button" id="getWord" style="height: 35px;"
-                   class="form-control btn btn-success" value="获取手机验证码">
+                   class="form-control btn btn-success" value="获取邮箱验证码">
         </div>
     </div>
 
@@ -52,7 +52,7 @@
     </div>
 </form>
 <script>
-    var countdown = 60; //短信验证倒计时
+    var countdown = 60; //邮箱验证倒计时
     $("#getWord").bind('click', function () {
         var tel = $("input[name='phone']").val();
         var reg = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
@@ -60,7 +60,7 @@
             "phone": tel,
         }
         if (tel == '') {
-            showErrorMsg("请输入手机号码");
+            showErrorMsg("请输入邮箱号");
             return false;
         }
         if (tel.match(reg)) {
