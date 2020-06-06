@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta content="webkit" name="renderer">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <link href="layui/css/layui.css" media="all" rel="stylesheet"/>
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+
+<div class="layui-container">
+
+    移动设备、平板、桌面端的不同表现：
+    <div class="layui-row">
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+            移动：6/12 | 平板：6/12 | 桌面：4/12
+        </div>
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+            移动：6/12 | 平板：6/12 | 桌面：4/12
+        </div>
+        <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
+            移动：4/12 | 平板：12/12 | 桌面：4/12
+        </div>
+    </div>
+</div>
+<script src="layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(["jquery"], function () {
+        var $ = layui.jquery;
+        $("#add").click(function () {
+            alert($(this).html())
+        })
+    })
+</script>
+</body>

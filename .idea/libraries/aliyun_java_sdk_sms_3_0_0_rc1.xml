@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="aliyun-java-sdk-sms-3.0.0-rc1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/aliyun-java-sdk-sms-3.0.0-rc1.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

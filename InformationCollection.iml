@@ -57,8 +57,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="lib2" level="project" />
     <orderEntry type="library" name="aliyun-java-sdk-core-2.4.2" level="project" />
-    <orderEntry type="library" name="aliyun-java-sdk-sms-3.0.0-rc1" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

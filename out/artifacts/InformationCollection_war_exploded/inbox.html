@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <!--    <meta charset="UTF-8">-->
+    <!--    <meta name="renderer" content="webkit">-->
+    <!--    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
+    <!--    <title></title>-->
+
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet"
           type="text/css"/>
     <link href="js/bootstrap-fileinput-master20161101/css/fileinput.min.css" rel="stylesheet"
@@ -10,44 +19,40 @@
     <link href="css/common.css" rel="stylesheet" type="text/css"/>
     <link href="css/inbox.css" rel="stylesheet" type="text/css"/>
     <link href="js/layer/skin/default/layer.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all"/>
 </head>
 <body>
+<!--导航栏-->
+<ul class="layui-nav">
+    <li class="layui-nav-item">
+        <a href="">控制台<span class="layui-badge">9</span></a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="">个人中心<span class="layui-badge-dot"></span></a>
+    </li>
+    <li class="layui-nav-item" lay-unselect="">
+        <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
+        <dl class="layui-nav-child">
+            <dd><a href="javascript:;">修改信息</a></dd>
+            <dd><a href="javascript:;">安全管理</a></dd>
+            <dd><a href="javascript:;">退了</a></dd>
+        </dl>
+    </li>
+</ul>
+<form class="layui-form layui-anim-upbit" action="">
+    <div class="layui-form-item ">
+        <label class="layui-form-label">单行输入框</label>
+        <div class="layui-input-inline">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input">
+        </div>
+    </div>
+</form>
 <div class="inbox-content clearfix">
-    <!--头开始-->
-    <div class="inbox-header text-center" style="background: #178FE5;">
-        <div class="inbox-logo"></div>
-        <div>
-            <div class="inbox-title"></div>
-        </div>
-    </div>
-    <!--头结束-->
-    <!--收件简介开始-->
-    <div class="inbox-body clearfix">
-        <div id="remark" style="min-height: 100px;"></div>
-    </div>
-    <!--收件简介结束-->
-    <!--密码框开始-->
-    <div class="inbox-body clearfix" id="pwdText" style="display:none">
-        <div style="min-height: 100px;">
-
-            <div class="form-group">
-
-                <div class="col-sm-10">
-                    <input class="form-control" id="password" placeholder="请输入密码" type="password"/>
-                </div>
-                <div class="col-sm-2">
-                    <input class="btn-success" onclick="checkPassword()" type="button" value="提交"/>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!--密码框结束-->
-
     <!--文件上传区域开始-->
     <div class="inbox-footer">
         <div class="line-post">
-            <span class="line-post-block" style="background: #178FE5;">文5件提交区域</span>
+            <span class="line-post-block" style="background: #178FE5;">文件提交区域</span>
         </div>
         <form enctype="multipart/form-data" method="POST">
             <div class="form-group">
@@ -58,6 +63,19 @@
     <!--文件上传区域结束-->
 
 </div>
+
+<script src="layui/layui.js"></script>
+<script>
+
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use(["jquery"], 'form', function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+        $(".layui-btn").click(function () {
+            alert($(this).html())
+        })
+    })
+</script>
 </body>
 <script charset="utf-8" src="js/jquery-1.11.2.min.js"
         type="text/javascript"></script>
@@ -69,4 +87,4 @@
 <script charset="utf-8"
         src="js/bootstrap-fileinput-master20161101/js/locales/zh.js" type="text/javascript"></script>
 <script charset="utf-8" src="js/inbox.js" type="text/javascript"></script>
-</html>
+

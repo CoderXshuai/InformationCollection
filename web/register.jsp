@@ -51,27 +51,31 @@
         </div>
     </div>
 </form>
-<script>
-    var countdown = 60; //邮箱验证倒计时
-    $("#getWord").bind('click', function () {
-        if (email === '') {
-            showErrorMsg("请输入邮箱号");
-            return false;
-        }
-        settime(this);
-        $.ajax(getWebProjectName() + '/user!email.action', data, function (data) {
-
+<script type="text/javascript">
+    layui.use(["jquery"], function () {
+        var $ = layui.jquery;
+        $("#getWord").click(function () {
+            alert($(this).html())
         })
-        // $.ajax({
-        //     type: 'post',
-        //     data: data,
-        //     dataType: 'json',
-        //     url: getWebProjectName() + '/user!SMS.action',
-        //     success: function (data) {
-        //         showSuccessMsg(data.msg);
-        //     }
-        // });
     })
+    // $("#getWord").bind('click', function () {
+    //     if (email === '') {
+    //         showErrorMsg("请输入邮箱号");
+    //         return false;
+    //     }
+    //     settime(this);
+    //     $.ajax(getWebProjectName() + '/user!email.action', data, function (data) {
+    //
+    //     })
+    // $.ajax({
+    //     type: 'post',
+    //     data: data,
+    //     dataType: 'json',
+    //     url: getWebProjectName() + '/user!SMS.action',
+    //     success: function (data) {
+    //         showSuccessMsg(data.msg);
+    //     }
+    // });
 
 
     $("#registerForm").submit(function (e) {
