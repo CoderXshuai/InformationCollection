@@ -79,7 +79,7 @@
 #### 3.3.2 conf
 配置层,全是配置文件(这里面的配置文件有的应该放在src目录下,如果调用的时候注意位置)
 ##### 3.3.2.1 applicationContext.xml
-spring整合hibernate的配置文件(我暂时也没看懂,其中在配置数据源的那块有问题,总是显示缺失JDBC连接)
+spring整合hibernate的配置文件
 ##### 3.3.2.2 applicationContext-beans.xml
 spring管理的各种bean
 ##### 3.3.2.3 db.properties
@@ -91,7 +91,7 @@ struts2的配置文件
 ##### 3.3.2.5 mail.properties
 邮箱配置,主要是默认的发件邮箱等信息
 #### 3.3.3 dao
-数据访问控制层(还未完善)
+数据访问控制层
 ##### 3.3.3.1 imp
 各个dao层文件的实现类
 ##### 3.3.3.2 BaseDao

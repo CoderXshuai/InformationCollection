@@ -1,9 +1,9 @@
 package dao.impl;
 
 import dao.BaseDao;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 
 import java.io.Serializable;
 import java.util.List;

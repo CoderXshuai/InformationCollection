@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
   		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
-  		http://www.springframework.org/schema/aop 
-  		http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
-  		http://www.springframework.org/schema/tx 
-  		http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
   		http://www.springframework.org/schema/context
-  		http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+  		http://www.springframework.org/schema/context/spring-context-4.1.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- 导入资源文件 -->
     <context:property-placeholder location="classpath:conf/db.properties" ignore-unresolvable="true"/>
@@ -60,21 +56,21 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-<!--    &lt;!&ndash; 配置以下信息后，则可以不用Transaction在Dao层进行开启、提交事务等 &ndash;&gt;-->
-<!--    &lt;!&ndash; 2. 配置事务属性 &ndash;&gt;-->
-<!--    <tx:advice id="txAdvice" transaction-manager="txManager">-->
-<!--        <tx:attributes>-->
-<!--            <tx:method name="get*" read-only="true"/>-->
-<!--            <tx:method name="*"/>-->
-<!--        </tx:attributes>-->
-<!--    </tx:advice>-->
-<!--    &lt;!&ndash; 3. 配置事务切入点, 再把事务属性和事务切入点关联起来 &ndash;&gt;-->
-<!--    <aop:config>-->
-<!--        &lt;!&ndash; 定义切点 &ndash;&gt;-->
-<!--        <aop:pointcut expression="execution(* service.*.*(..))"-->
-<!--                      id="txPointcut"/>-->
-<!--        &lt;!&ndash; 指定切点 &ndash;&gt;-->
-<!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>-->
-<!--    </aop:config>-->
+    <!-- 配置以下信息后，则可以不用Transaction在Dao层进行开启、提交事务等 -->
+    <!-- 2. 配置事务属性 -->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <!--            <tx:method name="get*" read-only="true"/>-->
+            <tx:method name="*" propagation="SUPPORTS" isolation="READ_COMMITTED"/>
+        </tx:attributes>
+    </tx:advice>
+    <!-- 3. 配置事务切入点, 再把事务属性和事务切入点关联起来 -->
+    <aop:config>
+        <!-- 定义切点 -->
+        <aop:pointcut expression="execution(* service.impl.UserServiceImpl.*(..))"
+                      id="txPointcut"/>
+        <!-- 指定切点 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+    </aop:config>
 
 </beans>

@@ -11,7 +11,7 @@
 <form id="loginForm" class="form-horizontal" style="width: 400px;text-align: center;">
     <div class="form-group" style="margin-top: 30px;">
         <div class="col-sm-10 col-sm-offset-1">
-            <input type="text" style="height: 40px;" name="name" class="form-control" placeholder="用户名或手机"
+            <input type="text" style="height: 40px;" name="name" class="form-control" placeholder="用户名或邮箱号"
                    required="required" autocomplete="off">
         </div>
     </div>

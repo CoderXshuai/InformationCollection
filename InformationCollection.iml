@@ -47,17 +47,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.27" level="application_server_libraries" />
-    <orderEntry type="library" name="Hibernate 5.4.11-5.4.11" level="project" />
-    <orderEntry type="library" name="Spring-5.2.3.RELEASE" level="project" />
-    <orderEntry type="library" name="aliyun-java-sdk-core-2.4.2" level="project" />
-    <orderEntry type="library" name="aliyun-java-sdk-sms-3.0.0-rc1" level="project" />
-    <orderEntry type="library" name="spring-web-5.2.3.RELEASE" level="project" />
-    <orderEntry type="library" name="fastjson-1.1.24" level="project" />
-    <orderEntry type="library" name="commons-pool2-2.3" level="project" />
-    <orderEntry type="library" name="Struts2" level="project" />
-    <orderEntry type="library" name="javax.mail.glassfish-1.4.1.v201005082020" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-8.0.15" level="project" />
-    <orderEntry type="library" name="commons-dbcp2-2.1" level="project" />
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>
@@ -68,5 +57,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="lib2" level="project" />
+    <orderEntry type="library" name="aliyun-java-sdk-core-2.4.2" level="project" />
+    <orderEntry type="library" name="aliyun-java-sdk-sms-3.0.0-rc1" level="project" />
   </component>
 </module>

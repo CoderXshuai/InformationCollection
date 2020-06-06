@@ -24,9 +24,10 @@
             <li class="dropdown">
                 <a id="user_menu" class="user_menu_btn" data-toggle="dropdown">
                     <img id="userHeadImg"
-                         src="<s:url action="user" method="getHeadImg">
-                                <s:param name="headImg">${user.headImg}</s:param>
-                              </s:url>"
+                    <%--                         src="<s:url action="user" method="getHeadImg">--%>
+                    <%--                                <s:param name="headImg">${user.headImg}</s:param>--%>
+                    <%--                              </s:url>"--%>
+                         src="http://img.mp.itc.cn/upload/20170724/cf678e09eb384401aa616ba134126357_th.jpg"
                          width="30" height="30" class="img-circle"/>
                 </a>
                 <!--下拉框-->
