@@ -11,9 +11,9 @@
         </div>
     </div>
     <div class="form-group" style="margin-top: 15px;">
-        <label class="col-sm-3 control-label">邮箱</label>
+        <label class="col-sm-3 control-label">邮箱号</label>
         <div class="col-sm-8">
-            <input type="text" style="height: 35px;" name="email"
+            <input type="email" style="height: 35px;" name="email"
                    class="form-control" placeholder="请输入邮箱号" required="required"
                    autocomplete="off">
         </div>
@@ -30,7 +30,6 @@
                    class="form-control btn btn-success" value="获取邮箱验证码">
         </div>
     </div>
-
     <div class="form-group" style="margin-top: 15px;">
         <label class="col-sm-3 control-label">密码</label>
         <div class="col-sm-8">
@@ -51,31 +50,28 @@
         </div>
     </div>
 </form>
-<script type="text/javascript">
-    layui.use(["jquery"], function () {
-        var $ = layui.jquery;
-        $("#getWord").click(function () {
-            alert($(this).html())
-        })
+<script>
+    var countdown = 60; //验证倒计时
+    $("#getWord").bind('click', function () {
+        var email = $("input[name='email']").val();
+        var data = {
+            "email": email,
+        }
+        if (email == '') {
+            showErrorMsg("请输入邮箱号码");
+            return false;
+        }
+        settime(this);
+        $.ajax({
+            type: 'post',
+            data: data,
+            dataType: 'json',
+            url: getWebProjectName() + '/user!SMS.action',
+            success: function (data) {
+                showSuccessMsg(data.msg);
+            }
+        });
     })
-    // $("#getWord").bind('click', function () {
-    //     if (email === '') {
-    //         showErrorMsg("请输入邮箱号");
-    //         return false;
-    //     }
-    //     settime(this);
-    //     $.ajax(getWebProjectName() + '/user!email.action', data, function (data) {
-    //
-    //     })
-    // $.ajax({
-    //     type: 'post',
-    //     data: data,
-    //     dataType: 'json',
-    //     url: getWebProjectName() + '/user!SMS.action',
-    //     success: function (data) {
-    //         showSuccessMsg(data.msg);
-    //     }
-    // });
 
 
     $("#registerForm").submit(function (e) {
@@ -104,7 +100,7 @@
     function settime(obj) {
         if (countdown == 0) {
             obj.removeAttribute("disabled");
-            obj.value = "获取手机动态码";
+            obj.value = "获取邮箱验证码";
             $("#phoneTwo_Tips").html("");
             countdown = 60;
             return;

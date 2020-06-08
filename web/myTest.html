@@ -10,29 +10,21 @@
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
-
-<div class="layui-container">
-
-    移动设备、平板、桌面端的不同表现：
-    <div class="layui-row">
-        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
-            移动：6/12 | 平板：6/12 | 桌面：4/12
-        </div>
-        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
-            移动：6/12 | 平板：6/12 | 桌面：4/12
-        </div>
-        <div class="layui-col-xs4 layui-col-sm12 layui-col-md4">
-            移动：4/12 | 平板：12/12 | 桌面：4/12
-        </div>
-    </div>
-</div>
-<script src="layui/layui.js"></script>
-<script type="text/javascript">
-    layui.use(["jquery"], function () {
-        var $ = layui.jquery;
-        $("#add").click(function () {
-            alert($(this).html())
-        })
-    })
+<form id="form">
+    <input id="username" name="name" type="text">
+    <input id="password" name="psw" type="text">
+    <input onclick="submit()" type="button">
+</form>
+<script src="js/jquery-1.11.2.min.js">
+    function submt() {
+        $.ajax({
+            url: "${pageContext.request.contextPath}/test.action",
+            data: $('#form').serializeArray(),
+            success: function (data) {
+                console.log(data)
+            }
+        });
+    }
 </script>
+
 </body>

@@ -46,7 +46,6 @@ public class Doc implements Serializable {
     private File uploadFile;
     private String uploadFileContentType;
     private String uploadFileFileName;
-
     private String downLoadFileName;
 
     public Doc(String id, String name, String url, String size,

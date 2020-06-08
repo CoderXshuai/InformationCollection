@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/common.css"/>
     <link rel="stylesheet" type="text/css" href="js/layer/skin/default/layer.css"/>
+    <link href="layui/css/layui.css" media="all" rel="stylesheet"/>
     <style>
         html, body {
             background: #00BBD3 !important;

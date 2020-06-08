@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/common.css"/>
     <link rel="stylesheet" type="text/css" href="css/header.css"/>
     <link rel="stylesheet" type="text/css" href="js/layer/skin/default/layer.css"/>
+    <link rel="stylesheet" href="layui/css/layui.css">
 </head>
 
 <body>
@@ -20,23 +21,24 @@
 <!--导航栏结束-->
 <!--主内容开始-->
 <div class="inboxFile-content container clearfix">
-    <ol class="breadcrumb">
+    <ol class="breadcrumb" style="background-color: transparent">
         <li><a href="#">首页</a></li>
         <li id="title"></li>
         <li class="active">收件记录</li>
     </ol>
-    <button type="button" class="btn btn-default" style="margin-bottom: 20px;" onclick="delInboxFile()">
+    <button type="button" class="btn btn-default" style="margin-bottom: 20px;background-color: transparent"
+            onclick="delInboxFile()">
         <i class="glyphicon glyphicon-trash"></i>
         <span id="sortList-text">删除文件</span>
 
     </button>
-    <div class="panel panel-default" style="border-bottom:0;box-shadow:none">
-        <table class="table table-hover">
+    <div class="panel panel-default" style="border-bottom:0;box-shadow:none;background-color: transparent">
+        <table class="table table-hover" style="background-color: transparent">
             <thead>
-            <tr>
+            <tr style="background-color: transparent">
                 <th align="center"><input id="check_all" type="checkbox" autocomplete="off"></th>
                 <th width="20px"></th>
-                <th id="fileName">文件名称</th>
+                <th id="fileName" >文件名称</th>
                 <th>文件大小</th>
                 <th>上传时间</th>
                 <th>操作</th>
@@ -49,8 +51,9 @@
     </div>
 </div>
 <!--主内容结束-->
-
-
+<script type="text/javascript">
+</script>
+<script src="layui/layui.js"></script>
 </body>
 <script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>

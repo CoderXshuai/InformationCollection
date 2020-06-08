@@ -51,9 +51,8 @@
 
         <div class="set-btn-right">
             <a class="btn btn-set btn-outline btn-width"
-               onclick="showInboxForm()"> <i
-                    class="glyphicon glyphicon-pencil"
-                    style="margin-left: -15px; padding-left: 10px;"></i> 创建收件夹
+               onclick="showInboxForm()">
+                <i class="glyphicon glyphicon-pencil" style="margin-left: -15px; padding-left: 10px;"></i> 创建收件夹
             </a>
         </div>
     </div>

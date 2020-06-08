@@ -4,8 +4,20 @@
     <root id="root">
       <element id="javaee-facet-resources" facet="InformationCollection/web/Web" />
       <element id="directory" name="WEB-INF">
-        <element id="directory" name="lib" />
-        <element id="directory" name="classes" />
+        <element id="directory" name="classes">
+          <element id="module-output" name="InformationCollection" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="JUnit4" module-name="InformationCollection" />
+          <element id="library" level="project" name="lib5" />
+          <element id="library" level="project" name="aliyun" />
+          <element id="library" level="project" name="fastjson" />
+          <element id="library" level="project" name="spring-context-support" />
+          <element id="library" level="project" name="dbcp2" />
+          <element id="library" level="project" name="jax" />
+          <element id="library" level="project" name="MySQL" />
+          <element id="library" level="project" name="javamail" />
+        </element>
       </element>
     </root>
   </artifact>

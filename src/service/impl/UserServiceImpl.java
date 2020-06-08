@@ -1,6 +1,5 @@
 package service.impl;
 
-import com.sun.jmx.snmp.Timestamp;
 import dao.UserDao;
 import model.User;
 import service.UserService;
@@ -26,29 +25,31 @@ public class UserServiceImpl implements UserService {
     @Override
     public Object[] register(User user) {
         // TODO Auto-generated method stub
-        User uEmail = userDao.find("from User u where u.email ='" + user.getEmail() + "'");
-        User uName = userDao.find("from User u where u.name ='" + user.getName() + "'");
-        if (uEmail == null) {
-            //邮箱号未注册
-            if (uName == null) {
-                //用户名未注册
-                uName = new User();
-                uName.setName(user.getName());
-                uName.setEmail(user.getEmail());
-                uName.setStatus(0);
-                uName.setRole(0);
-                //默认头像
-                uName.setHeadImg("default.png");
-                uName.setPassword(user.getPassword());
-                uName.setCreateTime(new Timestamp().getDate());
-                //保存
-                userDao.save(uName);
-                return new Object[]{uName, "注册成功!欢迎你"};
-            } else {
-                return new Object[]{null, "用户名已存在,请重新输入"};
-            }
-        }
-        return new Object[]{null, "手机号已经被注册!请直接登录"};
+//        User uEmail = userDao.find("from User u where u.email ='" + user.getEmail() + "'");
+//        User uName = userDao.find("from User u where u.name ='" + user.getName() + "'");
+//        if (uEmail == null) {
+//            //邮箱号未注册
+//            if (uName == null) {
+//                //用户名未注册
+//                uName = new User();
+//                uName.setName(user.getName());
+//                uName.setEmail(user.getEmail());
+//                uName.setStatus(0);
+//                uName.setRole(0);
+//                //默认头像
+//                uName.setHeadImg("default.png");
+//                uName.setPassword(user.getPassword());
+//                uName.setCreateTime(new Timestamp().getDate());
+//                //保存
+//                userDao.save(uName);
+//                return new Object[]{uName, "注册成功!欢迎你"};
+//            } else {
+//                return new Object[]{null, "用户名已存在,请重新输入"};
+//            }
+//        }
+//        return new Object[]{null, "手机号已经被注册!请直接登录"};
+        userDao.save(user);
+        return new Object[]{user.getName(), user.getId()};
     }
 
     @Override

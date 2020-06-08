@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="spring-context-support">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib2/spring-context-support" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib2/spring-context-support" recursive="false" />
+  </library>
+</component>

@@ -13,7 +13,7 @@
     <link rel="stylesheet"
           href="<s:url value='js/layer/skin/default/layer.css'/>"/>
 </head>
-<body>
+<body >
 <jsp:include page="header.jsp"/>
 <div class="container">
     <div class="left_ct">

@@ -1,3 +1,6 @@
+// var $ = layui.lay.modules.jquery
+
+
 function showLogin() {
     $.ajax({
         url: getWebProjectName() + '/login.jsp',
@@ -49,4 +52,7 @@ function getWebProjectName() {
 
     return webProjectName;
 }
+
+
+
 

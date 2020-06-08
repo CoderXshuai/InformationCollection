@@ -13,8 +13,10 @@
       <facet type="Struts2" name="Struts 2">
         <configuration>
           <fileset id="s2fileset" name="My Fileset" removed="false">
-            <file>file://$MODULE_DIR$/src/conf/struts.xml</file>
-            <file>jar://$MODULE_DIR$/lib/Struts2/struts2-core-2.5.22.jar!/struts-default.xml</file>
+            <file>file://$MODULE_DIR$/src/struts.xml</file>
+            <file>jar://$MODULE_DIR$/lib5/struts2-core-2.3.24.jar!/struts-default.xml</file>
+            <file>jar://$MODULE_DIR$/lib2/struts2-json/struts2-json-plugin-2.5.22.jar!/struts-plugin.xml</file>
+            <file>jar://$MODULE_DIR$/lib5/struts2-spring-plugin-2.3.24.jar!/struts-plugin.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -57,7 +59,13 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="aliyun-java-sdk-core-2.4.2" level="project" />
-    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="lib5" level="project" />
+    <orderEntry type="library" name="aliyun" level="project" />
+    <orderEntry type="library" name="fastjson" level="project" />
+    <orderEntry type="library" name="spring-context-support" level="project" />
+    <orderEntry type="library" name="dbcp2" level="project" />
+    <orderEntry type="library" name="jax" level="project" />
+    <orderEntry type="library" name="MySQL" level="project" />
+    <orderEntry type="library" name="javamail" level="project" />
   </component>
 </module>

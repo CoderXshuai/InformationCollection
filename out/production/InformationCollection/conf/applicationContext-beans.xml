@@ -14,7 +14,7 @@
     <bean id="userService" class="service.impl.UserServiceImpl">
         <property name="userDao" ref="userDao"/>
     </bean>
-    <bean id="userAction" class="action.UserAction">
+    <bean id="userAction" class="action.UserAction" scope="prototype">
         <property name="userService" ref="userService"/>
     </bean>
     <!-- action->(inbox,service->dao) -->
@@ -25,7 +25,7 @@
         <property name="inboxDao" ref="inboxDao"/>
         <property name="userDao" ref="userDao"/>
     </bean>
-    <bean id="inboxAction" class="action.InboxAction">
+    <bean id="inboxAction" class="action.InboxAction" scope="prototype">
         <property name="inboxService" ref="inboxService"/>
     </bean>
 
@@ -37,7 +37,7 @@
         <property name="docDao" ref="docDao"/>
         <property name="fileHashDao" ref="fileHashDao"/>
     </bean>
-    <bean id="docAction" class="action.DocAction">
+    <bean id="docAction" class="action.DocAction" scope="prototype">
         <property name="docService" ref="docService"/>
     </bean>
     <!-- action->(FileHash,service->dao) -->
