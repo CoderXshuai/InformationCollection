@@ -353,12 +353,6 @@ function copy() {
     showSuccessMsg("复制成功")
 }
 
-function showSuccessMsg(msg) {
-    layer.msg(msg, {
-        time: 2000, // 20s后自动关闭
-        icon: 1
-    });
-}
 
 // 显示菜单操作
 function showAction(id) {
@@ -479,14 +473,14 @@ function getdateLastMonth() {
 
 function showSuccessMsg(msg) {
     layer.msg(msg, {
-        time: 2000, // 2s后自动关闭
+        time: 3000, // 2s后自动关闭
         icon: 1
     });
 }
 
 function showErrorMsg(msg) {
     layer.msg(msg, {
-        time: 2000, // 2s后自动关闭
+        time: 3000, // 2s后自动关闭
         icon: 2
     });
 }

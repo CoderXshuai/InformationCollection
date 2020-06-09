@@ -1,6 +1,5 @@
 package service.impl;
 
-import com.sun.jmx.snmp.Timestamp;
 import dao.InboxDao;
 import dao.UserDao;
 import model.Inbox;
@@ -68,21 +67,25 @@ public class InboxServiceImpl implements InboxService {
         newInbox.setStar(Static.INBOX_NOSTAR);
         // 开启
         newInbox.setStatus(Static.INBOX_ON);
-        if (null != inbox.getUploadFile()) {
-            // logo文件不为空
-            File uploadFile = inbox.getUploadFile();
-            String uploadFileContentType = inbox.getUploadFileContentType();
-            // 获取图片后缀
-            String ext = uploadFileContentType.split("/")[1];
-            // 图片名称为 UUID保证唯一性
-            String imgName = UUID.randomUUID().toString() + "." + ext;
-            newInbox.setLogo(imgName);
-            // 写入文件
-            MyUtils.writeFile(uploadFile, Static.INBOX_LOGO, imgName);
+        try {
+            if (null != inbox.getUploadFile()) {
+                // logo文件不为空
+                File uploadFile = inbox.getUploadFile();
+                String uploadFileContentType = inbox.getUploadFileContentType();
+                // 获取图片后缀
+                String ext = uploadFileContentType.split("/")[1];
+                // 图片名称为 UUID保证唯一性
+                String imgName = UUID.randomUUID().toString() + "." + ext;
+                newInbox.setLogo(imgName);
+                // 写入文件
+                MyUtils.writeFile(uploadFile, Static.INBOX_LOGO, imgName);
+            }
+            // 设置创建时间
+            inboxDao.save(newInbox);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        // 设置创建时间
-        newInbox.setCreateTime(new Timestamp().getDate());
-        inboxDao.save(newInbox);
+
     }
 
     @Override

@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
 <form class="form-horizontal" id="inboxForm" method="post"
       role="form" style="width: 600px; text-align: center;">
 
     <div class="form-group">
         <label class="col-sm-3 control-label" for="firstname"
                style="margin-top: 40px;">LOGO</label>
-        <divtest class="col-sm-4">
+        <div class="col-sm-4">
             <div id="Imgdiv">
                 <img class="img-circle" height="100px" id="Img" src="img/logo1.png"
                      width="100px"/>
             </div>
-        </divtest>
+        </div>
         <div class="col-sm-4" style="margin-top: 40px;">
             <button class="btn btn-default" onclick="uploadLogo()" type="button">
                 <i class="glyphicon glyphicon-cloud-upload"></i> 选择logo图片
@@ -29,14 +21,14 @@
 
 
     <div class="form-group">
-        <label class="col-sm-3 control-label">收件夹名称</label>
+        <label class="col-sm-3 control-label" for="firstname">收件夹名称</label>
         <div class="col-sm-8">
             <input class="form-control" name="title" placeholder="设置收件名称"
                    required="required" type="text">
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-3 control-label">收件夹说明</label>
+        <label class="col-sm-3 control-label" for="lastname">收件夹说明</label>
         <div class="col-sm-8">
 			<textarea class="form-control" name="remark" placeholder="少侠！说点什么吧"
                       required="required" rows="5"></textarea>
@@ -63,16 +55,17 @@
     $("#inboxForm").submit(function (e) {
         var form = new FormData(document.getElementById("inboxForm"));
         $.ajax({
-            url: getWebProjectName() + '/inbox!addInbox.action',
+            url: getWebProjectName() + '/addInbox.action',
             type: 'POST',
             data: form,
             processData: false,
             contentType: false,
             success: function (data) {
+                console.log(data)
                 if (data.status) {
                     loadInbox();
                     layer.close(layer.index);
-                    showSuccessMsg(data.msg);
+                    showSuccessMsg(data.msg)
                 } else {
                     showErrorMsg(data.msg);
                 }
@@ -170,5 +163,3 @@
 
 
 </script>
-</body>
-</html>

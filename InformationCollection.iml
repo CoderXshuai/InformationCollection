@@ -67,5 +67,6 @@
     <orderEntry type="library" name="jax" level="project" />
     <orderEntry type="library" name="MySQL" level="project" />
     <orderEntry type="library" name="javamail" level="project" />
+    <orderEntry type="library" name="javax-servlet" level="project" />
   </component>
 </module>

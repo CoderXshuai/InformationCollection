@@ -18,6 +18,7 @@ public class InboxAction implements ModelDriven<Inbox> {
     private final Inbox inbox = new Inbox();
     // 配置service
     private InboxService inboxService;
+    private String result;
     //接收排序
     private int sortId;
 
@@ -41,7 +42,15 @@ public class InboxAction implements ModelDriven<Inbox> {
         this.sortId = sortId;
     }
 
-    public void addInbox() {
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public String addInbox() {
         User user = MyUtils.getSessionObject(Static.onlineUser);
         if (null != user) {
             inboxService.add(inbox, user.getId());
@@ -49,6 +58,7 @@ public class InboxAction implements ModelDriven<Inbox> {
         } else {
             MyUtils.outMsg("你已经断网或离线,请刷新页面重新登录!", false);
         }
+        return "addInbox";
     }
 
     public void getAll() {

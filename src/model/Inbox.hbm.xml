@@ -10,8 +10,10 @@
         <property name="title" column="title" type="string" not-null="true"/>
         <property name="logo" column="logo" type="string"/>
         <property name="remark" column="remark" type="text" not-null="true"/>
-        <property name="createTime" column="createTime" type="timestamp" not-null="true"/>
-        <property name="endTime" column="endTime" type="timestamp" not-null="true"/>
+        <property name="createTime" generated="insert" type="timestamp">
+            <column name="createTime" sql-type="timestamp" default="CURRENT_TIMESTAMP"/>
+        </property>
+        <property name="endTime" column="endTime" type="timestamp"/>
         <property name="star" column="star" type="int" not-null="true"/>
         <property name="status" column="status" type="int" not-null="true"/>
         <property name="password" column="password" type="string"/>

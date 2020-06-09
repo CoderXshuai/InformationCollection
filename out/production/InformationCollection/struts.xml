@@ -38,12 +38,12 @@
             </result>
         </action>
         <action name="login" class="userAction" method="login">
-            <result name="register" type="json">
+            <result name="login" type="json">
                 <param name="root">result</param>
             </result>
         </action>
 
-        <action name="inbox" class="inboxAction">
+        <action name="addInbox" class="inboxAction" method="addInbox">
             <!-- 上传 -->
             <interceptor-ref name="fileUpload">
                 <!-- 文件过滤 -->
@@ -53,6 +53,9 @@
             </interceptor-ref>
             <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
             <interceptor-ref name="defaultStack"/>
+            <result name="addInbox" type="json">
+                <param name="root">result</param>
+            </result>
         </action>
 
         <action name="doc" class="docAction">

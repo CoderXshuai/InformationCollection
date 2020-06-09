@@ -1,8 +1,0 @@
-action
-dao
-dao.impl
-filter
-model
-service
-service.impl
-util

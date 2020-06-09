@@ -17,6 +17,7 @@
           <element id="library" level="project" name="jax" />
           <element id="library" level="project" name="MySQL" />
           <element id="library" level="project" name="javamail" />
+          <element id="library" level="project" name="javax-servlet" />
         </element>
       </element>
     </root>

@@ -15,7 +15,7 @@
 <nav class="navbar navbar--inbox inbox-navbar-default" style="background-color: transparent">
     <div class="container" style="position: relative;">
         <a href="main.jsp" class="brand" title="收件夹 - 快速创建收件夹">
-            <img class="brand--logo" width="40" height="40" src="img/logo0.png">
+            <img class="brand--logo" width="40" height="40" src="upFile/logo0.png">
             <div class="brand--title">
                 <h1>收件夹</h1>
                 <h2 class="hidden-xs">快速创建收件夹，向多人收取文件</h2>
