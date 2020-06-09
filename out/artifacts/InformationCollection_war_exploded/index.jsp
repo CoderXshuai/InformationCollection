@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,8 +28,8 @@
             <div class="title2">快速创建收件夹</div>
             <div class="title3">用于向多人收取文件</div>
             <div class="start">
-                <a class="btn btn-white btn-lg" onclick="showLogin()">登录</a><a class="btn btn-white btn-lg"
-                                                                               onclick="showRegister()">注册</a>
+                <a class="btn btn-white btn-lg" onclick="showLogin()">登录</a>
+                <a class="btn btn-white btn-lg" onclick="showRegister()">注册</a>
             </div>
         </div>
     </div>

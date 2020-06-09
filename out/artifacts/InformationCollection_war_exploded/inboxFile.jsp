@@ -38,7 +38,7 @@
             <tr style="background-color: transparent">
                 <th align="center"><input id="check_all" type="checkbox" autocomplete="off"></th>
                 <th width="20px"></th>
-                <th id="fileName" >文件名称</th>
+                <th id="fileName">文件名称</th>
                 <th>文件大小</th>
                 <th>上传时间</th>
                 <th>操作</th>

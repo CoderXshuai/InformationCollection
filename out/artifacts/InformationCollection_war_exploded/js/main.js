@@ -1,3 +1,4 @@
+var $ = layui.lay.modules.jquery
 $(function () {
     // 加载页面时 同时加载该用户的inbox信息
     loadInbox(1);
@@ -23,7 +24,7 @@ function showInbox(rows) {
     for (var i = 0; i < rows.length; i++) {
         var content = undefined;
         //是否标星
-        if (rows[i].star == 0) {
+        if (rows[i].star === 0) {
             content = '<li class="inbox" id="' + rows[i].id + '">'
                 + '<div class="inbox-content">'
                 + '<a class="upvote" href="/inbox/inboxFile.jsp?id=' + rows[i].id + '" title="收件数量(' + rows[i].docs.length + '),点击查看详细信息">'
@@ -184,7 +185,7 @@ function openInbox(id) {
     });
 }
 
-function showLink(id) {
+showLink = function (id) {
     // 这里的id 加上标号 link_id
     var inbox_id = id.split("_")[1];
     var url = 'http://localhost:8080' + getWebProjectName() + '/inbox.html?link=' + inbox_id;
@@ -209,7 +210,7 @@ function showLink(id) {
     });
 }
 
-function showPwdLink(id) {
+showPwdLink = function (id) {
     var password = id.split("_")[1];
     var data = '<h3 style="color: #000 ;margin-top: 0px;font-size: 16px;line-height: 20px;padding: 2px 15px;">收件密码</h3>'
         + '<ul class="config-menu">'
@@ -295,6 +296,7 @@ function showPassWd() {
 
 
 function showInboxForm() {
+    console.log("5")
     $.ajax({
         url: 'inboxForm.html',
         type: 'get',

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -51,8 +51,9 @@
 
         <div class="set-btn-right">
             <a class="btn btn-set btn-outline btn-width"
-               onclick="showInboxForm()">
-                <i class="glyphicon glyphicon-pencil" style="margin-left: -15px; padding-left: 10px;"></i> 创建收件夹
+               onclick="showInboxForm()"> <i
+                    class="glyphicon glyphicon-pencil"
+                    style="margin-left: -15px; padding-left: 10px;"></i> 创建收件夹
             </a>
         </div>
     </div>
@@ -64,9 +65,9 @@
 </div>
 <!--主内容结束-->
 </body>
-<script src="<s:url value='js/jquery-1.11.2.min.js'/>" type="javascript"></script>
-<script src="<s:url value='js/bootstrap/js/bootstrap.min.js'/>" type="javascript"></script>
-<script src="<s:url value='js/layer/layer.js'/>" type="javascript"></script>
-<script src="<s:url value='js/main.js'/>" type="javascript"></script>
-<script src="<s:url value='js/datetimepicker/jquery.datetimepicker.js'/>" type="javascript"></script>
+<script src="<s:url value='js/jquery-1.11.2.min.js'/>"></script>
+<script src="<s:url value='js/bootstrap/js/bootstrap.min.js'/>"></script>
+<script src="<s:url value='js/layer/layer.js'/>"></script>
+<script src="<s:url value='js/main.js'/>"></script>
+<script src="<s:url value='js/datetimepicker/jquery.datetimepicker.js'/>"></script>
 </html>

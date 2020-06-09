@@ -1,6 +1,5 @@
 package action;
 
-import com.alibaba.fastjson.JSON;
 import com.opensymphony.xwork2.ActionSupport;
 import model.User;
 
@@ -11,18 +10,18 @@ public class TestAction extends ActionSupport {
     private String name;
     private String psw;
     private int age;
-    private String root;
+    private User root;
 
     @Override
     public String execute() throws Exception {
         User user = new User();
         user.setName(name);
         user.setPassword(psw);
-        age = 15;
-        root = JSON.toJSONString(user);
-        System.out.println(root);
-        return root;
+        root = user;
+        System.out.println(root.getName());
+        return SUCCESS;
     }
+
 
     public String getName() {
         return name;
@@ -48,11 +47,11 @@ public class TestAction extends ActionSupport {
         this.age = age;
     }
 
-    public String getRoot() {
+    public User getRoot() {
         return root;
     }
 
-    public void setRoot(String root) {
+    public void setRoot(User root) {
         this.root = root;
     }
 }

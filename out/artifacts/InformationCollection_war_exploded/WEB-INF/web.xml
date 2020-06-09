@@ -24,10 +24,10 @@
         <filter-name>struts2</filter-name>
         <!-- 定义核心Filter的实现类 -->
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-<!--        <init-param>-->
-<!--            <param-name>filterConfig</param-name>-->
-<!--            <param-value>classpath:conf/struts.xml</param-value>-->
-<!--        </init-param>-->
+        <!--        <init-param>-->
+        <!--            <param-name>filterConfig</param-name>-->
+        <!--            <param-value>classpath:conf/struts.xml</param-value>-->
+        <!--        </init-param>-->
     </filter>
     <!-- FilterDispatcher用来初始化Struts2 并处理所有的Web请求 -->
     <filter-mapping>

@@ -16,6 +16,7 @@
     </bean>
     <bean id="userAction" class="action.UserAction" scope="prototype">
         <property name="userService" ref="userService"/>
+        <property name="mailUtil" ref="mailUtil"/>
     </bean>
     <!-- action->(inbox,service->dao) -->
     <bean id="inboxDao" class="dao.impl.InboxDaoImpl" parent="baseDao">

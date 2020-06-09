@@ -1,87 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="./layui/css/layui.css" rel="stylesheet">
+    <title>Struts Problem Report</title>
+    <style>
+        pre {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<form action="" class="layui-form">
-    <div class="layui-form-item">
-        <label class="layui-form-label">输入框</label>
-        <div class="layui-input-block">
-            <input autocomplete="off" class="layui-input" lay-verify="required" name="title" placeholder="请输入标题"
-                   required
-                   type="text">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">密码框</label>
-        <div class="layui-input-inline">
-            <input autocomplete="off" class="layui-input" lay-verify="required" name="password" placeholder="请输入密码"
-                   required
-                   type="password">
-        </div>
-        <div class="layui-form-mid layui-word-aux">辅助文字</div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">选择框</label>
-        <div class="layui-input-block">
-            <select lay-verify="required" name="city">
-                <option value=""></option>
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">广州</option>
-                <option value="3">深圳</option>
-                <option value="4">杭州</option>
-            </select>
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">复选框</label>
-        <div class="layui-input-block">
-            <input name="like[write]" title="写作" type="checkbox">
-            <input checked name="like[read]" title="阅读" type="checkbox">
-            <input name="like[dai]" title="发呆" type="checkbox">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">开关</label>
-        <div class="layui-input-block">
-            <input lay-skin="switch" name="switch" type="checkbox">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">单选框</label>
-        <div class="layui-input-block">
-            <input name="sex" title="男" type="radio" value="男">
-            <input checked name="sex" title="女" type="radio" value="女">
-        </div>
-    </div>
-    <div class="layui-form-item layui-form-text">
-        <label class="layui-form-label">文本域</label>
-        <div class="layui-input-block">
-            <textarea class="layui-textarea" name="desc" placeholder="请输入内容"></textarea>
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <div class="layui-input-block">
-            <button class="layui-btn" lay-filter="formDemo" lay-submit>立即提交</button>
-            <button class="layui-btn layui-btn-primary" type="reset">重置</button>
-        </div>
-    </div>
-</form>
+<h2>Struts Problem Report</h2>
+<p>
+    Struts has detected an unhandled exception:
+</p>
 
-<script src="./layui/layui.js">
-    //Demo
-    layui.use('form', function () {
-        var form = layui.form;
-        //监听提交
-        form.on('submit(formDemo)', function (data) {
-            layer.msg(JSON.stringify(data.field));
-            return false;
-        });
-    });
-</script>
+
+<div id="exception-info">
+    <table>
+        <tr>
+            <td><strong>Messages</strong>:</td>
+            <td>
+                <li>class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap')</li>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>File</strong>:</td>
+            <td>action/UserAction.java</td>
+        </tr>
+        <tr>
+            <td><strong>Line number</strong>:</td>
+            <td>97</td>
+        </tr>
+
+    </table>
+</div>
+
+
+<div id="stacktraces">
+    <hr />
+    <h3>Stacktraces</h3>
+    <div class="stacktrace" style="padding-left: 0em">
+        <strong>java.lang.ClassCastException: class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap')</strong>
+        <div>
+    <pre>
+    action.UserAction.register(UserAction.java:97)
+    java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    java.base/java.lang.reflect.Method.invoke(Method.java:566)
+    ognl.OgnlRuntime.invokeMethod(OgnlRuntime.java:891)
+    ognl.OgnlRuntime.callAppropriateMethod(OgnlRuntime.java:1293)
+    ognl.ObjectMethodAccessor.callMethod(ObjectMethodAccessor.java:68)
+    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethodWithDebugInfo(XWorkMethodAccessor.java:117)
+    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethod(XWorkMethodAccessor.java:108)
+    ognl.OgnlRuntime.callMethod(OgnlRuntime.java:1369)
+    ognl.ASTMethod.getValueBody(ASTMethod.java:90)
+    ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212)
+    ognl.SimpleNode.getValue(SimpleNode.java:258)
+    ognl.Ognl.getValue(Ognl.java:494)
+    ognl.Ognl.getValue(Ognl.java:458)
+    com.opensymphony.xwork2.ognl.OgnlUtil$2.execute(OgnlUtil.java:309)
+    com.opensymphony.xwork2.ognl.OgnlUtil.compileAndExecute(OgnlUtil.java:340)
+    com.opensymphony.xwork2.ognl.OgnlUtil.getValue(OgnlUtil.java:307)
+    com.opensymphony.xwork2.DefaultActionInvocation.invokeAction(DefaultActionInvocation.java:423)
+    com.opensymphony.xwork2.DefaultActionInvocation.invokeActionOnly(DefaultActionInvocation.java:287)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:250)
+    org.apache.struts2.interceptor.DeprecationInterceptor.intercept(DeprecationInterceptor.java:41)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:256)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor.doIntercept(DefaultWorkflowInterceptor.java:167)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.validator.ValidationInterceptor.doIntercept(ValidationInterceptor.java:265)
+    org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor.doIntercept(AnnotationValidationInterceptor.java:76)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor.intercept(ConversionErrorInterceptor.java:138)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:191)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.MultiselectInterceptor.intercept(MultiselectInterceptor.java:73)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.DateTextFieldInterceptor.intercept(DateTextFieldInterceptor.java:125)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:91)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:253)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:100)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:141)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:145)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:171)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:139)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:164)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:193)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:189)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.impl.StrutsActionProxy.execute(StrutsActionProxy.java:54)
+    org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:564)
+    org.apache.struts2.dispatcher.ng.ExecuteOperations.executeAction(ExecuteOperations.java:81)
+    org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:99)
+    org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+    org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+    org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+    org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+    org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+    org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
+    org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+    org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+    org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+    org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+    org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+    org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1594)
+    org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+    java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+    java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+    org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+    java.base/java.lang.Thread.run(Thread.java:834)
+    </pre>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <hr />
+    <p>
+        You are seeing this page because development mode is enabled.  Development mode, or devMode, enables extra
+        debugging behaviors and reports to assist developers.  To disable this mode, set:
+    <pre>
+  struts.devMode=false
+</pre>
+    in your <code>WEB-INF/classes/struts.properties</code> file.
+    </p>
+</div>
 </body>
 </html>

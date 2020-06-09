@@ -36,7 +36,7 @@ public class User implements Serializable {
     /**
      * 权限(暂定管理员和普通用户),管理员为1,普通用户0
      */
-    private int role;
+    private int role = 0;
     /**
      * 状态
      */
@@ -52,7 +52,7 @@ public class User implements Serializable {
     /**
      * 头像
      */
-    private String headImg;
+    private String headImg = "img/logo1.png";
 
     /**
      * many-to-one

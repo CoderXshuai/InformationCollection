@@ -15,11 +15,8 @@
     <constant name="struts.i18n.encoding" value="UTF-8"/>
     <constant name="struts.devMode" value="true"/>
     <constant name="struts.objectFactory" value="spring"/>
-    <package name="userPackage" namespace="/" extends="json-default">
+    <package name="userPackage" namespace="/" extends="struts-default,json-default">
         <action name="user" class="userAction">
-            <result type="json">
-                <param name="root">chers</param>
-            </result>
             <!-- 上传 -->
             <interceptor-ref name="fileUpload">
                 <!-- 文件过滤 -->
@@ -30,8 +27,23 @@
             <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
             <interceptor-ref name="defaultStack"/>
         </action>
+        <action name="sms" class="userAction" method="SMS">
+            <result name="sms" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="register" class="userAction" method="register">
+            <result name="register" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="login" class="userAction" method="login">
+            <result name="register" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
 
-        <action name="inbox" class="action.InboxAction">
+        <action name="inbox" class="inboxAction">
             <!-- 上传 -->
             <interceptor-ref name="fileUpload">
                 <!-- 文件过滤 -->
@@ -54,6 +66,13 @@
             </result>
         </action>
     </package>
+    <!--    <package name="userTest" extends="json-default">-->
+    <!--        <action name="userSMS" class="userAction">-->
+    <!--            <result type="json">-->
+    <!--                <-->
+    <!--            </result>-->
+    <!--        </action>-->
+    <!--    </package>-->
     <package name="test" extends="json-default">
         <action name="test" class="action.TestAction">
             <result type="json">

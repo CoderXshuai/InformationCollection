@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,20 +30,20 @@
             </button>
             <ul class="dropdown-menu" role="menu"
                 style="min-width: 100%; text-align: center;">
-                <li><a href="javascript:" id="sort_1"
+                <li><a href="javascript:;" id="sort_1"
                        onclick="sortInbox(this.id,this.title)" title="创建时间">创建时间</a></li>
-                <li><a href="javascript:" id="sort_2"
+                <li><a href="javascript:;" id="sort_2"
                        onclick="sortInbox(this.id,this.title)" title="截止时间">截止时间</a></li>
-                <li><a href="javascript:" id="sort_3"
+                <li><a href="javascript:;" id="sort_3"
                        onclick="sortInbox(this.id,this.title)" title="收件数量">收件数量</a></li>
-                <li><a href="javascript:" id="sort_4" style="color: #f0ad4e;"
+                <li><a href="javascript:;" id="sort_4" style="color: #f0ad4e;"
                        onclick="sortInbox(this.id,this.title)" title="只显标星">只显标星</a></li>
 
-                <li><a href="javascript:" id="sort_5"
+                <li><a href="javascript:;" id="sort_5"
                        onclick="sortInbox(this.id,this.title)" title="只显截止">只显截止</a></li>
-                <li><a href="javascript:" id="sort_6" style="color: #5cb85c;"
+                <li><a href="javascript:;" id="sort_6" style="color: #5cb85c;"
                        onclick="sortInbox(this.id,this.title)" title="只显开启">只显开启</a></li>
-                <li><a href="javascript:" id="sort_7" style="color: #d9534f;"
+                <li><a href="javascript:;" id="sort_7" style="color: #d9534f;"
                        onclick="sortInbox(this.id,this.title)" title="只显关闭">只显关闭</a></li>
             </ul>
 
@@ -51,8 +51,9 @@
 
         <div class="set-btn-right">
             <a class="btn btn-set btn-outline btn-width"
-               onclick="showInboxForm()">
-                <i class="glyphicon glyphicon-pencil" style="margin-left: -15px; padding-left: 10px;"></i> 创建收件夹
+               onclick="showInboxForm()"> <i
+                    class="glyphicon glyphicon-pencil"
+                    style="margin-left: -15px; padding-left: 10px;"></i> 创建收件夹
             </a>
         </div>
     </div>
@@ -64,9 +65,9 @@
 </div>
 <!--主内容结束-->
 </body>
-<script src="<s:url value='js/jquery-1.11.2.min.js'/>" type="javascript"></script>
-<script src="<s:url value='js/bootstrap/js/bootstrap.min.js'/>" type="javascript"></script>
-<script src="<s:url value='js/layer/layer.js'/>" type="javascript"></script>
-<script src="<s:url value='js/main.js'/>" type="javascript"></script>
-<script src="<s:url value='js/datetimepicker/jquery.datetimepicker.js'/>" type="javascript"></script>
+<script src="<s:url value='js/jquery-1.11.2.min.js'/>"></script>
+<script src="<s:url value='js/bootstrap/js/bootstrap.min.js'/>"></script>
+<script src="<s:url value='js/layer/layer.js'/>"></script>
+<script src="<s:url value='js/main.js'/>"></script>
+<script src="<s:url value='js/datetimepicker/jquery.datetimepicker.js'/>"></script>
 </html>

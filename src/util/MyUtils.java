@@ -241,7 +241,6 @@ public class MyUtils {
      *
      * @param id       用户id
      * @param password 用户密码
-     * @param nickName 用户名称 或者 昵称 便于显示
      * @return
      */
     public static String encodeCookie(int id, String password) {

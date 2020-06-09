@@ -71,8 +71,8 @@
             <div class="layui-form-item">
                 <div class="layui-block">
                     <label class="layui-form-label">日期选择</label>
-                    <div class="layui-input-block"  lay-search>
-                        <input type="date" name="date" id="date1" autocomplete="off" class="layui-input">
+                    <div class="layui-input-block" lay-search>
+                        <input autocomplete="off" class="layui-input" id="date1" name="date" type="date">
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@
             <div class="layui-form-item" pane>
                 <label class="layui-form-label layui-bg-blue">市区:</label>
                 <div class="layui-input-block">
-                    <select id="s2" name="s2" lay-search>
+                    <select id="s2" lay-search name="s2">
                         <option selected value="请选择">请选择</option>
                     </select>
                 </div>
@@ -106,18 +106,19 @@
             <div class="layui-form-item" pane="null">
                 <label class="layui-form-label">爱好</label>
                 <div class="layui-input-block">
-                    <input type="checkbox" name="like[write]" title="写作">
-                    <input type="checkbox" name="like[read]" title="阅读">
-                    <input type="checkbox" name="like[music]" title="听音乐">
-                    <input type="checkbox" name="like[movie]" title="看电影">
+                    <input name="like[write]" title="写作" type="checkbox">
+                    <input name="like[read]" title="阅读" type="checkbox">
+                    <input name="like[music]" title="听音乐" type="checkbox">
+                    <input name="like[movie]" title="看电影" type="checkbox">
                 </div>
             </div>
             <div class="layui-form-item layui-form-text">
                 <div class="line-post">
-                    <span class="line-post-block" >个人自我介绍</span>
+                    <span class="line-post-block">个人自我介绍</span>
                 </div>
-                <div class="layui-input-block" >
-                    <textarea id="intro" name="desc" placeholder="请输入内容" class="layui-textarea" style="color: lightblue"></textarea>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" id="intro" name="desc" placeholder="请输入内容"
+                              style="color: lightblue"></textarea>
                 </div>
             </div>
 

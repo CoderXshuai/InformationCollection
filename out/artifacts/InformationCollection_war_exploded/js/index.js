@@ -1,6 +1,4 @@
-// var $ = layui.lay.modules.jquery
-
-
+var $ = layui.lay.modules.jquery
 function showLogin() {
     $.ajax({
         url: getWebProjectName() + '/login.jsp',

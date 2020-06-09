@@ -33,54 +33,58 @@
         </div>
     </div>
 </form>
-<script>
-    $("#loginForm").submit(function (e) {
-        $.ajax({
-            url: '${pageContext.request.contextPath}/user!login.action',
-            type: 'POST',
-            datatype: 'JSON',
-            data: $('#loginForm').serialize(),
-            success: function (data) {
-                if (data.status) {
-                    showSuccessMsg(data.msg);
-                    layer.close(layer.index);
-                    window.location.href = getWebProjectName() + '/main.jsp';
-                } else {
-                    showErrorMsg(data.msg);
+<script src="${pageContext.request.contextPath}/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['jquery'], function () {
+        var $ = layui.jquery;
+        $("#loginForm").submit(function (e) {
+            $.ajax({
+                url: '${pageContext.request.contextPath}/login.action',
+                type: 'POST',
+                datatype: 'JSON',
+                data: $('#loginForm').serialize(),
+                success: function (data) {
+                    if (data.status) {
+                        showSuccessMsg(data.msg);
+                        layer.close(layer.index);
+                        window.location.href = getWebProjectName() + '/main.jsp';
+                    } else {
+                        showErrorMsg(data.msg);
+                    }
                 }
-            }
-        })
-        return false;
-    });
-
-
-    function showSuccessMsg(msg) {
-        layer.msg(msg, {
-            time: 2000, //2s后自动关闭
-            icon: 1
+            })
+            return false;
         });
-    }
 
-    function showErrorMsg(msg) {
-        layer.msg(msg, {
-            time: 2000, //2s后自动关闭
-            icon: 2
-        });
-    }
 
-    /**
-     * 得到当前项目名称
-     */
-    function getWebProjectName() {
-        var webProjectName = undefined;
-        //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
-        var pathName = window.document.location.pathname;
-        //获取带"/"的项目名，如：/uimcardprj
-        webProjectName = pathName.substring(0,
-            pathName.substr(1).indexOf('/') + 1);
+        function showSuccessMsg(msg) {
+            layer.msg(msg, {
+                time: 2000, //2s后自动关闭
+                icon: 1
+            });
+        }
 
-        return webProjectName;
-    }
+        function showErrorMsg(msg) {
+            layer.msg(msg, {
+                time: 2000, //2s后自动关闭
+                icon: 2
+            });
+        }
+
+        /**
+         * 得到当前项目名称
+         */
+        function getWebProjectName() {
+            var webProjectName = undefined;
+            //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+            var pathName = window.document.location.pathname;
+            //获取带"/"的项目名，如：/uimcardprj
+            webProjectName = pathName.substring(0,
+                pathName.substr(1).indexOf('/') + 1);
+
+            return webProjectName;
+        }
+    })
 </script>
 
 </body>
