@@ -60,11 +60,10 @@
             data: form,
             processData: false,
             contentType: false,
-            success: function (data) {
-                console.log(data)
-                if (data.status) {
-                    loadInbox();
-                    layer.close(layer.index);
+            success: function (data, status) {
+                if (status === 'success') {
+                    console.log(data)
+                    window.location.reload()
                     showSuccessMsg(data.msg)
                 } else {
                     showErrorMsg(data.msg);

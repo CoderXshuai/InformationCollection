@@ -67,11 +67,11 @@ public class UserAction implements ModelDriven<User> {
         Object[] obj = userService.login(user);
         if (obj[0] != null) {
             //存入session
-            MyUtils.getSession().setAttribute(Static.onlineUser, obj[0]);
+            MyUtils.getSession().setAttribute(Static.ONLINE_USER, obj[0]);
             //存cookie
             User u = (User) obj[0];
             String cookieValue = MyUtils.encodeCookie(u.getId(), u.getPassword());
-            MyUtils.addCookie(Static.onlineUser, cookieValue);
+            MyUtils.addCookie(Static.ONLINE_USER, cookieValue);
             //在返回响应前  写入cookie
             MyUtils.outMsg((String) obj[1], true);
             result = (String) obj[1];
@@ -93,7 +93,7 @@ public class UserAction implements ModelDriven<User> {
             Object[] obj = userService.register(user);
             //返回用户不为空 代表注册成功
             if (obj[0] != null) {
-                MyUtils.getSession().setAttribute(Static.onlineUser, obj[0]);
+                MyUtils.getSession().setAttribute(Static.ONLINE_USER, obj[0]);
                 //清空验证码
                 MyUtils.getSession().removeAttribute(user.getEmail());
                 //返回数据
@@ -114,7 +114,7 @@ public class UserAction implements ModelDriven<User> {
      * 更新密码
      */
     public void changePwd() {
-        User onlineUser = MyUtils.getSessionObject(Static.onlineUser);
+        User onlineUser = MyUtils.getSessionObject(Static.ONLINE_USER);
         if (null != onlineUser) {
             Object[] obj = userService.changePwd(user, onlineUser.getId());
             MyUtils.outMsg((String) obj[1], (boolean) obj[0]);
@@ -124,11 +124,11 @@ public class UserAction implements ModelDriven<User> {
     }
 
     public void changeHeadImg() {
-        User onlineUser = MyUtils.getSessionObject(Static.onlineUser);
+        User onlineUser = MyUtils.getSessionObject(Static.ONLINE_USER);
         if (null != onlineUser) {
             Object[] obj = userService.changeHeadImg(user, onlineUser.getId());
             //更新session
-            MyUtils.getSession().setAttribute(Static.onlineUser, obj[2]);
+            MyUtils.getSession().setAttribute(Static.ONLINE_USER, obj[2]);
             JSONObject jo = new JSONObject(); //返回数据
             jo.put("msg", obj[0]);
             jo.put("headImg", obj[1]);

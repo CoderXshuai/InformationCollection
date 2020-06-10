@@ -52,12 +52,12 @@ public class LoginFilter implements Filter {
             }
         }
         // 获取用户 根据cookie或者在线session
-        User user = (User) session.getAttribute(Static.onlineUser);
+        User user = (User) session.getAttribute(Static.ONLINE_USER);
         if (user == null) {
             // 开始判断cookie
             cookies = request.getCookies();
             if (cookies != null && cookies.length > 0) {
-                String cValue = getCookieValue(cookies, Static.onlineUser); //获取cookie值
+                String cValue = getCookieValue(cookies, Static.ONLINE_USER); //获取cookie值
                 System.out.println(cValue);
                 if (checkMD5(cValue)) {
                     //验证成功 则跳转
@@ -137,7 +137,7 @@ public class LoginFilter implements Filter {
         String newMD5 = MyUtils.getMD5(newHash);
         if (newMD5.equals(msg[2])) {
             //计算后相等
-            MyUtils.getSession().setAttribute(Static.onlineUser, user);
+            MyUtils.getSession().setAttribute(Static.ONLINE_USER, user);
             return true;
         }
         return false;

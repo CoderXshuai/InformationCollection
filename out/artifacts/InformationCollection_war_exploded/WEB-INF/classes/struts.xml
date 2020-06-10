@@ -57,7 +57,16 @@
                 <param name="root">result</param>
             </result>
         </action>
-
+        <action name="getAll" class="inboxAction" method="getAll">
+            <result name="getAll" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getDocs" class="docAction" method="getDocs">
+            <result name="getDocs" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
         <action name="doc" class="docAction">
 
         </action>

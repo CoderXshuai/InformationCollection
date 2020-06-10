@@ -1,7 +1,9 @@
 .inbox-content {
     width: 750px;
     margin: 20px auto 20px;
-    background: #FFF;
+    /*background: #FFF;*/
+    background-color: transparent;
+    /*background-color: transparent;*/
     box-shadow: 0 0 1px rgba(0, 0, 0, .3);
     border-radius: 2px;
 }

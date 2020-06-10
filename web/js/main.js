@@ -6,10 +6,12 @@ $(function () {
 
 function loadInbox(sortId) {
     $.ajax({
-        url: getWebProjectName() + '/inbox!getAll.action?sortId=' + sortId,
+        url: getWebProjectName() + '/getAll.action',
+        data: sortId,
         type: 'POST',
         success: function (data) {
-            if (data.status) {
+            console.log(data, status)
+            if (status === 'success') {
                 console.info(data.rows)
                 showInbox(data.rows);
             } else {
@@ -25,13 +27,13 @@ function showInbox(rows) {
         var content = undefined;
         //是否标星
         if (rows[i].star === 0) {
-            content = '<li class="inbox" id="' + rows[i].id + '">'
-                + '<div class="inbox-content">'
-                + '<a class="upvote" href="/inbox/inboxFile.jsp?id=' + rows[i].id + '" title="收件数量(' + rows[i].docs.length + '),点击查看详细信息">'
-                + '<span class="vote-count">' + rows[i].docs.length + '</span>'
+            content = '<li style="background-color: transparent;color:lightblue" class="inbox" id="' + rows[i].id + '">'
+                + '<div class="inbox-content" style="background-color: transparent">'
+                + '<a class="upvote" href="getWebProjectName()/inboxFile.jsp?id=' + rows[i].id + '" title="收件数量(' + rows[i] + '),点击查看详细信息">'
+                + '<span class="vote-count">' + rows[i] + '</span>'
                 + '</a>'
                 + '<div class="inbox-msg">'
-                + '<a class="inbox-msg-url title" title="预览" href="/inbox/inbox.html?link=' + rows[i].id + '" target="_blank">'
+                + '<a class="inbox-msg-url title" title="预览" href="getWebProjectName()/inbox.html?link=' + rows[i].id + '" target="_blank">'
                 + rows[i].title
                 + '</a> <span class="inbox-tagline description">'
                 + ' <span class="ctime" style="margin: 0;" title="创建时间">' + rows[i].createTime.split(" ")[0] + '</span>'
@@ -52,11 +54,11 @@ function showInbox(rows) {
         } else {
             content = '<li class="inbox" id="' + rows[i].id + '">'
                 + '<div class="inbox-content">'
-                + '<a class="upvote" href="/inbox/inboxFile.jsp?id=' + rows[i].id + '" title="收件数量(0),点击查看详细信息">'
-                + '<span class="vote-count">' + rows[i].docs.length + '</span>'
+                + '<a class="upvote" href="http://localhost:8080/InformationCollection_war_exploded/inboxFile.jsp?id=' + rows[i].id + '" title="收件数量(0),点击查看详细信息">'
+                + '<span class="vote-count">' + rows[i] + '</span>'
                 + '</a>'
                 + '<div class="inbox-msg">'
-                + '<a class="inbox-msg-url title" title="预览" href="/inbox/inbox.html?link=' + rows[i].id + '" target="_blank">'
+                + '<a class="inbox-msg-url title" title="预览" href="http://localhost:8080/InformationCollection_war_exploded/inbox.html?link=' + rows[i].id + '" target="_blank">'
                 + rows[i].title
                 + ' <i class="glyphicon glyphicon-star"'
                 + 'style="font-size: 14px; color: #f0ad4e;"></i>'
@@ -106,8 +108,6 @@ function showInbox(rows) {
                 + '</div>'
                 + '</li>';
         }
-
-
         $(".inboxs-group").append(content);
     }
 }
@@ -185,7 +185,7 @@ function openInbox(id) {
     });
 }
 
-showLink = function (id) {
+function showLink(id) {
     // 这里的id 加上标号 link_id
     var inbox_id = id.split("_")[1];
     var url = 'http://localhost:8080' + getWebProjectName() + '/inbox.html?link=' + inbox_id;
@@ -210,7 +210,7 @@ showLink = function (id) {
     });
 }
 
-showPwdLink = function (id) {
+function showPwdLink(id) {
     var password = id.split("_")[1];
     var data = '<h3 style="color: #000 ;margin-top: 0px;font-size: 16px;line-height: 20px;padding: 2px 15px;">收件密码</h3>'
         + '<ul class="config-menu">'
@@ -296,7 +296,6 @@ function showPassWd() {
 
 
 function showInboxForm() {
-    console.log("5")
     $.ajax({
         url: 'inboxForm.html',
         type: 'get',
@@ -315,7 +314,7 @@ function showInboxForm() {
 
 function closeInbox(id) {
     var inbox_id = id.split("_")[1];
-    var data = '<h3 style="color: #000 ;margin-top: 0px;font-size: 16px;line-height: 20px;padding: 2px 15px;">设置关闭原因</h3>'
+    var data = '<h3 style="color: #000 ;background-color: transparent;margin-top: 0px;font-size: 16px;line-height: 20px;padding: 2px 15px;">设置关闭原因</h3>'
         + '<ul class="config-menu">'
         + '<li class="divider"></li>'
         + '<li style="height: 101px;">'

@@ -31,10 +31,12 @@
     list-style: none;
     padding-left: 0;
     margin-top: 10px;
+    background-color: transparent;
+    color:lightblue
 }
 
 .inbox {
-    background: white;
+    background: transparent;
     font-size: 18px;
     min-height: 62px;
     line-height: 17px;
@@ -42,7 +44,6 @@
     padding-bottom: 15px;
     clear: both;
     box-sizing: border-box;
-    padding: 10px;
     margin: 0 -10px;
     border-radius: 3px;
     position: relative;
@@ -50,7 +51,7 @@
 }
 
 .inbox:hover {
-    background: #fcf5e2;
+    background: transparent;
 }
 
 .upvote {

@@ -30,7 +30,7 @@ public class Inbox implements Serializable {
     /**
      * 收件夹备注
      */
-    private String remark; //收件夹说明 备注
+    private String remark;
     /**
      * 上交的截止时间
      */
@@ -42,15 +42,15 @@ public class Inbox implements Serializable {
     /**
      * 是否完成(标星)
      */
-    private int star; //是否标星
+    private int star;
     /**
      * 收件密码
      */
-    private String password; //收件密码
+    private String password;
     /**
-     * 状态
+     * 状态 开启 关闭
      */
-    private int status; //状态 开启 关闭
+    private int status;
     /**
      * 关闭原因
      */

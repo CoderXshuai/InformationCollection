@@ -88,7 +88,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
     @Override
     public T findById(Class<T> clazz, Serializable id) {
-        getCurrentSession().clear();
         return this.getCurrentSession().get(clazz, id);
     }
 

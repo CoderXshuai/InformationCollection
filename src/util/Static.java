@@ -4,7 +4,7 @@ import java.io.File;
 
 public class Static {
     //session名称
-    public static final String onlineUser = "user";
+    public static final String ONLINE_USER = "user";
 
     //inbox状态符
     public static final int INBOX_NOSTAR = 0;
@@ -14,10 +14,10 @@ public class Static {
 
     //图片资源路径
     public static final String SRC_PATH = Config.getValues("uploadDirectory");
-    public static final String inboxPath = SRC_PATH + File.separator + "inbox";
-    public static final String imgPath = SRC_PATH + File.separator + "img";
-    public static final String USER_HEADIMG = imgPath + File.separator + "usersHeadImg";
-    public static final String INBOX_LOGO = imgPath + File.separator + "inboxLogo";
+    public static final String INBOX_PATH = SRC_PATH + File.separator + "inbox";
+    public static final String IMG_PATH = SRC_PATH + File.separator + "img";
+    public static final String USER_HEADIMG = IMG_PATH + File.separator + "usersHeadImg";
+    public static final String INBOX_LOGO = IMG_PATH + File.separator + "inboxLogo";
 
     public static String getHtmlMail(String email, String code) {
         String htmlMail = "<!DOCTYPE html>\n" +

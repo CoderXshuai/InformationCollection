@@ -19,25 +19,25 @@
 <body>
 <div>
     <!--导航栏-->
-    <ul class="layui-nav layui-bg-cyan">
+    <ul class="layui-nav">
         <li class="layui-nav-item">
-            <a href="">主页
-                <span class="layui-badge">9</span></a>
+            <a href="">主页</a>
         </li>
         <li class="layui-nav-item">
-            <a href="">个人中心<span class="layui-badge-dot"></span></a>
+            <a href="personal.jsp">个人中心<span class="layui-badge-dot"></span></a>
         </li>
-        <li class="layui-nav-item" lay-unselect="">
-            <a href="javascript:"><img class="layui-nav-img" src="//t.cn/RCzsdCq">我</a>
+        <li class="layui-nav-item">
+            <a href="javascript:"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
             <dl class="layui-nav-child">
-                <dd><a href="javascript:">修改信息</a></dd>
-                <dd><a href="javascript:">安全管理</a></dd>
-                <dd><a href="javascript:">退了</a></dd>
+                <dd><a href="javascript:;">修改信息</a></dd>
+                <dd><a href="javascript:;">安全管理</a></dd>
+                <dd><a href="javascript:;">退了</a></dd>
             </dl>
         </li>
     </ul>
     <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
-        <img src="img/bg/bg_inbox.jpg">
+        <!--        <img src="img/bg/bg_inbox.jpg">-->
+        <img src="https://bing.ioliu.cn/photo/OrionNebula_EN-AU10620917199?force=download">
     </div>
     <div class="layui-col-xs6 layui-col-sm6 layui-col-md4 clearfix layui-anim layui-anim-up ">
         <form action="" class="layui-form layui-form-pane " name="frm">
@@ -126,7 +126,7 @@
         <!--文件上传区域开始-->
         <div class="inbox-footer">
             <div class="line-post">
-                <span class="line-post-block" style="background: #178FE5;">附件/span>
+                <span class="line-post-block" style="background: #178FE5;">附件</span>
             </div>
             <form enctype="multipart/form-data" method="POST">
                 <div class="form-group">

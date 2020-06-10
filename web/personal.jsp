@@ -12,12 +12,13 @@
     <link rel="stylesheet" href="<s:url value='css/personal.css'/>"/>
     <link rel="stylesheet"
           href="<s:url value='js/layer/skin/default/layer.css'/>"/>
+    <link rel="stylesheet" href="layui/css/layui.css">
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <div class="container">
     <div class="left_ct">
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="background-color:rgba(0,0,0,0);">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <strong>我的信息</strong>
@@ -29,15 +30,16 @@
                 </li>
             </ul>
         </div>
+
     </div>
     <div class="right_ct">
         <div id="cont_pwd" class="showcont">
             <form id="frmChangePwd" role="form" action="">
-                <table class="table">
-
+                <table class="table" style="background-color: transparent">
                     <tr>
-                        <td>原密码</td>
+                        <td style="color: lightblue">原密码</td>
                         <td width="300"><label for="oldPassword"></label><input name="password" id="oldPassword"
+                                                                                style="background-color: transparent"
                                                                                 type="password" class="form-control"
                                                                                 placeholder="请输入原来的密码"
                                                                                 required="required"/></td>
@@ -45,16 +47,18 @@
                     </tr>
 
                     <tr>
-                        <td>请输入新密码</td>
+                        <td style="color: lightblue">请输入新密码</td>
                         <td><label for="newPassword"></label><input name="newPassword" id="newPassword"
+                                                                    style="background-color: transparent"
                                                                     maxlength="16" type="password" class="form-control"
                                                                     placeholder="建议6-16位的数字、字母、符号的组合密码"
                                                                     required="required"/></td>
                         <td id="password_Tips2" class="default"><span>弱</span><span>中</span><span>强</span>请牢记新密码</td>
                     </tr>
                     <tr>
-                        <td>确认密码</td>
+                        <td style="color: lightblue">确认密码</td>
                         <td><label for="newPasswordAgain"></label><input name="newPasswordAgain" id="newPasswordAgain"
+                                                                         style="background-color: transparent"
                                                                          maxlength="16" type="password"
                                                                          class="form-control"
                                                                          placeholder="再次输入密码" required="required"/></td>
@@ -91,6 +95,16 @@
         </div>
     </div>
 </div>
+<script src="layui/layui.js">
+    layui.use(['element', 'layer'], function () {
+        var element = layui.element;
+        var layer = layui.layer;
+        //监听折叠
+        element.on('collapse(test)', function (data) {
+            layer.msg('展开状态：' + data.show);
+        });
+    });
+</script>
 </body>
 <script src="<s:url value='js/jquery-1.11.2.min.js'/>" type="javascript"></script>
 <script src="<s:url value='js/bootstrap/js/bootstrap.min.js'/>" type="javascript"></script>

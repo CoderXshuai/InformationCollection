@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta charset="utf-8">
-
     <title>Layui</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
@@ -19,15 +18,14 @@
 <body>
 <div>
     <!--导航栏-->
-    <ul class="layui-nav layui-bg-cyan">
+    <ul class="layui-nav">
         <li class="layui-nav-item">
-            <a href="">主页
-                <span class="layui-badge">9</span></a>
+            <a href="">主页</a>
         </li>
         <li class="layui-nav-item">
-            <a href="">个人中心<span class="layui-badge-dot"></span></a>
+            <a href="personal.jsp">个人中心<span class="layui-badge-dot"></span></a>
         </li>
-        <li class="layui-nav-item" lay-unselect="">
+        <li class="layui-nav-item">
             <a href="javascript:"><img class="layui-nav-img" src="//t.cn/RCzsdCq">我</a>
             <dl class="layui-nav-child">
                 <dd><a href="javascript:">修改信息</a></dd>
@@ -37,7 +35,7 @@
         </li>
     </ul>
     <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
-        <img src="img/bg/bg_inbox.jpg">
+        <img src="img/bg/bg_inbox_form.jpg">
     </div>
     <div class="layui-col-xs6 layui-col-sm6 layui-col-md4 clearfix layui-anim layui-anim-up ">
         <form action="" class="layui-form layui-form-pane " name="frm">
@@ -126,7 +124,7 @@
         <!--文件上传区域开始-->
         <div class="inbox-footer">
             <div class="line-post">
-                <span class="line-post-block" style="background: #178FE5;">附件/span>
+                <span class="line-post-block" style="background: #178FE5;">附件</span>
             </div>
             <form enctype="multipart/form-data" method="POST">
                 <div class="form-group">
@@ -135,6 +133,8 @@
             </form>
         </div>
         <!--文件上传区域结束-->
+        <button class="layui-btn layui-btn-fluid layui-bg-blue " id="submit" style="font-weight: bold">提交
+        </button>
     </div>
     <div class="layui-col-xs6 layui-col-sm6 layui-col-md0">
         <!--        <img src="img/bg/bg_inbox.jpg">-->
@@ -166,6 +166,9 @@
         $(".layui-form-checkbox").css({"background-color": "transparent", "font-weight": "bold"});
         $("span").css({"background-color": "transparent"})
         $(".layui-textarea").css({"background-color": "transparent"})
+        $('#submit').click(function () {
+
+        });
     })
 </script>
 </body>

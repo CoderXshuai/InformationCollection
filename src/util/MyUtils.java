@@ -122,6 +122,7 @@ public class MyUtils {
             e.printStackTrace();
         } finally {
             // 关闭
+            assert pt != null;
             pt.close();
         }
     }

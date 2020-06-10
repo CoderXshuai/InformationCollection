@@ -14,12 +14,12 @@
           href="<s:url value='js/datetimepicker/jquery.datetimepicker.css'/>"/>
     <link rel="stylesheet" href="<s:url value='css/main.css'/>"/>
 </head>
-<body>
+<body onload="load()">
 <jsp:include page="header.jsp"/>
 <!--主内容开始-->
-<div class="container clearfix main-content">
+<div class="container clearfix main-content" style="background-color: transparent;color:lightblue">
     <!--工具栏开始-->
-    <div class="toolbar">
+    <div class="toolbar" style="background-color: transparent;color:lightblue">
         <div class="btn-group">
             <button type="button"
                     style="background: none; border: 1px solid #efefef; box-shadow: none; color: #999;"
@@ -28,7 +28,7 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu"
-                style="min-width: 100%; text-align: center;">
+                style="min-width: 100%; text-align: center;background-color: transparent;color:lightblue">
                 <li><a href="javascript:" id="sort_1"
                        onclick="sortInbox(this.id,this.title)" title="创建时间">创建时间</a></li>
                 <li><a href="javascript:" id="sort_2"
@@ -58,16 +58,32 @@
     </div>
     <!--工具栏结束-->
     <!--文件列表开始-->
-    <ul class="inboxs-group">
+    <ul class="inboxs-group" style="background-color: transparent;color:lightblue">
 
     </ul>
 </div>
 <!--主内容结束-->
+<script src="<s:url value='layui/layui.js'/>"></script>
+<script type="text/javascript">
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use(['jquery'], function () {
+        var $ = layui.jquery;
+        $(document).ready(function () {
+            $.post({
+                url: getWebProjectName() + '/getAll.action',
+                success: function (rows) {
+                    console.log(rows);
+                    showInbox(rows);
+                }
+            });
+        });
+    });
+</script>
 </body>
 <script src="<s:url value='js/jquery-1.11.2.min.js'/>"></script>
 <script src="<s:url value='js/bootstrap/js/bootstrap.min.js'/>"></script>
 <script src="<s:url value='js/layer/layer.js'/>"></script>
 <script src="<s:url value='js/main.js'/>"></script>
 <script src="<s:url value='js/datetimepicker/jquery.datetimepicker.js'/>"></script>
-<script src="<s:url value='layui/layui.js'/>"></script>
+
 </html>

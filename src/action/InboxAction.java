@@ -16,10 +16,14 @@ import java.util.List;
  */
 public class InboxAction implements ModelDriven<Inbox> {
     private final Inbox inbox = new Inbox();
-    // 配置service
+    /**
+     * 配置service
+     */
     private InboxService inboxService;
-    private String result;
-    //接收排序
+    private List<Inbox> result;
+    /**
+     * 排序方式
+     */
     private int sortId;
 
     @Override
@@ -42,18 +46,22 @@ public class InboxAction implements ModelDriven<Inbox> {
         this.sortId = sortId;
     }
 
-    public String getResult() {
+    public List<Inbox> getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(List<Inbox> result) {
         this.result = result;
     }
 
     public String addInbox() {
-        User user = MyUtils.getSessionObject(Static.onlineUser);
+        User user = MyUtils.getSessionObject(Static.ONLINE_USER);
         if (null != user) {
-            inboxService.add(inbox, user.getId());
+            try {
+                inboxService.add(inbox, user.getId());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             MyUtils.outMsg("创建收件夹成功!", true);
         } else {
             MyUtils.outMsg("你已经断网或离线,请刷新页面重新登录!", false);
@@ -61,17 +69,20 @@ public class InboxAction implements ModelDriven<Inbox> {
         return "addInbox";
     }
 
-    public void getAll() {
-        User user = MyUtils.getSessionObject(Static.onlineUser);
+    public String getAll() {
+        User user = MyUtils.getSessionObject(Static.ONLINE_USER);
         if (null != user) {
             List<Inbox> list = inboxService.getAll(inbox, user.getId(), sortId);
             JSONObject jo = new JSONObject();
-            jo.put("rows", list);
-            jo.put("status", true);
-            MyUtils.writeJSON(jo);
+//            jo.put("rows", list);
+//            jo.put("status", true);
+//            MyUtils.writeJSON(jo);
+            result = list;
+            return "getAll";
         } else {
             MyUtils.outMsg("你已经断网或离线,请刷新页面重新登录!", false);
         }
+        return "error";
     }
 
     public void getInboxById() {
@@ -99,7 +110,7 @@ public class InboxAction implements ModelDriven<Inbox> {
 
 
     public void updateEndTime() {
-        User user = MyUtils.getSessionObject(Static.onlineUser);
+        User user = MyUtils.getSessionObject(Static.ONLINE_USER);
         if (null != user) {
             inboxService.updateEndTime(inbox.getEndTime(), inbox.getId());
             MyUtils.outMsg("截止时间更改成功", true);
@@ -109,7 +120,7 @@ public class InboxAction implements ModelDriven<Inbox> {
     }
 
     public void closeInbox() {
-        User user = MyUtils.getSessionObject(Static.onlineUser);
+        User user = MyUtils.getSessionObject(Static.ONLINE_USER);
         if (null != user) {
             inboxService.closeInbox(inbox.getCloseReason(), inbox.getId());
             MyUtils.outMsg("该收件夹已关闭", true);
@@ -119,7 +130,7 @@ public class InboxAction implements ModelDriven<Inbox> {
     }
 
     public void openInbox() {
-        User user = MyUtils.getSessionObject(Static.onlineUser);
+        User user = MyUtils.getSessionObject(Static.ONLINE_USER);
         if (null != user) {
             boolean flag = inboxService.openInbox(inbox.getId());
             if (flag) {
@@ -133,7 +144,7 @@ public class InboxAction implements ModelDriven<Inbox> {
     }
 
     public void star() {
-        User user = MyUtils.getSessionObject(Static.onlineUser);
+        User user = MyUtils.getSessionObject(Static.ONLINE_USER);
         if (null != user) {
             inboxService.star(inbox.getId());
             MyUtils.outMsg("标星成功", true);
@@ -143,7 +154,7 @@ public class InboxAction implements ModelDriven<Inbox> {
     }
 
     public void cancelStar() {
-        User user = MyUtils.getSessionObject(Static.onlineUser);
+        User user = MyUtils.getSessionObject(Static.ONLINE_USER);
         if (null != user) {
             inboxService.cancelStar(inbox.getId());
             MyUtils.outMsg("已取消标星", true);
@@ -153,7 +164,7 @@ public class InboxAction implements ModelDriven<Inbox> {
     }
 
     public void delete() {
-        User user = MyUtils.getSessionObject(Static.onlineUser);
+        User user = MyUtils.getSessionObject(Static.ONLINE_USER);
         if (null != user) {
             inboxService.delete(inbox.getId());
             MyUtils.outMsg("删除成功!", true);
@@ -163,7 +174,7 @@ public class InboxAction implements ModelDriven<Inbox> {
     }
 
     public void updatePwd() {
-        User user = MyUtils.getSessionObject(Static.onlineUser);
+        User user = MyUtils.getSessionObject(Static.ONLINE_USER);
         if (null != user) {
             System.out.println(inbox.getPassword());
             inboxService.updatePwd(inbox.getId(), inbox.getPassword());

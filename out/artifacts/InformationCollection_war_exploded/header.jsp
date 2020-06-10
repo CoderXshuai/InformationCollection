@@ -9,7 +9,8 @@
     <link rel="stylesheet"
           href="<s:url value='css/header.css'/>"/>
 </head>
-<body background="img/bg/bg_inboxFile.jpg">
+<%--<body background="img/bg/bg_inboxFile.jpg">--%>
+<body background="img/bg/bg_inbox_file.jpg">
 <!--导航栏开始-->
 
 <nav class="navbar navbar--inbox inbox-navbar-default" style="background-color: transparent">

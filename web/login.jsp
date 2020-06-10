@@ -35,8 +35,10 @@
 </form>
 <script src="${pageContext.request.contextPath}/layui/layui.js"></script>
 <script type="text/javascript">
+
     layui.use(['jquery'], function () {
         var $ = layui.jquery;
+
         $("#loginForm").submit(function (e) {
             $.ajax({
                 url: '${pageContext.request.contextPath}/login.action',

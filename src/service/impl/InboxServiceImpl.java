@@ -5,12 +5,14 @@ import dao.UserDao;
 import model.Inbox;
 import model.User;
 import service.InboxService;
+import util.DateTransform;
 import util.MyUtils;
 import util.Static;
 
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -40,10 +42,6 @@ public class InboxServiceImpl implements InboxService {
         // 添加排序条件
         hql = addSort(hql, sortId);
         inboxes = inboxDao.get(hql);
-        for (Inbox item : inboxes) {
-            // 设置空 防止用户信息泄露 以及JSON循环读取
-            item.setUser(null);
-        }
         // 当排序条件是3 说明是按照收件数量
         if (sortId == 3) {
             sortInboxByDocSize(inboxes);
@@ -61,7 +59,8 @@ public class InboxServiceImpl implements InboxService {
         newInbox.setTitle(inbox.getTitle());
         // 改变样式存入数据库
         newInbox.setRemark(MyUtils.textareaToSql(inbox.getRemark()));
-        newInbox.setEndTime(inbox.getEndTime());
+
+        newInbox.setEndTime((Date) DateTransform.localDate2Date(LocalDate.now().plusWeeks(1L)));
         // 设置star status
         // 未标星
         newInbox.setStar(Static.INBOX_NOSTAR);
@@ -162,7 +161,6 @@ public class InboxServiceImpl implements InboxService {
     public Inbox getInboxById(String id) {
         // TODO Auto-generated method stub
         Inbox inbox = inboxDao.findById(Inbox.class, id);
-        inbox.setUser(null);
         return inbox;
     }
 
@@ -202,6 +200,7 @@ public class InboxServiceImpl implements InboxService {
                 hql += " and status = '" + Static.INBOX_OFF + "'";
                 break;
             default:
+                hql += " order by createTime desc";
                 break;
         }
         return hql;

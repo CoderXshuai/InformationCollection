@@ -1,51 +1,51 @@
-<form id="inboxForm" class="form-horizontal" role="form"
-      style="width: 600px; text-align: center;" method="post">
+<form class="form-horizontal" id="inboxForm" method="post"
+      role="form" style="width: 600px; text-align: center;">
 
     <div class="form-group">
-        <label for="firstname" class="col-sm-3 control-label"
+        <label class="col-sm-3 control-label" for="firstname"
                style="margin-top: 40px;">LOGO</label>
         <div class="col-sm-4">
             <div id="Imgdiv">
-                <img id="Img" class="img-circle" src="img/logo1.png" width="100px"
-                     height="100px"/>
+                <img class="img-circle" height="100px" id="Img" src="img/logo1.png"
+                     width="100px"/>
             </div>
         </div>
         <div class="col-sm-4" style="margin-top: 40px;">
-            <button type="button" onclick="uploadLogo()" class="btn btn-default">
+            <button class="btn btn-default" onclick="uploadLogo()" type="button">
                 <i class="glyphicon glyphicon-cloud-upload"></i> 选择logo图片
             </button>
-            <input type="file" name="uploadFile" onchange="change_photo()"
-                   accept="image/*" style="display:none" required="required">
+            <input accept="image/*" name="uploadFile" onchange="change_photo()"
+                   required="required" style="display:none" type="file">
         </div>
     </div>
 
 
     <div class="form-group">
-        <label for="firstname" class="col-sm-3 control-label">收件夹名称</label>
+        <label class="col-sm-3 control-label" for="firstname">收件夹名称</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" name="title"
-                   placeholder="设置收件名称" required="required">
+            <input class="form-control" name="title" placeholder="设置收件名称"
+                   required="required" type="text">
         </div>
     </div>
     <div class="form-group">
-        <label for="lastname" class="col-sm-3 control-label">收件夹说明</label>
+        <label class="col-sm-3 control-label" for="lastname">收件夹说明</label>
         <div class="col-sm-8">
-			<textarea name="remark" required="required" class="form-control"
-                      rows="5" placeholder="少侠！说点什么吧"></textarea>
+			<textarea class="form-control" name="remark" placeholder="少侠！说点什么吧"
+                      required="required" rows="5"></textarea>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="lastname" class="col-sm-3 control-label">截止时间</label>
+        <label class="col-sm-3 control-label" for="lastname">截止时间</label>
         <div class="col-sm-4">
-            <input id="endTime" name="endTime" type="text" class="form-control"
-                   required="required">
+            <input class="form-control" id="endTime" name="endTime" required="required"
+                   type="text">
         </div>
         <p class="help-block" style="font-size: 12px;">截止时间最长一个月</p>
     </div>
     <div class="form-group">
         <div class="col-sm-3 col-sm-offset-8">
-            <button type="submit" class="btn btn-success">
+            <button class="btn btn-success" type="submit">
                 <i class="glyphicon glyphicon-ok"></i> 提交
             </button>
         </div>
@@ -60,11 +60,10 @@
             data: form,
             processData: false,
             contentType: false,
-            success: function (data) {
-                console.log(data)
-                if (data.status) {
-                    loadInbox();
-                    layer.close(layer.index);
+            success: function (data, status) {
+                if (status === 'success') {
+                    console.log(data)
+                    window.location.reload()
                     showSuccessMsg(data.msg)
                 } else {
                     showErrorMsg(data.msg);

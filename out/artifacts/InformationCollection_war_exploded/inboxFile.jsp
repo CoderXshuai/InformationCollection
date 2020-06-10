@@ -20,28 +20,30 @@
 <jsp:include page="header.jsp"/>
 <!--导航栏结束-->
 <!--主内容开始-->
-<div class="inboxFile-content container clearfix">
+<div class="inboxFile-content container clearfix" style="background-color: transparent">
     <ol class="breadcrumb" style="background-color: transparent">
         <li><a href="#">首页</a></li>
         <li id="title"></li>
         <li class="active">收件记录</li>
     </ol>
-    <button type="button" class="btn btn-default" style="margin-bottom: 20px;background-color: transparent"
+    <button type="button" class="btn btn-default" style="margin-bottom: 20px;background-color:transparent; "
             onclick="delInboxFile()">
-        <i class="glyphicon glyphicon-trash"></i>
-        <span id="sortList-text">删除文件</span>
+        <i class="glyphicon glyphicon-trash" style="color:lightblue"></i>
+        <span id="sortList-text" style="background-color: transparent;color:lightblue">删除文件</span>
 
     </button>
     <div class="panel panel-default" style="border-bottom:0;box-shadow:none;background-color: transparent">
-        <table class="table table-hover" style="background-color: transparent">
+        <table class="table table-hover" style="background-color: transparent;color:lightblue">
             <thead>
-            <tr style="background-color: transparent">
-                <th align="center"><input id="check_all" type="checkbox" autocomplete="off"></th>
-                <th width="20px"></th>
-                <th id="fileName">文件名称</th>
-                <th>文件大小</th>
-                <th>上传时间</th>
-                <th>操作</th>
+            <tr style="background-color: transparent;">
+                <th align="center" style="background-color: transparent">
+                    <input id="check_all" type="checkbox" autocomplete="off">
+                </th>
+                <th width="20px" style="background-color: transparent;color:lightblue"></th>
+                <th id="fileName" style="background-color: transparent">文件名称</th>
+                <th style="background-color: transparent">文件大小</th>
+                <th style="background-color: transparent">上传时间</th>
+                <th style="background-color: transparent">操作</th>
             </tr>
             </thead>
             <tbody id="docs">
@@ -54,6 +56,88 @@
 <script type="text/javascript">
 </script>
 <script src="layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['jquery'], function () {
+        var $ = layui.jquery
+        var linkId = '${param.id}'
+        $.post({
+            url: getWebProjectName() + '/getDocs.action',
+            date: linkId,
+            success: function (result, status) {
+                console.log(result)
+                console.log(status)
+                for (var i = 0; i < result.length; i++) {
+                    $('#docs').append("<tr style=\"background-color: transparent\">\n" +
+                        "                <th align=\"center\"><input id=\"check_all\" type=\"checkbox\" autocomplete=\"off\"></th>\n" +
+                        "                <th width=\"20px\"></th>\n" +
+                        "                <th id=\"fileName\">" + result[i].name + "</th>\n" +
+                        "                <th>" + result[i].size + "</th>\n" +
+                        "                <th>" + result[i].createTime + "</th>\n" +
+                        "                <th>" + '<a href="javascript:" id="close_  rows[i].id  "\n' +
+                        '           onclick="openInbox(this.id)">\n' +
+                        '            <i class="glyphicon glyphicon-pause" style="color: #d9534f;"></i>\n' +
+                        '        </a>\n' +
+                        '        <a href="javascript:" id="config_  rows[i].id  " onclick="showAction(this.id)">\n' +
+                        '            <i class="glyphicon glyphicon-cog"></i>\n' +
+                        '        </a>' + "</th>\n" +
+                        "            </tr>")
+                }
+            }
+        });
+    });
+
+    function showAction(id) {
+        $.ajax({
+            url: 'actions.html',
+            type: 'get',
+            dataType: 'html',
+            success: function (data) {
+                layer.open({
+                    content: [data, '#' + id],
+                    type: 4,
+                    area: ['200px', '225px'],
+                    shade: 0,
+                    zIndex: 1000,
+                    tips: [4, "#fff"],
+                    success: function (layero, index) {
+                        $(".config-menu").attr("id", id);
+                    }
+                });
+            }
+        });
+    }
+
+    function getWebProjectName() {
+        var webProjectName = undefined;
+        // 获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+        var pathName = window.document.location.pathname;
+        // 获取带"/"的项目名，如：/uimcardprj
+        webProjectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+
+        return webProjectName;
+    }
+
+    function showAction(id) {
+        $.ajax({
+            url: 'actions.html',
+            type: 'get',
+            dataType: 'html',
+            success: function (data) {
+                layer.open({
+                    content: [data, '#' + id],
+                    type: 4,
+                    area: ['200px', '225px'],
+                    shade: 0,
+                    zIndex: 1000,
+                    tips: [4, "#fff"],
+                    success: function (layero, index) {
+                        $(".config-menu").attr("id", id);
+                    }
+                });
+            }
+        });
+    }
+</script>
 </body>
 <script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>

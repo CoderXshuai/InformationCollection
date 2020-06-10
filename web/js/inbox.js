@@ -10,7 +10,7 @@ function getInboxId() {
 
 function load() {
     $.ajax({
-        url: getWebProjectName() + '/inbox!getInboxById.action?id=' + getInboxId(),
+        url: getWebProjectName() + 'getInboxById.action?id=' + getInboxId(),
         type: 'POST',
         success: function (data) {
             if (data.status) {

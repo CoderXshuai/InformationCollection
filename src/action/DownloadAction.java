@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 public class DownloadAction extends ActionSupport {
 
@@ -41,7 +42,7 @@ public class DownloadAction extends ActionSupport {
 
     public String getFileName() {
         try {
-            fileName = new String(fileName.getBytes("GBK"), "ISO-8859-1");
+            fileName = new String(fileName.getBytes("GBK"), StandardCharsets.ISO_8859_1);
         } catch (UnsupportedEncodingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -58,7 +59,7 @@ public class DownloadAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         // TODO Auto-generated method stub
-        File file = new File(Static.inboxPath + File.separator + fileUrl);
+        File file = new File(Static.INBOX_PATH + File.separator + fileUrl);
         try {
             inStream = new FileInputStream(file);
         } catch (Exception e) {
