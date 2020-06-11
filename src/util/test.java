@@ -10,6 +10,7 @@ import java.io.File;
 import java.util.List;
 
 public class test {
+
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("/conf/applicationContext.xml", "/conf/applicationContext-beans.xml");
 //        SessionFactory factory = (SessionFactory) context.getBean("sessionFactory");
@@ -39,7 +40,7 @@ public class test {
 
     @Test
     public void test5() {
-        File file = new File("web/upFile/logo0.png");
-        System.out.println(file.exists());
+        File file = new File("D:\\IntelliJ IDEA 2019.2.3\\InformationCollection\\src\\util\\1.json");
+        System.out.println(file.getName());
     }
 }

@@ -1,63 +1,153 @@
-<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-
-    <title>Layui</title>
-    <meta content="webkit" name="renderer">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
-    <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="js/bootstrap-fileinput-master20161101/css/fileinput.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="css/common.css" rel="stylesheet" type="text/css"/>
-    <link href="css/main.css" rel="stylesheet" type="text/css"/>
-    <link href="css/inbox.css" rel="stylesheet" type="text/css"/>
-    <link href="js/layer/skin/default/layer.css" rel="stylesheet"/>
-    <link href="layui/css/layui.css" media="all" rel="stylesheet"/>
+    <title>Struts Problem Report</title>
+    <style>
+        pre {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<li class="inbox" id="  rows[i].id  ">
-    <div class="inbox-content">
-        <a class="upvote" href="inboxFile.jsp?id=  rows[i].id  " title="收件数量(  rows[i]  ),点击查看详细信息">
-            <span class="vote-count">rows[i]</span>
-        </a>
+<h2>Struts Problem Report</h2>
+<p>
+    Struts has detected an unhandled exception:
+</p>
 
-        <div class="inbox-msg">
-            <a class="inbox-msg-url title" href="inbox.html?link=  rows[i].id  " target="_blank"
-               title="预览">
-                rows[i].title
-            </a>
-            <span class="inbox-tagline description">
-                  <span class="ctime" style="margin: 0;" title="创建时间">  rows[i].createTime  </span>
-                 <span class="endtime" title="截止时间">
-                  <i class="glyphicon glyphicon-time"></i>rows[i].endTime</span>
-            </span>
+
+<div id="exception-info">
+    <table>
+        <tr>
+            <td><strong>Messages</strong>:</td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>File</strong>:</td>
+            <td>action/DocAction.java</td>
+        </tr>
+        <tr>
+            <td><strong>Line number</strong>:</td>
+            <td>90</td>
+        </tr>
+
+    </table>
+</div>
+
+
+<div id="stacktraces">
+    <hr />
+    <h3>Stacktraces</h3>
+    <div class="stacktrace" style="padding-left: 0em">
+        <strong>java.lang.NullPointerException</strong>
+        <div>
+    <pre>
+    action.DocAction.docSub(DocAction.java:90)
+    java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    java.base/java.lang.reflect.Method.invoke(Method.java:566)
+    ognl.OgnlRuntime.invokeMethod(OgnlRuntime.java:891)
+    ognl.OgnlRuntime.callAppropriateMethod(OgnlRuntime.java:1293)
+    ognl.ObjectMethodAccessor.callMethod(ObjectMethodAccessor.java:68)
+    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethodWithDebugInfo(XWorkMethodAccessor.java:117)
+    com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethod(XWorkMethodAccessor.java:108)
+    ognl.OgnlRuntime.callMethod(OgnlRuntime.java:1369)
+    ognl.ASTMethod.getValueBody(ASTMethod.java:90)
+    ognl.SimpleNode.evaluateGetValueBody(SimpleNode.java:212)
+    ognl.SimpleNode.getValue(SimpleNode.java:258)
+    ognl.Ognl.getValue(Ognl.java:494)
+    ognl.Ognl.getValue(Ognl.java:458)
+    com.opensymphony.xwork2.ognl.OgnlUtil$2.execute(OgnlUtil.java:309)
+    com.opensymphony.xwork2.ognl.OgnlUtil.compileAndExecute(OgnlUtil.java:340)
+    com.opensymphony.xwork2.ognl.OgnlUtil.getValue(OgnlUtil.java:307)
+    com.opensymphony.xwork2.DefaultActionInvocation.invokeAction(DefaultActionInvocation.java:423)
+    com.opensymphony.xwork2.DefaultActionInvocation.invokeActionOnly(DefaultActionInvocation.java:287)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:250)
+    org.apache.struts2.interceptor.DeprecationInterceptor.intercept(DeprecationInterceptor.java:41)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:256)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor.doIntercept(DefaultWorkflowInterceptor.java:167)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.validator.ValidationInterceptor.doIntercept(ValidationInterceptor.java:265)
+    org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor.doIntercept(AnnotationValidationInterceptor.java:76)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor.intercept(ConversionErrorInterceptor.java:138)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:229)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:191)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.MultiselectInterceptor.intercept(MultiselectInterceptor.java:73)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.DateTextFieldInterceptor.intercept(DateTextFieldInterceptor.java:125)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:91)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:253)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:100)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:141)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:145)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:171)
+    com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:139)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:164)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:193)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:189)
+    com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+    org.apache.struts2.impl.StrutsActionProxy.execute(StrutsActionProxy.java:54)
+    org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:564)
+    org.apache.struts2.dispatcher.ng.ExecuteOperations.executeAction(ExecuteOperations.java:81)
+    org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:99)
+    org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+    org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+    org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+    org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+    org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+    org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:688)
+    org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+    org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+    org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+    org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+    org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+    org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1594)
+    org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+    java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+    java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+    org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+    java.base/java.lang.Thread.run(Thread.java:834)
+    </pre>
         </div>
     </div>
+</div>
 
-
-    <div class="inbox-actions">
-        <a href="javascript:" id="link_  rows[i].id  "
-           onclick="showLink(this.id)" title="获取收件夹地址">
-            <i class="glyphicon glyphicon-link"></i>
-        </a>
-        <a href="javascript:" id="time_  rows[i].id  "
-           onclick="showEndTime(this.id,this.title)" title="截止时间:  rows[i].endTime  ">
-            <i class="glyphicon glyphicon-time"></i>
-        </a>
-        <a href="javascript:" id="close_  rows[i].id  "
-           onclick="openInbox(this.id)">
-            <i class="glyphicon glyphicon-pause" style="color: #d9534f;"></i>
-        </a>
-        <a href="javascript:" id="config_  rows[i].id  " onclick="showAction(this.id)">
-            <i class="glyphicon glyphicon-cog"></i>
-        </a>
-
-    </div>
-
-
-</li>
+<div class="footer">
+    <hr />
+    <p>
+        You are seeing this page because development mode is enabled.  Development mode, or devMode, enables extra
+        debugging behaviors and reports to assist developers.  To disable this mode, set:
+    <pre>
+  struts.devMode=false
+</pre>
+    in your <code>WEB-INF/classes/struts.properties</code> file.
+    </p>
 </div>
 </body>
+</html>

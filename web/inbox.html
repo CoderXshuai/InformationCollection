@@ -35,10 +35,10 @@
         </li>
     </ul>
     <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
-        <img src="img/bg/bg_inbox_form.jpg">
+        <img src="img/bg/bg_inbox_file.jpg">
     </div>
     <div class="layui-col-xs6 layui-col-sm6 layui-col-md4 clearfix layui-anim layui-anim-up ">
-        <form action="" class="layui-form layui-form-pane " name="frm">
+        <form action="" class="layui-form layui-form-pane " id="form" name="form">
             <div class="layui-form-item ">
                 <label class="layui-form-label layui-bg-blue">姓名:</label>
                 <div class="layui-input-block ">
@@ -68,9 +68,10 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-block">
-                    <label class="layui-form-label">日期选择</label>
-                    <div class="layui-input-block" lay-search>
-                        <input autocomplete="off" class="layui-input" id="date1" name="date" type="date">
+                    <label class="layui-form-label">生日</label>
+                    <div class="layui-input-block">
+                        <input autocomplete="off" class="layui-input" id="date" lay-verify="date" name="birthday"
+                               placeholder="yyyy-MM-dd" type="text">
                     </div>
                 </div>
             </div>
@@ -88,7 +89,7 @@
             <div class="layui-form-item" pane>
                 <label class="layui-form-label layui-bg-blue">省市:</label>
                 <div class="layui-input-block">
-                    <select id="s1" lay-filter="s1" lay-search name="s1">
+                    <select id="s1" lay-filter="s1" lay-search name="province">
                         <option selected value="请选择">请选择</option>
                     </select>
                 </div>
@@ -96,7 +97,7 @@
             <div class="layui-form-item" pane>
                 <label class="layui-form-label layui-bg-blue">市区:</label>
                 <div class="layui-input-block">
-                    <select id="s2" lay-search name="s2">
+                    <select id="s2" lay-search name="city">
                         <option selected value="请选择">请选择</option>
                     </select>
                 </div>
@@ -104,10 +105,10 @@
             <div class="layui-form-item" pane="null">
                 <label class="layui-form-label">爱好</label>
                 <div class="layui-input-block">
-                    <input name="like[write]" title="写作" type="checkbox">
-                    <input name="like[read]" title="阅读" type="checkbox">
-                    <input name="like[music]" title="听音乐" type="checkbox">
-                    <input name="like[movie]" title="看电影" type="checkbox">
+                    <input name="hobby" title="写作" type="checkbox" value="write">
+                    <input name="hobby" title="阅读" type="checkbox" value="read">
+                    <input name="hobby" title="听音乐" type="checkbox" value="music">
+                    <input name="hobby" title="看电影" type="checkbox" value="movie">
                 </div>
             </div>
             <div class="layui-form-item layui-form-text">
@@ -115,7 +116,7 @@
                     <span class="line-post-block">个人自我介绍</span>
                 </div>
                 <div class="layui-input-block">
-                    <textarea class="layui-textarea" id="intro" name="desc" placeholder="请输入内容"
+                    <textarea class="layui-textarea" id="intro" name="intro" placeholder="请输入内容"
                               style="color: lightblue"></textarea>
                 </div>
             </div>
@@ -143,11 +144,15 @@
 <script src="layui/layui.js"></script>
 <script>
     //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use(['jquery', 'form'], function () {
+    layui.use(['jquery', 'form', 'laydate'], function () {
         var form = layui.form;
         var $ = layui.jquery;
+        var laydate = layui.laydate;
         var s1 = $('#s1')
         var s2 = $('#s2')
+        laydate.render({
+            elem: '#date' //指定元素
+        });
         for (var i = 0; i < provinceArr.length; i++) {
             s1.append("<option class='optiontest' value = '" + i + "' > " + provinceArr[i] + "</option>");
         }
@@ -167,9 +172,29 @@
         $("span").css({"background-color": "transparent"})
         $(".layui-textarea").css({"background-color": "transparent"})
         $('#submit').click(function () {
-
+            console.log(5)
+            var form = $('#form').serializeArray();
+            var json = JSON.stringify(form)
+            console.log(json)
+            $.ajax({
+                url: getWebProjectName() + '/docSub.action',
+                data: {"form": json},
+                success: function (data) {
+                    console.log(data)
+                }
+            })
         });
     })
+
+    function getWebProjectName() {
+        var webProjectName = undefined;
+        // 获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+        var pathName = window.document.location.pathname;
+        // 获取带"/"的项目名，如：/uimcardprj
+        webProjectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+
+        return webProjectName;
+    }
 </script>
 </body>
 <script src="js/info.js"></script>

@@ -6,6 +6,7 @@ import dao.FileHashDao;
 import model.Doc;
 import model.Inbox;
 import service.DocService;
+import util.JSONUtils;
 import util.MyUtils;
 import util.Static;
 
@@ -88,5 +89,18 @@ public class DocServiceImpl implements DocService {
 //        String hql = "from Doc where inboxId ='" + inboxId+"'";
         docs = docDao.get(hql);
         return docs;
+    }
+
+    @Override
+    public File writeJSON(String json) {
+        try {
+            String uuid = UUID.randomUUID().toString().replace("-", "").toLowerCase();
+            Object jsonObject = JSONUtils.convertToJSON(json, uuid);
+            File file = JSONUtils.createJSONFile(jsonObject, uuid);
+            return file;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

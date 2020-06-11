@@ -2,6 +2,7 @@ package service;
 
 import model.Doc;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -24,4 +25,12 @@ public interface DocService {
      * @return 该收件箱下所有的doc
      */
     List<Doc> getDocs(String inboxId);
+
+    /**
+     * 写入json
+     *
+     * @param json 前端传过来的json字符串
+     * @return 返回json文件名(UUID)
+     */
+    File writeJSON(String json);
 }
