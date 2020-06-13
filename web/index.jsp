@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>收件夹</title>
     <link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/common.css"/>
     <link rel="stylesheet" type="text/css" href="js/layer/skin/default/layer.css"/>

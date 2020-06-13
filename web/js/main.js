@@ -21,96 +21,6 @@ function loadInbox(sortId) {
     })
 }
 
-function showInbox(rows) {
-    $(".inboxs-group").html(""); // 清空列表
-    for (var i = 0; i < rows.length; i++) {
-        var content = undefined;
-        //是否标星
-        if (rows[i].star === 0) {
-            content = '<li style="background-color: transparent;color:lightblue" class="inbox" id="' + rows[i].id + '">'
-                + '<div class="inbox-content" style="background-color: transparent">'
-                + '<a class="upvote" href="getWebProjectName()/inboxFile.jsp?id=' + rows[i].id + '" title="收件数量(' + rows[i] + '),点击查看详细信息">'
-                + '<span class="vote-count">' + rows[i] + '</span>'
-                + '</a>'
-                + '<div class="inbox-msg">'
-                + '<a class="inbox-msg-url title" title="预览" href="getWebProjectName()/inbox.html?link=' + rows[i].id + '" target="_blank">'
-                + rows[i].title
-                + '</a> <span class="inbox-tagline description">'
-                + ' <span class="ctime" style="margin: 0;" title="创建时间">' + rows[i].createTime.split(" ")[0] + '</span>'
-                + '<span class="endtime" title="截止时间"> '
-                + ' <i class="glyphicon glyphicon-time"></i>'
-                + rows[i].endTime.split(" ")[0]
-                + '	</span>'
-                + '</span>'
-                + '</div>'
-                + '</div>'
-                + '<div class="inbox-actions">'
-                + '<a href="javascript:;" id="link_' + rows[i].id + '" '
-                + 'onclick="showLink(this.id)" title="获取收件夹地址">'
-                + '<i class="glyphicon glyphicon-link"></i>'
-                + '</a> <a href="javascript:;" id="time_' + rows[i].id + '"'
-                + 'onclick="showEndTime(this.id,this.title)" title="截止时间:' + rows[i].endTime.split(" ")[0] + '">'
-                + '<i class="glyphicon glyphicon-time"></i></a> ';
-        } else {
-            content = '<li class="inbox" id="' + rows[i].id + '">'
-                + '<div class="inbox-content">'
-                + '<a class="upvote" href="http://localhost:8080/InformationCollection_war_exploded/inboxFile.jsp?id=' + rows[i].id + '" title="收件数量(0),点击查看详细信息">'
-                + '<span class="vote-count">' + rows[i] + '</span>'
-                + '</a>'
-                + '<div class="inbox-msg">'
-                + '<a class="inbox-msg-url title" title="预览" href="http://localhost:8080/InformationCollection_war_exploded/inbox.html?link=' + rows[i].id + '" target="_blank">'
-                + rows[i].title
-                + ' <i class="glyphicon glyphicon-star"'
-                + 'style="font-size: 14px; color: #f0ad4e;"></i>'
-                + '</a> <span class="inbox-tagline description">'
-                + ' <span class="ctime" style="margin: 0;" title="创建时间">' + rows[i].createTime.split(" ")[0] + '</span>'
-                + '<span class="endtime" title="截止时间"> '
-                + ' <i class="glyphicon glyphicon-time"></i>'
-                + rows[i].endTime.split(" ")[0]
-                + '	</span>'
-                + '</span>'
-                + '</div>'
-                + '</div>'
-                + '<div class="inbox-actions">'
-                + '<a href="javascript:;" id="link_' + rows[i].id + '" '
-                + 'onclick="showLink(this.id)" title="获取收件夹地址">'
-                + '<i class="glyphicon glyphicon-link"></i>'
-                + '</a> <a href="javascript:;" id="time_' + rows[i].id + '"'
-                + 'onclick="showEndTime(this.id,this.title)" title="截止时间:' + rows[i].endTime.split(" ")[0] + '">'
-                + '<i class="glyphicon glyphicon-time"></i></a> ';
-        }
-
-        //是否加密
-        if (rows[i].password != null && rows[i].password != "") {
-            content += '<a href="javascript:;" id="password_' + rows[i].password + '" '
-                + 'onclick="showPwdLink(this.id)"> '
-                + '<i class="glyphicon glyphicon-lock" style="color: #5cb85c;"></i></a>';
-        }
-
-        //是否关闭
-        if (rows[i].status == 0) {
-            content += '<a href="javascript:;" id="open_' + rows[i].id + '" '
-                + 'onclick="closeInbox(this.id)"> '
-                + '<i class="glyphicon glyphicon-play" style="color: #5cb85c;"></i></a>'
-
-                + '<a id="config_' + rows[i].id + '" href="javascript:;" onclick="showAction(this.id)">'
-                + '<i class="glyphicon glyphicon-cog"></i>'
-                + '</a>'
-                + '</div>'
-                + '</li>';
-        } else {
-            content += '<a href="javascript:;"  id="close_' + rows[i].id + '" '
-                + 'onclick="openInbox(this.id)"> '
-                + '<i class="glyphicon glyphicon-pause" style="color: #d9534f;"></i></a>'
-                + '<a id="config_' + rows[i].id + '" href="javascript:;" onclick="showAction(this.id)">'
-                + '<i class="glyphicon glyphicon-cog"></i>'
-                + '</a>'
-                + '</div>'
-                + '</li>';
-        }
-        $(".inboxs-group").append(content);
-    }
-}
 
 function sortInbox(id, title) {
     $("#sortList-text").html(title);
@@ -125,7 +35,7 @@ function setEndTime(id) {
         endTime: endTime
     }
     $.ajax({
-        url: getWebProjectName() + '/inbox!updateEndTime.action',
+        url: getWebProjectName() + '/updateEndTime.action',
         type: 'POST',
         data: data,
         dataType: 'json',
@@ -149,7 +59,7 @@ function setCloseReason(id) {
         closeReason: reason
     }
     $.ajax({
-        url: getWebProjectName() + '/inbox!closeInbox.action',
+        url: getWebProjectName() + '/closeInbox.action',
         type: 'POST',
         data: data,
         dataType: 'json',
@@ -170,7 +80,7 @@ function openInbox(id) {
     var inbox_id = id.split("_")[1];
     // 确定开启后
     $.ajax({
-        url: getWebProjectName() + '/inbox!openInbox.action?id=' + inbox_id,
+        url: getWebProjectName() + '/openInbox.action?id=' + inbox_id,
         type: 'POST',
         success: function (data) {
             if (data.status) {
@@ -188,7 +98,7 @@ function openInbox(id) {
 function showLink(id) {
     // 这里的id 加上标号 link_id
     var inbox_id = id.split("_")[1];
-    var url = 'http://localhost:8080' + getWebProjectName() + '/inbox.html?link=' + inbox_id;
+    var url = '/inbox.html?link=' + inbox_id;
     var data = '<h3 style="color: #000 ;margin-top: 0px;font-size: 16px;line-height: 20px;padding: 2px 15px;">收件地址</h3>'
         + '<ul class="config-menu">'
         + '<li class="divider"></li>'
@@ -270,30 +180,6 @@ function showEndTime(id, title) {
     });
 }
 
-function showPassWd() {
-    var id = $(".config-menu").attr("id");
-    var inbox_id = id.split("_")[1];
-    var data = '<ul class="config-menu" style="margin: 20px 20px;list-style: none;">'
-        + '<li>'
-        + '<div class="input-group">'
-        + '<input  type="password"  id="inbox_pwd"  class="form-control">'
-        + '</div>'
-        + '</li>'
-        + '<li>'
-        + '<div class="input-group">'
-        + '<button onclick="closeLayer()" class="btn btn-default" type="button" style="margin-top:10px;margin-left:90px">取消</button>'
-        + '<button onclick="setInboxPwd(\'' + inbox_id + '\')" class="btn btn-success" type="button" style="margin-top:10px;margin-left:10px">确定</button>'
-        + '</div>' + '</li>' + '</ul>';
-    layer.open({
-        content: data,
-        type: 1,
-        area: ['270px', '170px'], // 宽
-        zIndex: 1000,
-        title: '设置收件夹密码'
-    });
-
-}
-
 
 function showInboxForm() {
     $.ajax({
@@ -312,31 +198,6 @@ function showInboxForm() {
     });
 }
 
-function closeInbox(id) {
-    var inbox_id = id.split("_")[1];
-    var data = '<h3 style="color: #000 ;background-color: transparent;margin-top: 0px;font-size: 16px;line-height: 20px;padding: 2px 15px;">设置关闭原因</h3>'
-        + '<ul class="config-menu">'
-        + '<li class="divider"></li>'
-        + '<li style="height: 101px;">'
-        +
-
-        '<textarea  id="close_reason" type="text"  class="form-control" rows="3">收件已停止</textarea>'
-        + '<span style="color: #999;font-size: 12px;">自定义暂停/停止原因,会在收件页显示</span>'
-        + '</li>'
-        + '<li>'
-        + '<div class="input-group">'
-        + '<button onclick="closeLayer()" class="btn btn-default" type="button" style="margin-top:20px;margin-left:80px">取消</button>'
-        + '<button onclick="setCloseReason(\'' + inbox_id + '\')" class="btn btn-danger" type="button" style="margin-top:20px;margin-left:10px">确定停止</button>'
-        + '</div>' + '</li>' + '</ul>';
-    layer.open({
-        content: [data, '#' + id],
-        type: 4,
-        area: ['270px', '220px'],
-        shade: 0,
-        zIndex: 1000,
-        tips: [4, "#fff"],
-    });
-}
 
 function closeLayer() {
     layer.close(layer.index);
@@ -371,45 +232,6 @@ function showAction(id) {
                     $(".config-menu").attr("id", id);
                 }
             });
-        }
-    });
-}
-
-
-function star() {
-    var id = $(".config-menu").attr("id");
-    var inbox_id = id.split("_")[1];
-    $.ajax({
-        url: getWebProjectName() + '/inbox!star.action?id=' + inbox_id,
-        type: 'POST',
-        success: function (data) {
-            if (data.status) {
-                // 设置成功后
-                loadInbox();
-                closeLayer();
-                showSuccessMsg(data.msg);
-            } else {
-                showErrorMsg(data.msg);
-            }
-        }
-    });
-}
-
-function cancelStar() {
-    var id = $(".config-menu").attr("id");
-    var inbox_id = id.split("_")[1];
-    $.ajax({
-        url: getWebProjectName() + '/inbox!cancelStar.action?id=' + inbox_id,
-        type: 'POST',
-        success: function (data) {
-            if (data.status) {
-                // 设置成功后
-                loadInbox();
-                closeLayer();
-                showSuccessMsg(data.msg);
-            } else {
-                showErrorMsg(data.msg);
-            }
         }
     });
 }

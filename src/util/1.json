@@ -1,12 +1,42 @@
-{
-  "": "",
-  "age": "18",
-  "birthday": "2020-06-13",
-  "city": "塘沽区",
-  "hobby": "[write]",
-  "intro": "你好",
-  "name": "许帅",
-  "num": "201877100332",
-  "province": "天津市",
-  "sex": "男"
-}
+[
+  {
+    "name": "name",
+    "value": "1"
+  },
+  {
+    "name": "num",
+    "value": "1"
+  },
+  {
+    "name": "age",
+    "value": "1"
+  },
+  {
+    "name": "birthday",
+    "value": "2020-06-09"
+  },
+  {
+    "name": "sex",
+    "value": "男"
+  },
+  {
+    "name": "province",
+    "value": "2"
+  },
+  {
+    "name": "city",
+    "value": "1"
+  },
+  {
+    "name": "hobby",
+    "value": "write"
+  },
+  {
+    "name": "hobby",
+    "value": "movie"
+  },
+  {
+    "name": "intro",
+    "value": "1"
+  }
+]

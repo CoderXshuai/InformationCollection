@@ -175,10 +175,12 @@
             console.log(5)
             var form = $('#form').serializeArray();
             var json = JSON.stringify(form)
+            var inboxId = '${param.link}'
+            console.log(inboxId)
             console.log(json)
             $.ajax({
                 url: getWebProjectName() + '/docSub.action',
-                data: {"form": json},
+                data: {"form": json, "inboxId": inboxId},
                 success: function (data) {
                     console.log(data)
                 }

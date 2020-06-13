@@ -20,15 +20,16 @@
         <tr>
             <td><strong>Messages</strong>:</td>
             <td>
+                <li>unexpected char: 'b' [from model.Doc where inboxId =402881eb72a2a5230172a2a84e1a0000]</li>
             </td>
         </tr>
         <tr>
             <td><strong>File</strong>:</td>
-            <td>action/DocAction.java</td>
+            <td>org/hibernate/hql/internal/ast/QueryTranslatorImpl.java</td>
         </tr>
         <tr>
             <td><strong>Line number</strong>:</td>
-            <td>90</td>
+            <td>234</td>
         </tr>
 
     </table>
@@ -36,18 +37,42 @@
 
 
 <div id="stacktraces">
-    <hr/>
+    <hr />
     <h3>Stacktraces</h3>
     <div class="stacktrace" style="padding-left: 0em">
-        <strong>java.lang.NullPointerException</strong>
+        <strong>org.hibernate.QueryException: unexpected char: 'b' [from model.Doc where inboxId =402881eb72a2a5230172a2a84e1a0000]</strong>
         <div>
     <pre>
-    action.DocAction.docSub(DocAction.java:90)
+    org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:234)
+    org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:142)
+    org.hibernate.engine.query.spi.HQLQueryPlan.&lt;init&gt;(HQLQueryPlan.java:115)
+    org.hibernate.engine.query.spi.HQLQueryPlan.&lt;init&gt;(HQLQueryPlan.java:76)
+    org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:150)
+    org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:302)
+    org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:240)
+    org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1894)
+    dao.impl.BaseDaoImpl.get(BaseDaoImpl.java:96)
+    service.impl.DocServiceImpl.getDocs(DocServiceImpl.java:90)
     java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
     java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
     java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
     java.base/java.lang.reflect.Method.invoke(Method.java:566)
-    ognl.OgnlRuntime.invokeMethod(OgnlRuntime.java:891)
+    org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+    org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+    org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+    org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:294)
+    org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+    org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+    org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:93)
+    org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+    org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+    com.sun.proxy.$Proxy39.getDocs(Unknown Source)
+    action.DocAction.getDocs(DocAction.java:83)
+    java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+    java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    java.base/java.lang.reflect.Method.invoke(Method.java:566)
+    ognl.OgnlRuntime.invokeMethod(OgnlRuntime.java:870)
     ognl.OgnlRuntime.callAppropriateMethod(OgnlRuntime.java:1293)
     ognl.ObjectMethodAccessor.callMethod(ObjectMethodAccessor.java:68)
     com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor.callMethodWithDebugInfo(XWorkMethodAccessor.java:117)
@@ -139,10 +164,10 @@
 </div>
 
 <div class="footer">
-    <hr/>
+    <hr />
     <p>
-        You are seeing this page because development mode is enabled. Development mode, or devMode, enables extra
-        debugging behaviors and reports to assist developers. To disable this mode, set:
+        You are seeing this page because development mode is enabled.  Development mode, or devMode, enables extra
+        debugging behaviors and reports to assist developers.  To disable this mode, set:
     <pre>
   struts.devMode=false
 </pre>

@@ -85,8 +85,8 @@ public class DocServiceImpl implements DocService {
     public List<Doc> getDocs(String inboxId) {
         List<Doc> docs = new ArrayList<Doc>();
         // 获取该inbox的所有doc
-        String hql = "from Doc where inboxId ='402881eb729d551601729d57510a0001'";
-//        String hql = "from Doc where inboxId ='" + inboxId+"'";
+//        String hql = "from Doc where inboxId ='402881eb729d551601729d57510a0001'";
+        String hql = "from Doc where inboxId ='" + inboxId + "'";
         docs = docDao.get(hql);
         return docs;
     }

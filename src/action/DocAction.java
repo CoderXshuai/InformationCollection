@@ -79,12 +79,15 @@ public class DocAction implements ModelDriven<Doc> {
     }
 
     public String getDocs() {
+        System.out.println(linkId);
         result = docService.getDocs(linkId);
         return "getDocs";
     }
 
     public String docSub() {
         String form = MyUtils.getReq().getParameter("form");
+        String inboxId = MyUtils.getReq().getParameter("inboxId");
+        System.out.println(inboxId + "inboxId");
         File file = docService.writeJSON(form);
         doc.setUploadFile(file);
         doc.setUploadFileContentType("json");
@@ -92,6 +95,7 @@ public class DocAction implements ModelDriven<Doc> {
         doc.setName(file.getName());
         doc.setSize((file.length() / 1024 + 1) + "kb");
         doc.setUrl(file.getAbsolutePath());
+        docService.upload(doc, inboxId);
         MyUtils.outMsg("上传成功!", true);
         return "docSub";
     }

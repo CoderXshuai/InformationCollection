@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <title>主页</title>
     <link rel="stylesheet"
           href="<s:url value='js/bootstrap/css/bootstrap.min.css'/>"/>
     <link rel="stylesheet" href="<s:url value='css/common.css'/>"/>
@@ -14,7 +14,7 @@
           href="<s:url value='js/datetimepicker/jquery.datetimepicker.css'/>"/>
     <link rel="stylesheet" href="<s:url value='css/main.css'/>"/>
 </head>
-<body onload="load()">
+<body>
 <jsp:include page="header.jsp"/>
 <!--主内容开始-->
 <div class="container clearfix main-content" style="background-color: transparent;color:lightblue">
@@ -77,6 +77,97 @@
                 }
             });
         });
+
+        function showInbox(rows) {
+            $(".inboxs-group").html(""); // 清空列表
+            for (var i = 0; i < rows.length; i++) {
+                var content = undefined;
+                //是否标星
+                if (rows[i].star === 0) {
+                    content = '<li style="background-color: transparent;color:lightblue" class="inbox" id="' + rows[i].logo + '">'
+                        + '<div class="inbox-content" style="background-color: transparent">'
+                        + '<a class="upvote" href=${pageContext.request.contextPath}/inboxFile.jsp?id=' + rows[i].id + ' title="收件数量(' + rows[i] + '),点击查看详细信息">'
+                        + '<span class="vote-count">' + rows[i] + '</span>'
+                        + '</a>'
+                        + '<div class="inbox-msg">'
+                        + '<a class="inbox-msg-url title" title="预览" href="inbox.jsp?link=' + rows[i].id + '" target="_blank">'
+                        + rows[i].title
+                        + '</a> <span class="inbox-tagline description">'
+                        + ' <span class="ctime" style="margin: 0;" title="创建时间">' + rows[i].createTime.split(" ")[0] + '</span>'
+                        + '<span class="endtime" title="截止时间"> '
+                        + ' <i class="glyphicon glyphicon-time"></i>'
+                        + rows[i].endTime.split(" ")[0]
+                        + '	</span>'
+                        + '</span>'
+                        + '</div>'
+                        + '</div>'
+                        + '<div class="inbox-actions">'
+                        + '<a href="javascript:;" id="link_' + rows[i].id + '" '
+                        + 'onclick="showLink(this.id)" title="获取收件夹地址">'
+                        + '<i class="glyphicon glyphicon-link"></i>'
+                        + '</a> <a href="javascript:;" id="time_' + rows[i].id + '"'
+                        + 'onclick="showEndTime(this.id,this.title)" title="截止时间:' + rows[i].endTime.split(" ")[0] + '">'
+                        + '<i class="glyphicon glyphicon-time"></i></a> ';
+                } else {
+                    content = '<li class="inbox" id="' + rows[i].id + '">'
+                        + '<div class="inbox-content">'
+                        + '<a class="upvote" href=${pageContext.request.contextPath}/inboxFile.jsp?id=' + rows[i].id + ' title="收件数量(0),点击查看详细信息">'
+                        + '<span class="vote-count">' + rows[i] + '</span>'
+                        + '</a>'
+                        + '<div class="inbox-msg">'
+                        + '<a class="inbox-msg-url title" title="预览" href=${pageContext.request.contextPath}/inbox.jsp?link=' + rows[i].id + ' target="_blank">'
+                        + rows[i].title
+                        + ' <i class="glyphicon glyphicon-star"'
+                        + 'style="font-size: 14px; color: #f0ad4e;"></i>'
+                        + '</a> <span class="inbox-tagline description">'
+                        + ' <span class="ctime" style="margin: 0;" title="创建时间">' + rows[i].createTime.split(" ")[0] + '</span>'
+                        + '<span class="endtime" title="截止时间"> '
+                        + ' <i class="glyphicon glyphicon-time"></i>'
+                        + rows[i].endTime.split(" ")[0]
+                        + '	</span>'
+                        + '</span>'
+                        + '</div>'
+                        + '</div>'
+                        + '<div class="inbox-actions">'
+                        + '<a href="javascript:;" id="link_' + rows[i].id + '" '
+                        + 'onclick="showLink(this.id)" title="获取收件夹地址">'
+                        + '<i class="glyphicon glyphicon-link"></i>'
+                        + '</a> <a href="javascript:;" id="time_' + rows[i].id + '"'
+                        + 'onclick="showEndTime(this.id,this.title)" title="截止时间:' + rows[i].endTime.split(" ")[0] + '">'
+                        + '<i class="glyphicon glyphicon-time"></i></a> ';
+                }
+
+                //是否加密
+                if (rows[i].password != null && rows[i].password != "") {
+                    content += '<a href="javascript:;" id="password_' + rows[i].password + '" '
+                        + 'onclick="showPwdLink(this.id)"> '
+                        + '<i class="glyphicon glyphicon-lock" style="color: #5cb85c;"></i></a>';
+                }
+
+                //是否关闭
+                if (rows[i].status == 0) {
+                    content += '<a href="javascript:;" id="open_' + rows[i].id + '" '
+                        + 'onclick="closeInbox(this.id)"> '
+                        + '<i class="glyphicon glyphicon-play" style="color: #5cb85c;"></i></a>'
+
+                        + '<a id="config_' + rows[i].id + '" href="javascript:;" onclick="showAction(this.id)">'
+                        + '<i class="glyphicon glyphicon-cog"></i>'
+                        + '</a>'
+                        + '</div>'
+                        + '</li>';
+                } else {
+                    content += '<a href="javascript:;"  id="close_' + rows[i].id + '" '
+                        + 'onclick="openInbox(this.id)"> '
+                        + '<i class="glyphicon glyphicon-pause" style="color: #d9534f;"></i></a>'
+                        + '<a id="config_' + rows[i].id + '" href="javascript:;" onclick="showAction(this.id)">'
+                        + '<i class="glyphicon glyphicon-cog"></i>'
+                        + '</a>'
+                        + '</div>'
+                        + '</li>';
+                }
+                $(".inboxs-group").append(content);
+            }
+        }
     });
 </script>
 </body>

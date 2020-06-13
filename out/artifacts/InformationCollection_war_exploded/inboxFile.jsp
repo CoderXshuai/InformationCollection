@@ -60,9 +60,10 @@
     layui.use(['jquery'], function () {
         var $ = layui.jquery
         var linkId = '${param.id}'
+        console.log(linkId)
         $.post({
             url: getWebProjectName() + '/getDocs.action',
-            date: linkId,
+            data: 'linkId=' + linkId,
             success: function (result, status) {
                 console.log(result)
                 console.log(status)
@@ -115,27 +116,6 @@
         webProjectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
 
         return webProjectName;
-    }
-
-    function showAction(id) {
-        $.ajax({
-            url: 'actions.html',
-            type: 'get',
-            dataType: 'html',
-            success: function (data) {
-                layer.open({
-                    content: [data, '#' + id],
-                    type: 4,
-                    area: ['200px', '225px'],
-                    shade: 0,
-                    zIndex: 1000,
-                    tips: [4, "#fff"],
-                    success: function (layero, index) {
-                        $(".config-menu").attr("id", id);
-                    }
-                });
-            }
-        });
     }
 </script>
 </body>
