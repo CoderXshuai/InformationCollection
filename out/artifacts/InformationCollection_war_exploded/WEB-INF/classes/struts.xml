@@ -42,7 +42,9 @@
                 <param name="root">result</param>
             </result>
         </action>
+        <action name="changePwd" class="userAction" method="changePwd">
 
+        </action>
         <action name="addInbox" class="inboxAction" method="addInbox">
             <!-- 上传 -->
             <interceptor-ref name="fileUpload">
@@ -79,14 +81,12 @@
                 <param name="contentDisposition">attachment;filename="${fileName}"</param>
             </result>
         </action>
+        <action name="delDoc" class="docAction" method="delDoc">
+            <result name="docSub" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
     </package>
-    <!--    <package name="userTest" extends="json-default">-->
-    <!--        <action name="userSMS" class="userAction">-->
-    <!--            <result type="json">-->
-    <!--                <-->
-    <!--            </result>-->
-    <!--        </action>-->
-    <!--    </package>-->
     <package name="test" extends="json-default">
         <action name="test" class="action.TestAction">
             <result type="json">

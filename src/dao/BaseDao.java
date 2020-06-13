@@ -17,7 +17,7 @@ public interface BaseDao<T> {
     Serializable save(T obj);
 
     /**
-     * 按id删除记录
+     * 按实例化对象删除记录
      *
      * @param obj
      */

@@ -3,7 +3,6 @@ package action;
 
 import com.opensymphony.xwork2.ModelDriven;
 import model.Doc;
-import org.junit.Test;
 import service.DocService;
 import util.MyUtils;
 
@@ -72,12 +71,6 @@ public class DocAction implements ModelDriven<Doc> {
         this.file = file;
     }
 
-    @Test
-    public void upload() {
-        docService.upload(doc, linkId);
-        MyUtils.outMsg("上传成功!", true);
-    }
-
     public String getDocs() {
         System.out.println(linkId);
         result = docService.getDocs(linkId);
@@ -87,16 +80,21 @@ public class DocAction implements ModelDriven<Doc> {
     public String docSub() {
         String form = MyUtils.getReq().getParameter("form");
         String inboxId = MyUtils.getReq().getParameter("inboxId");
-        System.out.println(inboxId + "inboxId");
+        System.out.println(form);
         File file = docService.writeJSON(form);
         doc.setUploadFile(file);
         doc.setUploadFileContentType("json");
         doc.setUploadFileFileName(file.getName());
-        doc.setName(file.getName());
-        doc.setSize((file.length() / 1024 + 1) + "kb");
         doc.setUrl(file.getAbsolutePath());
         docService.upload(doc, inboxId);
         MyUtils.outMsg("上传成功!", true);
         return "docSub";
+    }
+
+    public String delDoc() {
+        String inboxId = MyUtils.getReq().getParameter("inboxId");
+        docService.del(inboxId);
+        MyUtils.outMsg("删除成功!", true);
+        return "success";
     }
 }

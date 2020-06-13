@@ -14,7 +14,7 @@
           href="<s:url value='js/datetimepicker/jquery.datetimepicker.css'/>"/>
     <link rel="stylesheet" href="<s:url value='css/main.css'/>"/>
 </head>
-<body onload="load()">
+<body>
 <jsp:include page="header.jsp"/>
 <!--主内容开始-->
 <div class="container clearfix main-content" style="background-color: transparent;color:lightblue">
@@ -84,9 +84,9 @@
                 var content = undefined;
                 //是否标星
                 if (rows[i].star === 0) {
-                    content = '<li style="background-color: transparent;color:lightblue" class="inbox" id="' + rows[i].logo + '">'
+                    content = '<li style="background-color: transparent;color:lightblue" class="inbox" id="' + rows[i].title + '">'
                         + '<div class="inbox-content" style="background-color: transparent">'
-                        + '<a class="upvote" href=${pageContext.request.contextPath}/inboxFile.jsp?id=' + rows[i].id + ' title="收件数量(' + rows[i] + '),点击查看详细信息">'
+                        + '<a class="upvote" href=${pageContext.request.contextPath}/inboxFile.jsp?title=' + rows[i].title + '&id=' + rows[i].id + ' title="收件数量(' + rows[i] + '),点击查看详细信息">'
                         + '<span class="vote-count">' + rows[i] + '</span>'
                         + '</a>'
                         + '<div class="inbox-msg">'

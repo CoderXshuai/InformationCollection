@@ -57,8 +57,9 @@
 
 </script>
 <script>
-    layui.use(['jquery'], function () {
+    layui.use(['jquery', 'layer'], function () {
         var $ = layui.jquery;
+        var layer = layui.layer;
         var countdown = 60; //验证倒计时
         $("#getWord").bind('click', function () {
             var email = $("input[name='email']").val();

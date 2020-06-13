@@ -18,7 +18,7 @@
 <jsp:include page="header.jsp"/>
 <div class="container">
     <div class="left_ct">
-        <div class="panel panel-default" style="background-color:rgba(0,0,0,0);">
+        <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <strong>我的信息</strong>
@@ -26,8 +26,6 @@
             </div>
             <ul class="list-group">
                 <li onclick="showCont('cont_pwd')" class="list-group-item liActive">修改密码</li>
-                <li onclick="showCont('cont_headImg')" class="list-group-item">修改头像
-                </li>
             </ul>
         </div>
 
@@ -53,7 +51,12 @@
                                                                     maxlength="16" type="password" class="form-control"
                                                                     placeholder="建议6-16位的数字、字母、符号的组合密码"
                                                                     required="required"/></td>
-                        <td id="password_Tips2" class="default"><span>弱</span><span>中</span><span>强</span>请牢记新密码</td>
+                        <td id="password_Tips2" class="default" style="color: lightblue"><span
+                                style="background-color: transparent;color: lightblue">弱</span><span
+                                style="background-color: transparent;color: lightblue">中</span><span
+                                style="background-color: transparent;color: lightblue">强</span>
+                            请牢记新密码
+                        </td>
                     </tr>
                     <tr>
                         <td style="color: lightblue">确认密码</td>
@@ -62,7 +65,7 @@
                                                                          maxlength="16" type="password"
                                                                          class="form-control"
                                                                          placeholder="再次输入密码" required="required"/></td>
-                        <td id="password_Tips3">再次输入新密码</td>
+                        <td id="password_Tips3" style="color: lightblue">再次输入新密码</td>
                     </tr>
                 </table>
 
@@ -70,44 +73,115 @@
                                                  type="submit" value="保存更改"/></label>
             </form>
         </div>
-        <div id="cont_headImg" class="showcont" style="display: none;">
-            <form id="frmChangeImg" action="">
-                <h4>当前我的头像</h4>
-                <p>如果您还没有设置自己的头像，系统会显示为默认头像，您需要自己上传一张新照片来作为自己的个人头像</p>
-                <div id="Imgdiv">
-                    <img id="Img"
-                         src="${pageContext.request.contextPath}/user!getHeadImg.action?headImg=${user.headImg}"
-                         width="200px"
-                         height="200px" alt=""/>
-                    <button type="button" onclick="uploadHeadImg()"
-                            class="btn btn-default" style="margin-left: 40px;">
-                        <i class="glyphicon glyphicon-cloud-upload"></i> 选择新头像
-                    </button>
-                    <input type="file" name="uploadFile" onchange="change_headImg()"
-                           accept="image/*" style="display: none;" required="required">
-                </div>
-
-                <p>
-                    <label class="pull-right" style="margin-top: 30px;"><input
-                            class="btn btn-primary" type="submit" value="保存更改"/></label>
-                </p>
-            </form>
-        </div>
     </div>
 </div>
-<script src="layui/layui.js">
-    layui.use(['element', 'layer'], function () {
-        var element = layui.element;
+<script src="${pageContext.request.contextPath}/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['jquery', 'layer'], function () {
+        var $ = layui.jquery;
         var layer = layui.layer;
-        //监听折叠
-        element.on('collapse(test)', function (data) {
-            layer.msg('展开状态：' + data.show);
+        console.log(5)
+        //检测密码强度
+        $("#newPassword").keyup(
+            function () {
+                var strongRegex = new RegExp(
+                    "^(?=.{14,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$",
+                    "g");
+                var mediumRegex = new RegExp(
+                    "^(?=.{10,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$",
+                    "g");
+                var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+                if (false == enoughRegex.test($(this).val())) {
+                    $("#password_Tips2")
+                        .html(
+                            "<span class='safe_1' style='background-color: transparent;color: lightblue'>弱</span><span class='safe_1' style='background-color: transparent;color: lightblue'>中</span><span class='safe_1' style='background-color: transparent;color: lightblue'>强");
+                    $("#password_Tips2").removeClass('strong');
+                    $("#password_Tips2").removeClass('medium');
+                    $("#password_Tips2").removeClass('enough');
+                    $("#password_Tips2").addClass('default');
+                } else if (strongRegex.test($(this).val())) {
+                    $("#password_Tips2").removeClass('medium');
+                    $("#password_Tips2").removeClass('enough');
+                    $("#password_Tips2").removeClass('strong');
+                    $("#password_Tips2").addClass('strong');
+
+                } else if (mediumRegex.test($(this).val())) {
+                    $("#password_Tips2").removeClass('strong');
+                    $("#password_Tips2").removeClass('enough');
+                    $("#password_Tips2").removeClass('medium');
+                    $("#password_Tips2").addClass('medium');
+
+                } else {
+                    $("#password_Tips2").removeClass('strong');
+                    $("#password_Tips2").removeClass('medium');
+                    $("#password_Tips2").removeClass('enough');
+                    $("#password_Tips2").addClass('enough');
+                }
+                return true;
+            });
+
+        // 检查两次密码是否一致
+        function checkPwd() {
+            var pwd = $("input[name='newPassword']").val();
+            var pwdAgain = $("input[name='newPasswordAgain']").val();
+            if (pwd != pwdAgain) {
+                showErrorMsg("两次输入密码不一致")
+                return false;
+            }
+            return true;
+        }
+
+        // 异步提交表单
+        $("#frmChangePwd").submit(function (e) {
+            //检验
+            if (checkPwd()) {
+                $.ajax({
+                    url: getWebProjectName() + '/changePwd.action',
+                    type: 'POST',
+                    datatype: 'JSON',
+                    data: $('#frmChangePwd').serialize(),
+                    success: function (data) {
+                        if (data.status) {
+                            showSuccessMsg(data.msg);
+                            $("#frmChangePwd")[0].reset()
+                        } else {
+                            showErrorMsg(data.msg);
+                        }
+                    }
+                })
+            }
+            return false;
         });
+
+        function showSuccessMsg(msg) {
+            layer.msg(msg, {
+                time: 2000, // 2s后自动关闭
+                icon: 1
+            });
+        }
+
+        function showErrorMsg(msg) {
+            layer.msg(msg, {
+                time: 2000, // 2s后自动关闭
+                icon: 2
+            });
+        }
+
+        /**
+         * 得到当前项目名称
+         */
+        function getWebProjectName() {
+            var webProjectName = undefined;
+            // 获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+            var pathName = window.document.location.pathname;
+            // 获取带"/"的项目名，如：/uimcardprj
+            webProjectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+            return webProjectName;
+        }
     });
 </script>
 </body>
 <script src="<s:url value='js/jquery-1.11.2.min.js'/>" type="javascript"></script>
 <script src="<s:url value='js/bootstrap/js/bootstrap.min.js'/>" type="javascript"></script>
 <script src="<s:url value='js/layer/layer.js'/>" type="javascript"></script>
-<script src="<s:url value='js/personal.js'/>" type="javascript"></script>
 </html>

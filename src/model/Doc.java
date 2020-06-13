@@ -39,7 +39,6 @@ public class Doc implements Serializable {
      * many-to-one
      */
     private Inbox inbox;
-    private String form;
 
     /**
      * 文件属性
@@ -152,12 +151,5 @@ public class Doc implements Serializable {
     public void setInbox(Inbox inbox) {
         this.inbox = inbox;
     }
-
-    public String getForm() {
-        return form;
-    }
-
-    public void setForm(String form) {
-        this.form = form;
-    }
 }
+

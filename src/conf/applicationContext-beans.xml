@@ -36,7 +36,6 @@
     </bean>
     <bean id="docService" class="service.impl.DocServiceImpl">
         <property name="docDao" ref="docDao"/>
-        <property name="fileHashDao" ref="fileHashDao"/>
     </bean>
     <bean id="docAction" class="action.DocAction" scope="prototype">
         <property name="docService" ref="docService"/>

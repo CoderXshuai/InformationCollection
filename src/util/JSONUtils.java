@@ -24,7 +24,7 @@ public class JSONUtils {
 
         try {//获取文件的绝对路径 根路径
 //            String filePath = ResourceUtils.getURL("/web/upFile").getPath();
-            String filePath = "D:\\IntelliJ IDEA 2019.2.3\\InformationCollection\\web\\upFile\\inbox\\json";
+            String filePath = Static.INBOX_PATH;
             // String fileName = "app";
             String jsonString = JSON.toJSONString(obj);
 // 拼接文件完整路径// 生成json格式文件

@@ -33,4 +33,11 @@ public interface DocService {
      * @return 返回json文件名(UUID)
      */
     File writeJSON(String json);
+
+    /**
+     * 删除doc
+     *
+     * @param inboxId 收件夹ID
+     */
+    void del(String inboxId);
 }

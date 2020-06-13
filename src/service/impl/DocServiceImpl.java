@@ -1,17 +1,16 @@
 package service.impl;
 
-import com.sun.jmx.snmp.Timestamp;
 import dao.DocDao;
-import dao.FileHashDao;
 import model.Doc;
 import model.Inbox;
 import service.DocService;
 import util.JSONUtils;
 import util.MyUtils;
-import util.Static;
 
 import java.io.File;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,11 +22,6 @@ public class DocServiceImpl implements DocService {
      * dao层
      */
     private DocDao docDao;
-    private FileHashDao fileHashDao;
-
-    public void setFileHashDao(FileHashDao fileHashDao) {
-        this.fileHashDao = fileHashDao;
-    }
 
     public void setDocDao(DocDao docDao) {
         this.docDao = docDao;
@@ -35,50 +29,24 @@ public class DocServiceImpl implements DocService {
 
     @Override
     public void upload(Doc doc, String inboxId) {
-        // TODO Auto-generated method stub
         File file = doc.getUploadFile();
-        String uploadFileContentType = doc.getUploadFileContentType();
         String fileName = doc.getUploadFileFileName();
-        //计算hash值
-//        String fileHash = MyUtils.getMd5ByFile(file);
-//        //数据库查询
-//        FileHash myHash = fileHashDao.findById(FileHash.class, fileHash);
         System.out.println("文件大小:" + file.length());
-        //如果为空 说明文件库里面没有该文件
-//        if (myHash == null) {
-        //上传文件
-        Doc d = new Doc();
-        d.setName(fileName);
-        d.setSize(MyUtils.getFormatSize(file.length()));
-        d.setDownload(0);
-        String url = UUID.randomUUID().toString() + "." + fileName.split("\\.")[1];
-        d.setUrl(url);
-        d.setCreateTime(new Timestamp().getDate());
-        Inbox inbox = new Inbox();
-        inbox.setId(inboxId);
-        d.setInbox(inbox);
-        docDao.save(d);
-        //保存该hash值
-//            myHash = new FileHash();
-//            myHash.setId(fileHash);
-//            myHash.setFileName(fileName);
-//            myHash.setFileUrl(url);
-//            fileHashDao.save(myHash);
-        //写入文件到服务器
-        MyUtils.writeFile(file, Static.INBOX_PATH, url);
-//        } else {
-//            //上传文件 但不写入到服务器 已经存在
-//            Doc d = new Doc();
-//            d.setName(fileName);
-//            d.setUrl(myHash.getFileUrl());
-//            d.setSize(MyUtils.getFormatSize(file.length()));
-//            d.setDownload(0);
-//            d.setCreateTime(new Timestamp().getDate());
-//            Inbox inbox = new Inbox();
-//            inbox.setId(inboxId);
-//            d.setInbox(inbox);
-//            docDao.save(d);
-//        }
+        doc.setName(fileName);
+        doc.setSize(MyUtils.getFormatSize(file.length()));
+        try {
+            doc.setDownload(0);
+            Timestamp t = new Timestamp(System.currentTimeMillis());
+            Date date = new Date(t.getTime());
+            doc.setCreateTime(date);
+            Inbox inbox = new Inbox();
+            inbox.setId(inboxId);
+            doc.setInbox(inbox);
+            docDao.save(doc);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -96,11 +64,17 @@ public class DocServiceImpl implements DocService {
         try {
             String uuid = UUID.randomUUID().toString().replace("-", "").toLowerCase();
             Object jsonObject = JSONUtils.convertToJSON(json, uuid);
+            System.out.println(jsonObject.toString());
             File file = JSONUtils.createJSONFile(jsonObject, uuid);
             return file;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void del(String inboxId) {
+        docDao.executeHql("delete Doc where inboxId='" + inboxId + "'");
     }
 }

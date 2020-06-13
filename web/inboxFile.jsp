@@ -22,15 +22,19 @@
 <!--主内容开始-->
 <div class="inboxFile-content container clearfix" style="background-color: transparent">
     <ol class="breadcrumb" style="background-color: transparent">
-        <li><a href="#">首页</a></li>
-        <li id="title"></li>
-        <li class="active">收件记录</li>
+        <li><a href="main.jsp" style="color: lightblue">首页</a></li>
+        <li id="title" style="color: lightblue">${param.title}</li>
+        <li class="active" style="color: lightblue">收件记录</li>
     </ol>
     <button type="button" class="btn btn-default" style="margin-bottom: 20px;background-color:transparent; "
             onclick="delInboxFile()">
         <i class="glyphicon glyphicon-trash" style="color:lightblue"></i>
-        <span id="sortList-text" style="background-color: transparent;color:lightblue">删除文件</span>
-
+        <span id="del" style="background-color: transparent;color:lightblue">删除文件</span>
+    </button>
+    <button type="button" class="btn btn-default" style="margin-bottom: 20px;background-color:transparent; "
+            onclick="delInboxFile()">
+        <i class="glyphicon glyphicon-download-alt" style="color:lightblue"></i>
+        <span id="download" style="background-color: transparent;color:lightblue">下载文件</span>
     </button>
     <div class="panel panel-default" style="border-bottom:0;box-shadow:none;background-color: transparent">
         <table class="table table-hover" style="background-color: transparent;color:lightblue">
@@ -69,7 +73,7 @@
                 console.log(status)
                 for (var i = 0; i < result.length; i++) {
                     $('#docs').append("<tr style=\"background-color: transparent\">\n" +
-                        "                <th align=\"center\"><input id=\"check_all\" type=\"checkbox\" autocomplete=\"off\"></th>\n" +
+                        "                <th align=\"center\"><input id=\"check\" type=\"checkbox\" autocomplete=\"off\" class='file_checkbox'></th>\n" +
                         "                <th width=\"20px\"></th>\n" +
                         "                <th id=\"fileName\">" + result[i].name + "</th>\n" +
                         "                <th>" + result[i].size + "</th>\n" +
@@ -85,7 +89,83 @@
                 }
             }
         });
+        loadAction();
+
+        function loadAction() {
+            $("#check_all").bind('click', function () {
+                var flag = $(this).is(":checked");
+                var inputs = $("input[class='file_checkbox']");
+                console.log(inputs.length)
+                if (flag) {
+                    //全选
+                    for (var i = 0; i < inputs.length; i++) {
+                        inputs[i].checked = true;
+                    }
+                    $("#fileName").html("已选中" + inputs.length + "个文件");
+                    //修改样式
+                    $("table tbody tr").addClass("checkActive");
+                } else {
+                    //全不选
+                    for (var i = 0; i < inputs.length; i++) {
+                        inputs[i].checked = false;
+                    }
+                    $("#fileName").html("文件名称");
+                    $("table tbody tr").removeClass("checkActive");
+                }
+            })
+            $("#check").bind('click', function () {
+                console.log(5)
+                var flag = $(this).is(":checked");
+                var inputs = $("input[class='file_checkbox']");
+                var num = checkNum();
+                console.log(num)
+
+                if (flag) {
+                    //选中该tr
+                    $(this).parent("td").parent("tr").addClass("checkActive");
+                    if (num == inputs.length) {
+                        $("input[id='check_all']")[0].checked = true;
+                        $("#fileName").html("已选中" + num + "个文件");
+                    } else {
+                        $("#fileName").html("已选中" + num + "个文件");
+                    }
+                } else {
+                    $(this).parent("td").parent("tr").removeClass("checkActive");
+                    if (num == 0) {
+                        $("input[id='check_all']")[0].checked = false;
+                        $("#fileName").html("文件名称");
+                    } else {
+                        $("input[id='check_all']")[0].checked = false;
+                        $("#fileName").html("已选中" + num + "个文件");
+                    }
+                }
+            })
+        }
+
+        function delInboxFile() {
+            $.ajax({
+                url: getWebProjectName() / 'delDoc.action',
+                data: 'linkId=' + linkId,
+                success: function (data) {
+                    showSuccessMsg(data.status)
+                }
+            });
+            var size = $(".file_checkbox").is(":checked").length; //选择的数量
+            console.info(size);
+        }
     });
+
+
+    function checkNum() {
+        var inputs = $("input[class='file_checkbox']");
+        var j = 0;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].checked) {
+                j++;
+            }
+        }
+        return j;
+    }
 
     function showAction(id) {
         $.ajax({

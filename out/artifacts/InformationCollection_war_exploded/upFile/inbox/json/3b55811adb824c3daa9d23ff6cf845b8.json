@@ -1,1 +1,11 @@
-{"age":"18","birthday":"2020-06-17","city":"张家口市","hobby":"[write, read]","intro":"A","name":"许帅","num":"201877100332","province":"河北省","sex":"男"}
+{
+  "age": "18",
+  "birthday": "2020-06-17",
+  "city": "张家口市",
+  "hobby": "[write, read]",
+  "intro": "A",
+  "name": "许帅",
+  "num": "201877100332",
+  "province": "河北省",
+  "sex": "男"
+}

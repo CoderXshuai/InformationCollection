@@ -26,7 +26,7 @@
             <li class="dropdown">
                 <a id="user_menu" class="user_menu_btn" data-toggle="dropdown">
                     <img id="userHeadImg"
-                         src="http://img.mp.itc.cn/upload/20170724/cf678e09eb384401aa616ba134126357_th.jpg"
+                         src="img/head_default.jpg"
                          width="30" height="30" class="img-circle"/>
                 </a>
                 <!--下拉框-->
@@ -38,12 +38,12 @@
                         </a>
                     </li>
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#" style="color: #757575;"><i
+                        <a role="menuitem" tabindex="-1" href="index.jsp" style="color: #757575;"><i
                                 class="glyphicon glyphicon-log-out"></i> 退出登录
                         </a>
                     </li>
                 </ul>
-                ${user.name }
+                <span style="color: lightblue">${user.name }</span>
             </li>
 
         </ul>

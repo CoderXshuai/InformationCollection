@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,17 +23,17 @@
     <!--导航栏-->
     <ul class="layui-nav">
         <li class="layui-nav-item">
-            <a href="">主页</a>
+            <a href="main.jsp">主页<span class="layui-badge"></span></a>
         </li>
         <li class="layui-nav-item">
             <a href="personal.jsp">个人中心<span class="layui-badge-dot"></span></a>
         </li>
-        <li class="layui-nav-item">
-            <a href="javascript:"><img class="layui-nav-img" src="//t.cn/RCzsdCq">我</a>
+        <li class="layui-nav-item" lay-unselect="">
+            <a href="javascript:"><img src="img/head_default.jpg" class="layui-nav-img">
+                <span style="color: lightblue">${user.name }</span>
+            </a>
             <dl class="layui-nav-child">
-                <dd><a href="javascript:">修改信息</a></dd>
-                <dd><a href="javascript:">安全管理</a></dd>
-                <dd><a href="javascript:">退了</a></dd>
+                <dd><a href="index.jsp">退出</a></dd>
             </dl>
         </li>
     </ul>
@@ -146,10 +147,11 @@
 <script src="layui/layui.js"></script>
 <script>
     //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use(['jquery', 'form', 'laydate'], function () {
+    layui.use(['jquery', 'form', 'laydate', 'element'], function () {
         var form = layui.form;
         var $ = layui.jquery;
         var laydate = layui.laydate;
+        var elment = layui.element;
         var s1 = $('#s1')
         var s2 = $('#s2')
         laydate.render({
@@ -184,7 +186,8 @@
                 url: getWebProjectName() + '/docSub.action',
                 data: {"form": json, "inboxId": inboxId},
                 success: function (data) {
-                    console.log(data)
+                    showSuccessMsg(data.status)
+                    // window.location.href = getWebProjectName() + '/main.jsp';
                 }
             })
         });
