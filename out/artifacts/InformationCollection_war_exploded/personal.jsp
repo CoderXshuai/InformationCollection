@@ -13,12 +13,13 @@
     <link rel="stylesheet"
           href="<s:url value='js/layer/skin/default/layer.css'/>"/>
     <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACMUlEQVQ4T2NkoDJgRDbPxMTEi4OVIYKdlUGXkD0fvv6/wMjIeOTMmTNzkdWiGGhnZfI634tdRF6EiZB5DGfv/WWYve/nnTNnzqpiNdDExMRBQ4px/eIcbgGCpkEVmFR+ZvgnxD2F8duv/eeOnlgHEoa7ENnA47f+4DVTUYyZQUKAkQFk4I9ISwb27Rdvntt7WAOngfWrfjAcv/2HwViJGcPgR2/+MYRZsjH4m7CCDfzSF8PAU7SE4ezZs2DHYXXh8/f/GP5jcaMgNyMDJxsi2Ik2MHH6N4bLj/4yqEtBIufms38MrMwMDFE2bAy5Huxwq4g2kJRIIejleHt2gRO3IZFiosTM4GHAitN8olx4/ek/gapADgZONgaGns0/GfbW8lBm4J0X/wQmJnAxMDMxMBQu+s5wqIFCAwu8OARm7f0JdlWaMzvWpANzMl4vGxkZJciLMk22VmflefruH1iPtBATg4MWC4OkICODlCBmdsRroLGx8X8GGcH/LJ+/MzKxQjT/+/2PgU2Ei4GP4TfDlhTMoCRoICgJcE7bzfDLSRusm23fVYbvWa7gnHCmnRfDRKIM5K5bw/A9zx2smXPSToavTSHkGejuYPL/zWdsGQ7iMHQXgnJS2or/DB8THRk45x68cW7fIU2UvAwKw3J/DrDmH/8YGViYGRj42f4zsDAzMlQt/47hXWZmxn9/2Nk+MX77yf9XVmThhQ07E9ELh3n///9XxJGKX589ezaMmCwJALLsFCQwiQP3AAAAAElFTkSuQmCC" sizes="32x32">
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <div class="container">
-    <div class="left_ct" >
-        <div class="panel panel-default" >
+    <div class="left_ct">
+        <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     <strong>我的信息</strong>
@@ -51,8 +52,12 @@
                                                                     maxlength="16" type="password" class="form-control"
                                                                     placeholder="建议6-16位的数字、字母、符号的组合密码"
                                                                     required="required"/></td>
-                        <td id="password_Tips2" class="default" style="color: lightblue"><span style="background-color: transparent;color: lightblue">弱</span><span style="background-color: transparent;color: lightblue">中</span><span style="background-color: transparent;color: lightblue">强</span>
-                            请牢记新密码</td>
+                        <td id="password_Tips2" class="default" style="color: lightblue"><span
+                                style="background-color: transparent;color: lightblue">弱</span><span
+                                style="background-color: transparent;color: lightblue">中</span><span
+                                style="background-color: transparent;color: lightblue">强</span>
+                            请牢记新密码
+                        </td>
                     </tr>
                     <tr>
                         <td style="color: lightblue">确认密码</td>

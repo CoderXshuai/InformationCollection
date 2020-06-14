@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Layui</title>
+    <title>信息填写</title>
     <meta content="webkit" name="renderer">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
@@ -17,6 +17,7 @@
     <link href="css/inbox.css" rel="stylesheet" type="text/css"/>
     <link href="js/layer/skin/default/layer.css" rel="stylesheet"/>
     <link href="layui/css/layui.css" media="all" rel="stylesheet"/>
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACMUlEQVQ4T2NkoDJgRDbPxMTEi4OVIYKdlUGXkD0fvv6/wMjIeOTMmTNzkdWiGGhnZfI634tdRF6EiZB5DGfv/WWYve/nnTNnzqpiNdDExMRBQ4px/eIcbgGCpkEVmFR+ZvgnxD2F8duv/eeOnlgHEoa7ENnA47f+4DVTUYyZQUKAkQFk4I9ISwb27Rdvntt7WAOngfWrfjAcv/2HwViJGcPgR2/+MYRZsjH4m7CCDfzSF8PAU7SE4ezZs2DHYXXh8/f/GP5jcaMgNyMDJxsi2Ik2MHH6N4bLj/4yqEtBIufms38MrMwMDFE2bAy5Huxwq4g2kJRIIejleHt2gRO3IZFiosTM4GHAitN8olx4/ek/gapADgZONgaGns0/GfbW8lBm4J0X/wQmJnAxMDMxMBQu+s5wqIFCAwu8OARm7f0JdlWaMzvWpANzMl4vGxkZJciLMk22VmflefruH1iPtBATg4MWC4OkICODlCBmdsRroLGx8X8GGcH/LJ+/MzKxQjT/+/2PgU2Ei4GP4TfDlhTMoCRoICgJcE7bzfDLSRusm23fVYbvWa7gnHCmnRfDRKIM5K5bw/A9zx2smXPSToavTSHkGejuYPL/zWdsGQ7iMHQXgnJS2or/DB8THRk45x68cW7fIU2UvAwKw3J/DrDmH/8YGViYGRj42f4zsDAzMlQt/47hXWZmxn9/2Nk+MX77yf9XVmThhQ07E9ELh3n///9XxJGKX589ezaMmCwJALLsFCQwiQP3AAAAAElFTkSuQmCC" sizes="32x32">
 </head>
 <body>
 <div>
@@ -29,7 +30,7 @@
             <a href="personal.jsp">个人中心<span class="layui-badge-dot"></span></a>
         </li>
         <li class="layui-nav-item" lay-unselect="">
-            <a href="javascript:;"><img src="img/head_default.jpg" class="layui-nav-img">
+            <a href="javascript:"><img src="img/head_default.jpg" class="layui-nav-img">
                 <span style="color: lightblue">${user.name }</span>
             </a>
             <dl class="layui-nav-child">
@@ -186,8 +187,8 @@
                 url: getWebProjectName() + '/docSub.action',
                 data: {"form": json, "inboxId": inboxId},
                 success: function (data) {
-                    showSuccessMsg(data.status)
-                    // window.location.href = getWebProjectName() + '/main.jsp';
+                    showSuccessMsg(data.msg)
+                    window.location.href = getWebProjectName() + '/main.jsp';
                 }
             })
         });

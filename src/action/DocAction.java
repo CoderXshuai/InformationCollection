@@ -78,23 +78,36 @@ public class DocAction implements ModelDriven<Doc> {
     }
 
     public String docSub() {
-        String form = MyUtils.getReq().getParameter("form");
-        String inboxId = MyUtils.getReq().getParameter("inboxId");
-        System.out.println(form);
-        File file = docService.writeJSON(form);
-        doc.setUploadFile(file);
-        doc.setUploadFileContentType("json");
-        doc.setUploadFileFileName(file.getName());
-        doc.setUrl(file.getAbsolutePath());
-        docService.upload(doc, inboxId);
-        MyUtils.outMsg("上传成功!", true);
-        return "docSub";
+        try {
+            String form = MyUtils.getReq().getParameter("form");
+            String inboxId = MyUtils.getReq().getParameter("inboxId");
+            System.out.println(form);
+            File file = docService.writeJSON(form, inboxId);
+            doc.setUploadFile(file);
+            doc.setUploadFileContentType("json");
+            doc.setUploadFileFileName(file.getName());
+            doc.setUrl(file.getAbsolutePath());
+            docService.upload(doc, inboxId);
+            MyUtils.outMsg("上传成功!", true);
+            return "docSub";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "error";
     }
 
     public String delDoc() {
-        String inboxId = MyUtils.getReq().getParameter("inboxId");
-        docService.del(inboxId);
-        MyUtils.outMsg("删除成功!", true);
-        return "success";
+        try {
+            String inboxId = MyUtils.getReq().getParameter("inboxId");
+            System.out.println(inboxId);
+            docService.del(inboxId);
+            MyUtils.outMsg("删除成功!", true);
+            result = null;
+            return "delDoc";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        MyUtils.outMsg("删除失败!", false);
+        return "error";
     }
 }

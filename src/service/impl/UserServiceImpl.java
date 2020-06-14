@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
     public Object[] login(User user) {
         // TODO Auto-generated method stub
         //按照用户名查找用户
-        User u = userDao.find("from User u where u.name =" + user.getName());
+        User u = userDao.find("from User u where u.name ='" + user.getName() + "'");
         if (u != null) {
             String password = u.getPassword();
             if (user.getPassword().equals(password)) {

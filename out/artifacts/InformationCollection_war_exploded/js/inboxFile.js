@@ -1,4 +1,3 @@
-var $ = layui.jquery;
 //初始化大部分 文件后缀名
 var audio = ['mp3', 'wav', 'ra', 'wma', 'mid'];
 var video = ['avi', 'mpg', 'mov', 'swf'];
@@ -72,8 +71,6 @@ function getFileExt(fileName) {
 }
 
 
-
-
 //返回当前选中的文件数
 function checkNum() {
     var inputs = $("input[class='file_checkbox']");
@@ -86,7 +83,4 @@ function checkNum() {
     return j;
 }
 
-function delInboxFile() {
-    var size = $("input").is(":checked").length; //选择的数量
-    console.info(size);
-}
+

@@ -77,7 +77,7 @@ public class UserAction implements ModelDriven<User> {
             result = (String) obj[1];
             return "login";
         } else {
-            MyUtils.outMsg((String) obj[1], false);
+            MyUtils.outMsg("账号或密码错误", false);
         }
         return null;
     }

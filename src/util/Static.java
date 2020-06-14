@@ -18,7 +18,7 @@ public class Static {
     public static final String IMG_PATH = SRC_PATH + File.separator + "img";
     public static final String USER_HEADIMG = IMG_PATH + File.separator + "usersHeadImg";
     public static final String INBOX_LOGO = IMG_PATH + File.separator + "inboxLogo";
-    public static final String INBOX_JSON = SRC_PATH + File.separator + "json";
+    public static final String INBOX_JSON = INBOX_PATH + File.separator + "json";
 
     public static String getHtmlMail(String email, String code) {
         String htmlMail = "<!DOCTYPE html>\n" +

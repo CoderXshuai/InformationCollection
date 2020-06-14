@@ -18,26 +18,28 @@ import java.util.Map;
 public class JSONUtils {
 
     //封装创建json文件的方法
-    public static File createJSONFile(Object obj, String fileName) {
+    public static File createJSONFile(Object obj, String fileName, String inboxId) {
         boolean flag = true;
         File file = null;
 
         try {//获取文件的绝对路径 根路径
-//            String filePath = ResourceUtils.getURL("/web/upFile").getPath();
-            String filePath = Static.INBOX_PATH;
+            String filePath = Static.INBOX_JSON + File.separator + inboxId;
             // String fileName = "app";
             String jsonString = JSON.toJSONString(obj);
 // 拼接文件完整路径// 生成json格式文件
             String fullPath = filePath + File.separator + fileName + ".json";
 // 保证创建一个新文件
             file = new File(fullPath);
-            if (!file.getParentFile().exists()) { // 如果父目录不存在，创建父目录
+            if (!file.getParentFile().exists()) {
+                // 如果父目录不存在，创建父目录
                 file.getParentFile().mkdirs();
             }
-            if (file.exists()) { // 如果已存在,删除旧文件
+            if (file.exists()) {
+                // 如果已存在,删除旧文件
                 file.delete();
             }
-            file.createNewFile();//创建新文件
+            //创建新文件
+            file.createNewFile();
 
             if (jsonString.indexOf("'") != -1) {
 //将单引号转义一下，因为JSON串中的字符串类型可以单引号引起来的

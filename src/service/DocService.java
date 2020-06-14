@@ -29,10 +29,11 @@ public interface DocService {
     /**
      * 写入json
      *
-     * @param json 前端传过来的json字符串
+     * @param json    前端传过来的json字符串
+     * @param inboxId 对应的收件夹ID
      * @return 返回json文件名(UUID)
      */
-    File writeJSON(String json);
+    File writeJSON(String json, String inboxId);
 
     /**
      * 删除doc

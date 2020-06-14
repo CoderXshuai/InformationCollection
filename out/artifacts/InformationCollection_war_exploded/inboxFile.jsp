@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/header.css"/>
     <link rel="stylesheet" type="text/css" href="js/layer/skin/default/layer.css"/>
     <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACMUlEQVQ4T2NkoDJgRDbPxMTEi4OVIYKdlUGXkD0fvv6/wMjIeOTMmTNzkdWiGGhnZfI634tdRF6EiZB5DGfv/WWYve/nnTNnzqpiNdDExMRBQ4px/eIcbgGCpkEVmFR+ZvgnxD2F8duv/eeOnlgHEoa7ENnA47f+4DVTUYyZQUKAkQFk4I9ISwb27Rdvntt7WAOngfWrfjAcv/2HwViJGcPgR2/+MYRZsjH4m7CCDfzSF8PAU7SE4ezZs2DHYXXh8/f/GP5jcaMgNyMDJxsi2Ik2MHH6N4bLj/4yqEtBIufms38MrMwMDFE2bAy5Huxwq4g2kJRIIejleHt2gRO3IZFiosTM4GHAitN8olx4/ek/gapADgZONgaGns0/GfbW8lBm4J0X/wQmJnAxMDMxMBQu+s5wqIFCAwu8OARm7f0JdlWaMzvWpANzMl4vGxkZJciLMk22VmflefruH1iPtBATg4MWC4OkICODlCBmdsRroLGx8X8GGcH/LJ+/MzKxQjT/+/2PgU2Ei4GP4TfDlhTMoCRoICgJcE7bzfDLSRusm23fVYbvWa7gnHCmnRfDRKIM5K5bw/A9zx2smXPSToavTSHkGejuYPL/zWdsGQ7iMHQXgnJS2or/DB8THRk45x68cW7fIU2UvAwKw3J/DrDmH/8YGViYGRj42f4zsDAzMlQt/47hXWZmxn9/2Nk+MX77yf9XVmThhQ07E9ELh3n///9XxJGKX589ezaMmCwJALLsFCQwiQP3AAAAAElFTkSuQmCC" sizes="32x32">
 </head>
 
 <body>
@@ -27,14 +28,14 @@
         <li class="active" style="color: lightblue">收件记录</li>
     </ol>
     <button type="button" class="btn btn-default" style="margin-bottom: 20px;background-color:transparent; "
-            onclick="delInboxFile()">
+            id="del">
         <i class="glyphicon glyphicon-trash" style="color:lightblue"></i>
-        <span id="del" style="background-color: transparent;color:lightblue">删除文件</span>
+        <span style="background-color: transparent;color:lightblue">删除文件</span>
     </button>
     <button type="button" class="btn btn-default" style="margin-bottom: 20px;background-color:transparent; "
-            onclick="delInboxFile()">
+            id="download">
         <i class="glyphicon glyphicon-download-alt" style="color:lightblue"></i>
-        <span id="download" style="background-color: transparent;color:lightblue">下载文件</span>
+        <span style="background-color: transparent;color:lightblue">下载文件</span>
     </button>
     <div class="panel panel-default" style="border-bottom:0;box-shadow:none;background-color: transparent">
         <table class="table table-hover" style="background-color: transparent;color:lightblue">
@@ -90,6 +91,20 @@
             }
         });
         loadAction();
+        $("#del").click(function () {
+            console.log('http://localhost:8080/' + getWebProjectName() / 'delDoc.action')
+            $.ajax({
+                url: '${pageContext.request.contextPath}/delDoc.action',
+                data: 'inboxId=' + linkId,
+                success: function (data) {
+                    showSuccessMsg(data.msg)
+                    window.location.reload()
+                }
+            });
+        });
+        $("#download").click(function () {
+            window.location.href = "download.action?inboxId="+linkId;
+        });
 
         function loadAction() {
             $("#check_all").bind('click', function () {
@@ -142,17 +157,6 @@
             })
         }
 
-        function delInboxFile() {
-            $.ajax({
-                url: getWebProjectName() / 'delDoc.action',
-                data: 'linkId=' + linkId,
-                success: function (data) {
-                    showSuccessMsg(data.status)
-                }
-            });
-            var size = $(".file_checkbox").is(":checked").length; //选择的数量
-            console.info(size);
-        }
     });
 
 
@@ -196,6 +200,20 @@
         webProjectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
 
         return webProjectName;
+    }
+
+    function showSuccessMsg(msg) {
+        layer.msg(msg, {
+            time: 3000, // 2s后自动关闭
+            icon: 1
+        });
+    }
+
+    function showErrorMsg(msg) {
+        layer.msg(msg, {
+            time: 3000, // 2s后自动关闭
+            icon: 2
+        });
     }
 </script>
 </body>

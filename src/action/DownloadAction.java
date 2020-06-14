@@ -2,14 +2,16 @@ package action;
 
 
 import com.opensymphony.xwork2.ActionSupport;
-import util.Static;
+import util.MyUtils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Enumeration;
+import java.util.Vector;
 
+/**
+ * @author CoderXshuai
+ */
 public class DownloadAction extends ActionSupport {
 
     //文件流
@@ -57,16 +59,28 @@ public class DownloadAction extends ActionSupport {
 
 
     @Override
-    public String execute() throws Exception {
-        // TODO Auto-generated method stub
-        File file = new File(Static.INBOX_PATH + File.separator + fileUrl);
-        try {
-            inStream = new FileInputStream(file);
-        } catch (Exception e) {
-            // TODO: handle exception
+    public String execute() {
+        String inboxId = MyUtils.getReq().getParameter("inboxId");
+        System.out.println(inboxId);
+        File file = new File("D:\\IntelliJ IDEA 2019.2.3\\InformationCollection\\web\\upFile\\inbox\\json" + File.separator + inboxId);
+        Vector<InputStream> v = new Vector<InputStream>();
+        Enumeration<InputStream> e;
+        if (file.isDirectory()) {
+            System.out.println(inboxId);
+            try {
+                File[] files = file.listFiles();
+                for (File value : files) {
+                    v.add(new FileInputStream(value));
+                }
+                e = v.elements();
+                SequenceInputStream sis = new SequenceInputStream(e);
+                inStream = sis;
+                System.out.println("红红火火恍恍惚惚");
+                return SUCCESS;
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
-        System.out.println("红红火火恍恍惚惚");
-        return SUCCESS;
+        return ERROR;
     }
-
 }
