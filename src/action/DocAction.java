@@ -26,8 +26,6 @@ public class DocAction implements ModelDriven<Doc> {
      * 返回的结果
      */
     private List<Doc> result;
-    private String form;
-    private File file;
 
     @Override
     public Doc getModel() {
@@ -53,22 +51,6 @@ public class DocAction implements ModelDriven<Doc> {
 
     public void setResult(List<Doc> result) {
         this.result = result;
-    }
-
-    public String getForm() {
-        return form;
-    }
-
-    public void setForm(String form) {
-        this.form = form;
-    }
-
-    public File getFile() {
-        return file;
-    }
-
-    public void setFile(File file) {
-        this.file = file;
     }
 
     public String getDocs() {

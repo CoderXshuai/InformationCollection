@@ -97,7 +97,7 @@
                 if (false == enoughRegex.test($(this).val())) {
                     $("#password_Tips2")
                         .html(
-                            "<span class='safe_1' style='background-color: transparent;color: lightblue'>弱</span><span class='safe_1' style='background-color: transparent;color: lightblue'>中</span><span class='safe_1' style='background-color: transparent;color: lightblue'>强");
+                            "<span class='safe_1' style='color: lightblue'>弱</span><span class='safe_1' style='color: lightblue'>中</span><span class='safe_1' style='color: lightblue'>强");
                     $("#password_Tips2").removeClass('strong');
                     $("#password_Tips2").removeClass('medium');
                     $("#password_Tips2").removeClass('enough');

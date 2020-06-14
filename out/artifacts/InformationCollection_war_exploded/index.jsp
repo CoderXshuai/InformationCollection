@@ -96,7 +96,6 @@
 </script>
 </body>
 <script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
-<%--<script src="js/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>--%>
+<script src="js/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/layer/layer.js" type="text/javascript" charset="utf-8"></script>
-<%--<script src="js/index.js" type="text/javascript" charset="utf-8"></script>--%>
 </html>

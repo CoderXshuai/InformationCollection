@@ -11,7 +11,7 @@ public interface BaseDao<T> {
     /**
      * 添加新纪录
      *
-     * @param obj
+     * @param obj 对象实例
      * @return json格式的字符串
      */
     Serializable save(T obj);
@@ -30,17 +30,6 @@ public interface BaseDao<T> {
      * @return
      */
     T find(String hql);
-
-    /**
-     * 查询一条记录
-     *
-     * @param hql    hql语句
-     * @param params 参数
-     * @return 对象实例
-     * @author Jhon
-     */
-    @Deprecated
-    T find(String hql, Object[] params);
 
     /**
      * 查询一条记录

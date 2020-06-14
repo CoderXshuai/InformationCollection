@@ -26,9 +26,9 @@ public class JSONUtils {
             String filePath = Static.INBOX_JSON + File.separator + inboxId;
             // String fileName = "app";
             String jsonString = JSON.toJSONString(obj);
-// 拼接文件完整路径// 生成json格式文件
+            //拼接文件完整路径生成json格式文件
             String fullPath = filePath + File.separator + fileName + ".json";
-// 保证创建一个新文件
+            // 保证创建一个新文件
             file = new File(fullPath);
             if (!file.getParentFile().exists()) {
                 // 如果父目录不存在，创建父目录

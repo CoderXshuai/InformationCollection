@@ -3,11 +3,6 @@ package service.impl;
 import dao.UserDao;
 import model.User;
 import service.UserService;
-import util.MyUtils;
-import util.Static;
-
-import java.io.File;
-import java.util.UUID;
 
 /**
  * @author CoderXshuai
@@ -80,35 +75,6 @@ public class UserServiceImpl implements UserService {
             return new Object[]{true, "密码修改成功!"};
         }
         return new Object[]{false, "原密码输出错误！请重试"};
-    }
-
-    @Override
-    public Object[] changeHeadImg(User user, int id) {
-        // TODO Auto-generated method stub
-        User u = userDao.find("from User u where u.id =" + id);
-        //获取之前的图片文件名
-        String oldImgName = u.getHeadImg();
-        //获取图片文件
-        File uploadFile = user.getUploadFile();
-        String uploadFileContentType = user.getUploadFileContentType();
-        //获取图片后缀
-        String ext = uploadFileContentType.split("/")[1];
-        //图片名称为 UUID保证唯一性
-        String imgName = UUID.randomUUID().toString() + "." + ext;
-        u.setHeadImg(imgName);
-        userDao.update(u);
-        //写入文件到服务器
-        MyUtils.writeFile(uploadFile, Static.USER_HEADIMG, imgName);
-        //删除之前的文件
-        MyUtils.deleteFile(Static.USER_HEADIMG, oldImgName);
-        return new Object[]{"头像修改成功!", imgName, u};
-    }
-
-    @Override
-    public User getUserById(int id) {
-        // TODO Auto-generated method stub
-        User u = userDao.find("from User u where u.id =" + id);
-        return u;
     }
 
 }

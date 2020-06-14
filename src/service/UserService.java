@@ -23,14 +23,6 @@ public interface UserService {
     Object[] login(User user);
 
     /**
-     * 根据传来的用户ID,获取用户实例
-     *
-     * @param id 用户ID
-     * @return 用户实例
-     */
-    User getUserById(int id);
-
-    /**
      * 根据传来的id  和密码信息进行修改密码
      *
      * @param user 用户实例
@@ -39,12 +31,4 @@ public interface UserService {
      */
     Object[] changePwd(User user, int id);
 
-    /**
-     * 修改用户头像
-     *
-     * @param user 用户实例
-     * @param id
-     * @return object[0]代表返回信息 object[1]代表返回图片地址
-     */
-    Object[] changeHeadImg(User user, int id);
 }

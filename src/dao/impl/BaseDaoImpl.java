@@ -51,23 +51,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         return null;
     }
 
-    @Override
-    public T find(String hql, Object[] params) {
-        Query q = this.getCurrentSession().createQuery(hql);
-        if (params != null && params.length > 0) {
-            Integer index = 0;
-            while (index < params.length) {
-                q.setParameter(index, params[index]);
-                index++;
-            }
-        }
-        List<T> list = q.list();
-        if (list != null && list.size() > 0) {
-            return list.get(0);
-
-        }
-        return null;
-    }
 
     @Override
     public T find(String hql, Map<String, Object> params) {

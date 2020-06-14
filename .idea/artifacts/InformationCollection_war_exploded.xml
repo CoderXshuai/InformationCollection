@@ -9,15 +9,14 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="module" name="JUnit4" module-name="InformationCollection" />
-          <element id="library" level="project" name="lib5" />
-          <element id="library" level="project" name="aliyun" />
-          <element id="library" level="project" name="fastjson" />
-          <element id="library" level="project" name="spring-context-support" />
           <element id="library" level="project" name="dbcp2" />
-          <element id="library" level="project" name="jax" />
-          <element id="library" level="project" name="MySQL" />
           <element id="library" level="project" name="javamail" />
+          <element id="library" level="project" name="fastjson" />
+          <element id="library" level="project" name="jax" />
           <element id="library" level="project" name="javax-servlet" />
+          <element id="library" level="project" name="spring-context-support" />
+          <element id="library" level="project" name="MySQL" />
+          <element id="library" level="project" name="ssh" />
         </element>
       </element>
     </root>

@@ -8,9 +8,7 @@ import util.MailUtil;
 import util.MyUtils;
 import util.Static;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 
 
 /**
@@ -123,30 +121,6 @@ public class UserAction implements ModelDriven<User> {
             MyUtils.outMsg("你已经断网或离线,请刷新页面重新登录", false);
         }
         return "error";
-    }
-
-
-    public void displayCookie() {
-        Cookie[] cookies;
-        cookies = MyUtils.getReq().getCookies();
-        for (Cookie cookie : cookies) {
-            System.out.println(cookie.getName());
-
-        }
-    }
-
-    public void getHeadImg() {
-        String imgName = user.getHeadImg();
-        //图片目录文件
-        String headImgPath = Static.USER_HEADIMG;
-        //请求的图片路径
-        String imgPath = headImgPath + File.separator + imgName;
-        File imgFile = new File(imgPath);
-        if (!imgFile.exists()) {
-            imgPath = headImgPath + File.separator + "default.png";
-            imgFile = new File(imgPath);
-        }
-        MyUtils.writeImg(imgFile);
     }
 
     public String SMS() {

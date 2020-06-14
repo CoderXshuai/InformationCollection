@@ -42,12 +42,6 @@ public class MailUtil {
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(text, true);
-//            mailMessage = new SimpleMailMessage();
-//            mailMessage.setTo(to);
-//            mailMessage.setFrom(mailSender.getUsername());
-//            mailMessage.setSubject(subject);
-//            mailMessage.setText(text);
-            //发送邮件
             mailSender.send(msg);
             return true;
         } catch (Exception e) {

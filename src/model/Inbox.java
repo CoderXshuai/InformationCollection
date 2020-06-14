@@ -1,5 +1,8 @@
 package model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
@@ -63,7 +66,7 @@ public class Inbox implements Serializable {
     /**
      * one-to-many
      */
-    private Set docs = new HashSet(0);
+    private Set<Doc> docs = new HashSet(5);
 
     /**
      * 上传文件的其他属性
@@ -198,13 +201,31 @@ public class Inbox implements Serializable {
         this.user = user;
     }
 
-    public Set getDocs() {
+    public Set<Doc> getDocs() {
         return docs;
     }
 
-    public void setDocs(Set docs) {
+    public void setDocs(Set<Doc> docs) {
         this.docs = docs;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
 
+        if (!(o instanceof Inbox)) return false;
+
+        Inbox inbox = (Inbox) o;
+
+        return new EqualsBuilder()
+                .append(getId(), inbox.getId())
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(getId())
+                .toHashCode();
+    }
 }

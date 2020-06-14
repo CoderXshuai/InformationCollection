@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.util.*;
 
 /**
@@ -247,10 +244,8 @@ public class MyUtils {
     public static String encodeCookie(int id, String password) {
         // 获取当前的时间戳
         long currentTime = System.currentTimeMillis();
-        String hash = id + ":" + password + ":" + currentTime;
-        String md5Hash = MyUtils.getMD5(hash); // 获取加密hash值
         // 得到cookie
-        String cookieValue = id + ":" + currentTime + ":" + md5Hash;
+        String cookieValue = id + ":" + currentTime;
         return cookieValue;
     }
 
@@ -265,61 +260,6 @@ public class MyUtils {
         cookie.setMaxAge(3600);
         cookie.setPath("/inbox");
         MyUtils.getRes().addCookie(cookie);
-    }
-
-    /**
-     * MD5加密
-     *
-     * @param message 要进行MD5加密的字符串
-     * @return 加密结果为32位字符串
-     */
-    public static String getMD5(String message) {
-        MessageDigest messageDigest = null;
-        StringBuffer md5StrBuff = new StringBuffer();
-        try {
-            messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.reset();
-            messageDigest.update(message.getBytes(StandardCharsets.UTF_8));
-
-            byte[] byteArray = messageDigest.digest();
-            for (int i = 0; i < byteArray.length; i++) {
-                if (Integer.toHexString(0xFF & byteArray[i]).length() == 1)
-                    md5StrBuff.append("0").append(
-                            Integer.toHexString(0xFF & byteArray[i]));
-                else
-                    md5StrBuff.append(Integer.toHexString(0xFF & byteArray[i]));
-            }
-        } catch (Exception e) {
-            throw new RuntimeException();
-        }
-        return md5StrBuff.toString().toUpperCase();// 字母大写
-    }
-
-    /**
-     * 计算文件的MD5值
-     *
-     * @param file
-     * @return
-     */
-    public static String getMd5ByFile(File file) {
-        String result = null;
-        if (null == file)
-            return null;
-        try {
-            FileInputStream fis = new FileInputStream(file);
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] buffer = new byte[1024];
-            int length = -1;
-            while ((length = fis.read(buffer, 0, 1024)) != -1) {
-                md.update(buffer, 0, length);
-            }
-            BigInteger bigInt = new BigInteger(1, md.digest());
-            result = bigInt.toString(16);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return result;
     }
 
     /**
@@ -375,33 +315,6 @@ public class MyUtils {
                 + "TB";
     }
 
-    /**
-     * 生成 length长度的字符串
-     *
-     * @param length
-     * @return
-     */
-    public static String getRandomString(int length) { // length表示生成字符串的长度
-        String base = "abcdefghijklmnopqrstuvwxyz0123456789";
-        Random random = new Random();
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < length; i++) {
-            int number = random.nextInt(base.length());
-            sb.append(base.charAt(number));
-        }
-        return sb.toString();
-    }
-
-    // 根据Value取Key
-    public static Object getKeyByValue(Map map, Object value) {
-        for (Object key : map.keySet()) {
-            if (map.get(key).equals(value)) {
-                return key;
-            }
-        }
-        return null;
-    }
-
     /***
      * textarea的段落文章 存储到数据库 进行字符替换
      *
@@ -426,7 +339,4 @@ public class MyUtils {
         return value;
     }
 
-    public static void main(String[] args) {
-
-    }
 }

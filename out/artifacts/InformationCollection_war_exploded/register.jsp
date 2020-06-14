@@ -68,7 +68,9 @@
             dataType: 'json',
             url: getWebProjectName() + '/sms.action',
             success: function (data) {
-                showSuccessMsg(data.msg);
+                if (data) {
+                    showSuccessMsg("发送成功!请查收");
+                }
             }
         });
     })
@@ -82,11 +84,11 @@
             data: $('#registerForm').serialize(),
             success: function (data) {
                 if (data.status) {
-                    showSuccessMsg(data.msg);
+                    showSuccessMsg("注册成功!将跳转至主页面");
                     layer.close(layer.index);
                     window.location.href = getWebProjectName() + '/main.jsp';
                 } else {
-                    showErrorMsg(data.msg);
+                    showErrorMsg("注册失败,请重试!");
                 }
             }
         })

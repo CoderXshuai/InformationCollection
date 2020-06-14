@@ -17,7 +17,9 @@ public class Doc implements Serializable {
      * ID
      */
     private String id;
-    // 文件名字
+    /**
+     * 文件名
+     */
     private String name;
     /**
      * 文件所存地址

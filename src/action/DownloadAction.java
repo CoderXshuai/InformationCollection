@@ -14,33 +14,34 @@ import java.util.Vector;
  */
 public class DownloadAction extends ActionSupport {
 
-    //文件流
+    /**
+     * 文件流(和struts2)中定义的一个名字
+     */
     private InputStream inStream;
-    //文件地址
+    /**
+     * 文件地址
+     */
     private String fileUrl;
-    //文件名称
+    /**
+     * 文件名
+     */
     private String fileName;
-
 
     public InputStream getInStream() {
         return inStream;
     }
 
-
     public void setInStream(InputStream inStream) {
         this.inStream = inStream;
     }
-
 
     public String getFileUrl() {
         return fileUrl;
     }
 
-
     public void setFileUrl(String fileUrl) {
         this.fileUrl = fileUrl;
     }
-
 
     public String getFileName() {
         try {
@@ -52,11 +53,9 @@ public class DownloadAction extends ActionSupport {
         return fileName;
     }
 
-
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
-
 
     @Override
     public String execute() {
@@ -75,7 +74,6 @@ public class DownloadAction extends ActionSupport {
                 e = v.elements();
                 SequenceInputStream sis = new SequenceInputStream(e);
                 inStream = sis;
-                System.out.println("红红火火恍恍惚惚");
                 return SUCCESS;
             } catch (Exception exception) {
                 exception.printStackTrace();

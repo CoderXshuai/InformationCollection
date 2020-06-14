@@ -1,5 +1,8 @@
 package model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
@@ -205,5 +208,27 @@ public class User implements Serializable {
 
     public void setNo(String no) {
         this.no = no;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        return new EqualsBuilder()
+                .append(getId(), user.getId())
+                .append(getNo(), user.getNo())
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(getId())
+                .append(getNo())
+                .toHashCode();
     }
 }

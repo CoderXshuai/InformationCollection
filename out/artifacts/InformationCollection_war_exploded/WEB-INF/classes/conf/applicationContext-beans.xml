@@ -40,10 +40,6 @@
     <bean id="docAction" class="action.DocAction" scope="prototype">
         <property name="docService" ref="docService"/>
     </bean>
-    <!-- action->(FileHash,service->dao) -->
-    <bean id="fileHashDao" class="dao.impl.FileHashDaoImpl">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
     <bean id="mailUtil" class="util.MailUtil">
         <property name="mailSender" ref="mailSender"/>
     </bean>

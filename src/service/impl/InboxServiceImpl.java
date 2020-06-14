@@ -88,53 +88,6 @@ public class InboxServiceImpl implements InboxService {
     }
 
     @Override
-    public void updateEndTime(Date endTime, String id) {
-        // TODO Auto-generated method stub
-        Inbox inbox = inboxDao.findById(Inbox.class, id);
-        inbox.setEndTime(endTime);
-        inboxDao.update(inbox);
-    }
-
-    @Override
-    public void closeInbox(String closeReason, String id) {
-        // TODO Auto-generated method stub
-        Inbox inbox = inboxDao.findById(Inbox.class, id);
-        inbox.setCloseReason(MyUtils.textareaToSql(closeReason));
-        inbox.setStatus(Static.INBOX_OFF);
-        inboxDao.update(inbox);
-    }
-
-    @Override
-    public boolean openInbox(String id) {
-        // TODO Auto-generated method stub
-        Inbox inbox = inboxDao.findById(Inbox.class, id);
-        if (inbox.getEndTime().toString().compareToIgnoreCase(time()) > 0) {
-            inbox.setCloseReason(null);
-            inbox.setStatus(Static.INBOX_ON);
-            inboxDao.update(inbox);
-            return true;
-        }
-        return false;
-
-    }
-
-    @Override
-    public void star(String id) {
-        // TODO Auto-generated method stub
-        Inbox inbox = inboxDao.findById(Inbox.class, id);
-        inbox.setStar(Static.INBOX_STAR);
-        inboxDao.update(inbox);
-    }
-
-    @Override
-    public void cancelStar(String id) {
-        // TODO Auto-generated method stub
-        Inbox inbox = inboxDao.findById(Inbox.class, id);
-        inbox.setStar(Static.INBOX_NOSTAR);
-        inboxDao.update(inbox);
-    }
-
-    @Override
     public void delete(String id) {
         // TODO Auto-generated method stub
         Inbox inbox = inboxDao.findById(Inbox.class, id);
@@ -147,21 +100,6 @@ public class InboxServiceImpl implements InboxService {
         inboxDao.delete(inbox);
         // 删除文件
         MyUtils.deleteFile(Static.INBOX_LOGO, imgName);
-    }
-
-    @Override
-    public void updatePwd(String id, String pwd) {
-        // TODO Auto-generated method stub
-        Inbox inbox = inboxDao.findById(Inbox.class, id);
-        inbox.setPassword(pwd);
-        inboxDao.update(inbox);
-    }
-
-    @Override
-    public Inbox getInboxById(String id) {
-        // TODO Auto-generated method stub
-        Inbox inbox = inboxDao.findById(Inbox.class, id);
-        return inbox;
     }
 
     /*************** 拓展方法 ****************/

@@ -59,14 +59,13 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="lib5" level="project" />
-    <orderEntry type="library" name="aliyun" level="project" />
-    <orderEntry type="library" name="fastjson" level="project" />
-    <orderEntry type="library" name="spring-context-support" level="project" />
     <orderEntry type="library" name="dbcp2" level="project" />
-    <orderEntry type="library" name="jax" level="project" />
-    <orderEntry type="library" name="MySQL" level="project" />
+    <orderEntry type="library" name="fastjson" level="project" />
     <orderEntry type="library" name="javamail" level="project" />
     <orderEntry type="library" name="javax-servlet" level="project" />
+    <orderEntry type="library" name="jax" level="project" />
+    <orderEntry type="library" name="MySQL" level="project" />
+    <orderEntry type="library" name="spring-context-support" level="project" />
+    <orderEntry type="library" name="ssh" level="project" />
   </component>
 </module>
